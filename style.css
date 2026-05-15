@@ -44,6 +44,8 @@ body {
   z-index: 0;
   pointer-events: none;
   background: var(--navy);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .bg-img {
@@ -55,6 +57,14 @@ body {
   object-position: center 22%;
   opacity: 0;
   transition: opacity 1.4s ease;
+}
+
+@media (max-width: 680px) {
+  .bg-img {
+    object-position: center center;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
 }
 
 .bg-img.active { opacity: 1; }
@@ -575,6 +585,15 @@ body {
   /* Afficher la colonne gauche et le burger */
   .nav-left { display: flex; }
   .nav-burger { display: flex; }
+
+  /* Plus de hauteur dans la nav */
+  .nav { padding: 16px 16px; }
+
+  /* Tooltip des modes vers le bas (sinon coupé par le haut de l'écran) */
+  .mode-btn::after {
+    bottom: auto;
+    top: calc(100% + 8px);
+  }
 
   /* Masquer le bouton toggle — contrôles directement visibles */
   .nav-mode-toggle { display: none; }
