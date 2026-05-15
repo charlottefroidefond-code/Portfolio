@@ -970,7 +970,11 @@ html[lang="fr"] .ap-timeline-en { display: none; }
   <!-- ═══ Navigation sticky ════════════════════════════════ -->
   <header class="site-header">
     <nav class="nav" aria-label="Navigation principale">
-      <div aria-hidden="true"></div>
+      <div class="nav-left">
+        <button class="nav-burger" aria-label="Menu" aria-expanded="false" id="nav-burger">
+          <span class="material-icons-round">menu</span>
+        </button>
+      </div>
       <div class="nav-links" role="list">
         <a href="#accueil"   class="nav-link active" role="listitem" data-en="Home"     data-fr="Accueil">Home</a>
         <a href="#projets"   class="nav-link"        role="listitem" data-en="Projects" data-fr="Projets">Projects</a>
@@ -1007,6 +1011,21 @@ html[lang="fr"] .ap-timeline-en { display: none; }
         </div>
       </div>
     </nav>
+
+    <!-- Menu burger mobile -->
+    <div class="nav-mobile-menu" id="nav-mobile-menu" aria-label="Navigation mobile">
+      <a href="#accueil"  class="nav-mobile-link active" data-en="Home"     data-fr="Accueil">Accueil</a>
+      <a href="#projets"  class="nav-mobile-link"        data-en="Projects" data-fr="Projets">Projets</a>
+      <a href="#a-propos" class="nav-mobile-link"        data-en="About"    data-fr="À propos">À propos</a>
+      <a href="#contact"  class="nav-mobile-link"        data-en="Contact"  data-fr="Contact">Contact</a>
+      <div class="nav-mobile-sep"></div>
+      <a href="cv.html" target="_blank" class="nav-mobile-cv"
+         data-href-en="cv-en.html" data-href-fr="cv.html">
+        <span class="material-icons-round">download</span>
+        <span data-en="Resume" data-fr="Mon CV">Mon CV</span>
+      </a>
+    </div>
+
   </header>
 
   <!-- ═══ Section 1 — Accueil ══════════════════════════════ -->
@@ -1471,12 +1490,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Génération de la grille de projets ─────────────────
   const grid = document.getElementById('projets-grid');
   PROJETS.forEach(p => {
+    const titreFr = p.titreCourt;
+    const titreEn = p.en?.titreCourt || p.titreCourt;
+    const sousFr  = p.sousTitreCourt;
+    const sousEn  = p.en?.sousTitreCourt || p.sousTitreCourt;
     grid.innerHTML += `
       <a href="projet-detail.html?id=${p.id}" class="projet-pill">
         <div class="projet-pill-content">
-          <span class="projet-pill-titre">${p.titreCourt}</span>
+          <span class="projet-pill-titre" data-fr="${titreFr}" data-en="${titreEn}">${titreFr}</span>
           <div class="projet-pill-sub-wrap">
-            <span class="projet-pill-sub">${p.sousTitreCourt}</span>
+            <span class="projet-pill-sub" data-fr="${sousFr}" data-en="${sousEn}">${sousFr}</span>
           </div>
         </div>
         <div class="projet-pill-arrow" aria-hidden="true">
@@ -1485,6 +1508,9 @@ document.addEventListener('DOMContentLoaded', () => {
       </a>
     `;
   });
+  // Relancer la traduction sur les cartes fraîchement générées
+  const currentLang = document.documentElement.lang;
+  if (currentLang) applyLang(currentLang);
 
   // ── Moutons → À propos (clic) ──────────────────────────
   document.querySelectorAll('.sheep-fg, .sheep-bg').forEach(sheep => {
@@ -1564,6 +1590,34 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  // ── Burger menu ─────────────────────────────────────────
+  const burger     = document.getElementById('nav-burger');
+  const mobileMenu = document.getElementById('nav-mobile-menu');
+  if (burger && mobileMenu) {
+    burger.addEventListener('click', e => {
+      e.stopPropagation();
+      const isOpen = mobileMenu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', String(isOpen));
+      burger.querySelector('.material-icons-round').textContent = isOpen ? 'close' : 'menu';
+      // Fermer le panneau settings si ouvert
+      document.querySelector('.nav-controls')?.classList.remove('open');
+      document.querySelector('.nav-mode-toggle')?.setAttribute('aria-expanded', 'false');
+    });
+    mobileMenu.querySelectorAll('.nav-mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.querySelector('.material-icons-round').textContent = 'menu';
+      });
+    });
+    document.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.querySelector('.material-icons-round').textContent = 'menu';
+    });
+    mobileMenu.addEventListener('click', e => e.stopPropagation());
+  }
 
   // ── Nav settings toggle (mobile) ───────────────────────
   const modeToggle = document.querySelector('.nav-mode-toggle');

@@ -67,8 +67,12 @@ function initNav() {
       for (const s of sections) {
         if (s.offsetTop <= mid) current = s;
       }
+      const activeHref = `#${current.id}`;
       document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${current.id}`);
+        link.classList.toggle('active', link.getAttribute('href') === activeHref);
+      });
+      document.querySelectorAll('.nav-mobile-link').forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === activeHref);
       });
     }
     window.addEventListener('scroll', updateActive, { passive: true });

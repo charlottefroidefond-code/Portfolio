@@ -35,6 +35,7 @@ body {
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
+  background: var(--navy);
 }
 
 .bg-layer {
@@ -478,6 +479,86 @@ body {
   .nav-link { padding: 8px 16px; }
 }
 
+/* ── Colonne gauche nav (burger sur mobile) ───────── */
+.nav-left { display: none; }
+
+/* ── Burger button (caché sur desktop) ────────────── */
+.nav-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(255,255,255,0.15);
+  background: rgba(19,17,43,0.82);
+  color: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: background 0.2s;
+}
+.nav-burger .material-icons-round { font-size: 20px; }
+.nav-burger[aria-expanded="true"] { background: rgba(100,60,200,0.5); }
+
+/* ── Menu mobile (caché par défaut) ───────────────── */
+.nav-mobile-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 16px;
+  right: 16px;
+  background: rgba(13,11,32,0.97);
+  border: 0.5px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 190;
+}
+.nav-mobile-menu.open {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+.nav-mobile-link {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  transition: background 0.15s, color 0.15s;
+  display: block;
+}
+.nav-mobile-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.nav-mobile-link.active { background: var(--purple); color: #fff; }
+.nav-mobile-sep {
+  height: 0.5px;
+  background: rgba(255,255,255,0.08);
+  margin: 4px 8px;
+}
+.nav-mobile-cv {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--purple-light);
+  text-decoration: none;
+  padding: 11px 16px;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+.nav-mobile-cv:hover { background: rgba(255,255,255,0.06); }
+.nav-mobile-cv .material-icons-round { font-size: 16px; }
+
 @media (max-width: 680px) {
   .nav {
     display: flex;
@@ -487,55 +568,39 @@ body {
     position: relative;
   }
 
-  /* Tous les liens visibles, padding réduit */
-  .nav-links { gap: 0; padding: 4px; }
-  .nav-link { padding: 7px 11px; font-size: 12px; }
-  .nav-link:not(.active) { display: flex; }
+  /* Masquer la pill de nav et le bouton CV */
+  .nav-links { display: none; }
+  .nav-cv-btn { display: none; }
 
-  /* Bouton toggle visible */
-  .nav-mode-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    border: 0.5px solid rgba(255,255,255,0.15);
-    background: rgba(19,17,43,0.82);
-    color: #fff;
-    cursor: pointer;
-    flex-shrink: 0;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    transition: background 0.2s;
-  }
-  .nav-mode-toggle .material-icons-round { font-size: 18px; }
-  .nav-mode-toggle[aria-expanded="true"] { background: rgba(100,60,200,0.5); }
+  /* Afficher la colonne gauche et le burger */
+  .nav-left { display: flex; }
+  .nav-burger { display: flex; }
 
-  /* Panneau rétractable */
+  /* Masquer le bouton toggle — contrôles directement visibles */
+  .nav-mode-toggle { display: none; }
+
+  /* Contrôles inline dans la nav */
   .nav-controls {
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 16px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-    background: rgba(13,11,32,0.96);
-    border: 0.5px solid rgba(255,255,255,0.12);
-    border-radius: 16px;
-    padding: 18px 20px;
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: opacity 0.18s, transform 0.18s;
-    z-index: 200;
-  }
-  .nav-controls.open {
-    pointer-events: auto;
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+    pointer-events: auto;
   }
+
+  /* Mode selector plus compact */
+  .mode-selector { padding: 6px 10px; gap: 2px; }
+  .mode-btn { width: 30px; height: 30px; }
+  .mode-btn .material-icons-round { font-size: 16px; }
   .lang-switch { display: flex; }
 }
 
