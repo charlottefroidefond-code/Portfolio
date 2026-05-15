@@ -393,6 +393,55 @@ body {
 .edu-school { font-size: 10.5px; color: var(--purple); font-weight: 500; }
 .edu-note   { font-size: 10px; color: var(--sub); font-style: italic; }
 
+/* ── Responsive mobile ────────────────────────────── */
+@media (max-width: 640px) {
+  body { padding: 16px 0 32px; }
+
+  .top-bar { padding: 0 16px 12px; }
+
+  /* Header empilé */
+  .cv-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 20px 16px;
+    gap: 12px;
+  }
+  .cv-header-right { align-items: flex-start; }
+
+  /* Intro */
+  .cv-intro { padding: 12px 20px; }
+
+  /* Corps : colonne unique, sidebar en bas */
+  .cv-body {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-side {
+    padding: 20px 20px;
+    border-right: none;
+    border-top: 1px solid var(--line);
+    order: 2;
+  }
+
+  .cv-main {
+    padding: 20px 20px;
+    order: 1;
+  }
+
+  /* Timeline */
+  .tl-top { flex-direction: column; align-items: flex-start; gap: 2px; }
+
+  /* Formation */
+  .edu-item { grid-template-columns: 70px 1fr; }
+
+  /* Accordion */
+  .accordion-item summary { padding: 8px 10px; }
+  .accordion-summary-right { flex-direction: column; align-items: flex-end; gap: 2px; }
+
+  /* Sidebar : compétences en grille 2 col */
+  .side-tags { gap: 5px; }
+}
+
 /* ── Print ────────────────────────────────────────── */
 @media print {
   body { background: #fff; padding: 0; }
