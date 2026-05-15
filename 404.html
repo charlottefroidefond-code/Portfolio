@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="jour">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charlotte Froidefond — Maintenance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+
+/* ── Language switcher (floating top-right) ───────────── */
+.m-lang {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(19, 17, 43, 0.82);
+  border: 0.5px solid rgba(255,255,255,0.13);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* ── Animated icon ────────────────────────────────────── */
+.m-anim {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+/* Pulsing ring */
+.m-anim::before,
+.m-anim::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(163, 112, 255, 0.45);
+  animation: ring-expand 2.4s ease-out infinite;
+}
+.m-anim::after { animation-delay: 1.2s; }
+
+/* Inner circle */
+.m-anim-circle {
+  position: relative;
+  z-index: 1;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(123, 58, 237, 0.13);
+  border: 1.5px solid rgba(163, 112, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Each icon slot — stacked and cycled */
+.m-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: icon-cycle 8s ease-in-out infinite;
+}
+
+.m-icon .material-icons-round {
+  font-size: 30px;
+  color: var(--purple-light);
+}
+
+.m-icon:nth-child(1) { animation-delay: 0s; }
+.m-icon:nth-child(2) { animation-delay: 2s; }
+.m-icon:nth-child(3) { animation-delay: 4s; }
+.m-icon:nth-child(4) { animation-delay: 6s; }
+
+@keyframes icon-cycle {
+  0%   { opacity: 0; transform: scale(0.65) translateY(8px);  }
+  5%   { opacity: 1; transform: scale(1)    translateY(0);    }
+  20%  { opacity: 1; transform: scale(1)    translateY(0);    }
+  25%  { opacity: 0; transform: scale(0.65) translateY(-8px); }
+  100% { opacity: 0; }
+}
+
+@keyframes ring-expand {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  100% { transform: scale(1.9); opacity: 0;    }
+}
+
+/* ── AI dots (4th icon slot) ──────────────────────────── */
+.m-icon--dots {
+  gap: 5px;
+}
+
+.m-icon--dots .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--purple-light);
+  animation: dot-bounce 1s ease-in-out infinite;
+}
+
+.m-icon--dots .dot:nth-child(1) { animation-delay: 0s;    }
+.m-icon--dots .dot:nth-child(2) { animation-delay: 0.18s; }
+.m-icon--dots .dot:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes dot-bounce {
+  0%, 60%, 100% { transform: translateY(0);    }
+  30%            { transform: translateY(-7px); }
+}
+
+/* ── Page layout ──────────────────────────────────────── */
+.maintenance-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 140px;
+}
+
+.maintenance-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 480px;
+}
+
+.maintenance-title {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.maintenance-title .period { color: var(--purple-light); }
+
+.maintenance-text {
+  font-size: clamp(14px, 2vw, 17px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+
+.maintenance-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.maintenance-contact-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.maintenance-email {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: rgba(16, 13, 38, 0.70);
+  border: 0.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-pill);
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.maintenance-email:hover {
+  background: rgba(16, 13, 38, 0.90);
+  border-color: rgba(163, 112, 255, 0.5);
+}
+
+.maintenance-email .material-icons-round {
+  font-size: 17px;
+  color: var(--purple-light);
+}
+
+/* ── Sheep (static, bottom-left) ─────────────────────── */
+.sheep-container {
+  left: clamp(32px, 6vw, 100px);
+  bottom: 0;
+  align-items: flex-end;
+}
+
+.sheep-fg {
+  height: clamp(130px, 18vh, 210px);
+  cursor: default;
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg-layer" aria-hidden="true">
+  <img class="bg-img" data-mode="aube"       data-src="Sources/Aube.png"       alt="">
+  <img class="bg-img" data-mode="jour"       data-src="Sources/Jour.png"       alt="">
+  <img class="bg-img" data-mode="crepuscule" data-src="Sources/Crépuscule.png" alt="">
+  <img class="bg-img" data-mode="nuit"       data-src="Sources/Nuit.png"       alt="">
+  <div class="bg-overlay" aria-hidden="true"></div>
+</div>
+
+<div class="page">
+
+  <!-- Language switcher -->
+  <div class="m-lang" role="group" aria-label="Language">
+    <button class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+    <div class="lang-sep" aria-hidden="true"></div>
+    <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+  </div>
+
+  <main class="maintenance-page">
+    <div class="maintenance-wrap">
+
+      <!-- Cycling icon animation -->
+      <div class="m-anim" aria-hidden="true">
+        <div class="m-anim-circle">
+          <span class="m-icon">
+            <span class="material-icons-round">construction</span>
+          </span>
+          <span class="m-icon">
+            <span class="material-icons-round">draw</span>
+          </span>
+          <span class="m-icon">
+            <span class="material-icons-round">desktop_mac</span>
+          </span>
+          <span class="m-icon m-icon--dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </span>
+        </div>
+      </div>
+
+      <h1 class="maintenance-title">
+        <span data-en="Under maintenance" data-fr="En maintenance">Under maintenance</span><span class="period">.</span>
+      </h1>
+
+      <p class="maintenance-text"
+         data-en="My portfolio is currently being updated. It'll be back very soon — thank you for your patience!"
+         data-fr="Mon portfolio est en cours de mise à jour. Il sera de retour très vite — merci pour votre patience !">
+        My portfolio is currently being updated. It'll be back very soon — thank you for your patience!
+      </p>
+
+      <div class="maintenance-contact">
+        <span class="maintenance-contact-label"
+              data-en="Need to reach me?"
+              data-fr="Besoin de me contacter ?">Need to reach me?</span>
+        <a class="maintenance-email" href="mailto:charlotte.froidefond@gmail.com">
+          <span class="material-icons-round" aria-hidden="true">mail</span>
+          charlotte.froidefond@gmail.com
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Sheep (static) -->
+  <div class="sheep-container" aria-hidden="true">
+    <img class="sheep sheep-fg" src="Sources/mouton1.png" alt="" draggable="false">
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  initMode();
+  initLang();
+});
+</script>
+</body>
+</html>
