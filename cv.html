@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV — Charlotte Froidefond</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+
+@page { margin: 14mm 12mm; size: A4; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --purple:  #6B2ECC;
+  --purple2: #ede8f9;
+  --text:    #111118;
+  --sub:     #50505f;
+  --line:    #e0e0ea;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #F2F2F7;
+  color: var(--text);
+  padding: 32px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ── Bouton ───────────────────────────────────────── */
+.top-bar {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.print-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.print-btn:hover { background: #5522aa; }
+
+/* ── Page CV ──────────────────────────────────────── */
+.cv {
+  width: 100%;
+  max-width: 860px;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 28px rgba(0,0,0,0.08);
+}
+
+/* ── Header ───────────────────────────────────────── */
+.cv-header {
+  padding: 30px 36px 22px;
+  border-bottom: 2.5px solid var(--purple);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.cv-header-left h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+  margin-bottom: 3px;
+}
+
+.cv-header-left .cv-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--purple);
+  letter-spacing: 0.02em;
+}
+
+.cv-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.cv-header-right a,
+.cv-header-right span {
+  font-size: 11px;
+  color: var(--sub);
+  text-decoration: none;
+}
+.cv-header-right a:hover { color: var(--purple); text-decoration: underline; }
+
+/* ── Introduction ─────────────────────────────────── */
+.cv-intro {
+  padding: 16px 36px;
+  background: var(--purple2);
+  border-bottom: 1px solid var(--line);
+}
+
+.cv-intro p {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sub);
+  line-height: 1.75;
+  font-style: italic;
+}
+
+/* ── Corps 2 colonnes ─────────────────────────────── */
+.cv-body {
+  display: grid;
+  grid-template-columns: 194px 1fr;
+}
+
+/* ── Sidebar ──────────────────────────────────────── */
+.cv-side {
+  padding: 24px 20px 24px 36px;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.side-section { display: flex; flex-direction: column; gap: 7px; }
+
+.side-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--purple);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+}
+
+.side-item {
+  font-size: 11px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.side-item b {
+  display: block;
+  font-weight: 600;
+}
+
+.side-item span {
+  color: var(--sub);
+  font-size: 10px;
+}
+
+.side-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.side-tag {
+  font-size: 10px;
+  color: var(--sub);
+  border: 0.5px solid var(--line);
+  border-radius: 3px;
+  padding: 2px 6px;
+  line-height: 1.4;
+}
+
+/* ── Main ─────────────────────────────────────────── */
+.cv-main {
+  padding: 24px 36px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main-section { display: flex; flex-direction: column; gap: 10px; }
+
+.main-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--purple);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ── Entrée expérience principale ─────────────────── */
+.tl { display: flex; flex-direction: column; gap: 12px; }
+
+.tl-item { display: grid; grid-template-columns: 4px 1fr; gap: 0 10px; }
+
+.tl-bar {
+  width: 2px;
+  background: var(--line);
+  border-radius: 2px;
+  justify-self: center;
+  margin-top: 5px;
+}
+.tl-bar.accent { background: var(--purple); }
+
+.tl-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 1px;
+}
+
+.tl-role  { font-size: 13px; font-weight: 700; color: var(--text); }
+.tl-date  { font-size: 10px; color: var(--sub); white-space: nowrap; }
+.tl-co    { font-size: 11px; font-weight: 600; color: var(--purple); margin-bottom: 3px; }
+.tl-note  { font-size: 10px; color: var(--sub); font-style: italic; margin-bottom: 6px; }
+.tl-desc  { font-size: 11px; color: var(--sub); line-height: 1.65; margin-bottom: 5px; }
+.tl-tags  { display: flex; flex-wrap: wrap; gap: 3px; }
+.tl-tag {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--purple);
+  border: 0.5px solid var(--purple);
+  border-radius: 3px;
+  padding: 1px 5px;
+  opacity: 0.75;
+}
+
+/* ── Wrapper section projets ─────────────────────── */
+.projects-wrap { border: none; }
+
+.projects-toggle {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--purple);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 10px;
+  user-select: none;
+}
+.projects-toggle::-webkit-details-marker { display: none; }
+
+.projects-chevron {
+  font-size: 12px;
+  color: var(--purple);
+  transition: transform 0.2s;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.projects-wrap[open] .projects-chevron { transform: rotate(180deg); }
+
+.projects-wrap > .accordion-list { margin-top: 0; }
+
+/* ── Accordéon projets ────────────────────────────── */
+.accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.accordion-item {
+  border: 0.5px solid var(--line);
+  border-left: 2.5px solid var(--purple);
+  border-radius: 0 4px 4px 0;
+  overflow: hidden;
+}
+
+.accordion-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 8px 10px 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  background: #f9f9fc;
+  user-select: none;
+}
+
+.accordion-item summary::-webkit-details-marker { display: none; }
+
+.accordion-item[open] summary { background: var(--purple2); }
+
+.accordion-summary-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.accordion-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.accordion-client {
+  font-size: 10px;
+  color: var(--purple);
+  font-weight: 500;
+}
+
+.accordion-summary-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.accordion-meta {
+  font-size: 9.5px;
+  color: var(--sub);
+  white-space: nowrap;
+}
+
+.accordion-chevron {
+  font-size: 14px;
+  color: var(--purple);
+  transition: transform 0.2s;
+  line-height: 1;
+}
+
+.accordion-item[open] .accordion-chevron { transform: rotate(180deg); }
+
+.accordion-body {
+  padding: 10px 12px 11px;
+  border-top: 0.5px solid var(--line);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-desc {
+  font-size: 10.5px;
+  color: var(--sub);
+  line-height: 1.65;
+}
+
+.project-results {
+  margin: 0;
+  padding-left: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.project-results li {
+  font-size: 10px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.project-results li::marker { color: var(--purple); }
+
+.project-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+.project-tag {
+  font-size: 9px;
+  color: var(--sub);
+  border: 0.5px solid var(--line);
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+/* ── Formation ────────────────────────────────────── */
+.edu { display: flex; flex-direction: column; gap: 9px; }
+
+.edu-item {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  gap: 0 10px;
+}
+
+.edu-date   { font-size: 10px; color: var(--sub); padding-top: 2px; }
+.edu-title  { font-size: 11.5px; font-weight: 700; color: var(--text); }
+.edu-school { font-size: 10.5px; color: var(--purple); font-weight: 500; }
+.edu-note   { font-size: 10px; color: var(--sub); font-style: italic; }
+
+/* ── Print ────────────────────────────────────────── */
+@media print {
+  body { background: #fff; padding: 0; }
+  .top-bar { display: none; }
+  .cv { box-shadow: none; border-radius: 0; max-width: 100%; }
+  /* La section projets reste fermée → le CV tient sur une page */
+  .projects-wrap > .accordion-list { display: none; }
+  .projects-chevron { display: none; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page-break { page-break-before: always; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <button class="print-btn" onclick="window.print()">↓ Exporter en PDF</button>
+</div>
+
+<div class="cv">
+
+  <!-- HEADER -->
+  <header class="cv-header">
+    <div class="cv-header-left">
+      <h1>Charlotte Froidefond</h1>
+      <p class="cv-title">Product Designer · 5 ans d'expérience</p>
+    </div>
+    <div class="cv-header-right">
+      <span>Paris – Orléans</span>
+      <a href="tel:+33786182851">07 86 18 28 51</a>
+      <a href="mailto:charlotte.froidefond@gmail.com">charlotte.froidefond@gmail.com</a>
+      <a href="https://charlottefroidefond.com">charlottefroidefond.com</a>
+      <a href="https://linkedin.com/in/charlotte-froidefond-993b3391">LinkedIn</a>
+    </div>
+  </header>
+
+  <!-- INTRODUCTION -->
+  <div class="cv-intro">
+    <p>J'accompagne les entreprises de différents secteurs pour trouver le bon équilibre entre leurs ambitions business et les besoins de leur utilisateur. Je leur fournis les outils adaptés à leur contexte et les accompagne dans la réalisation de leur projet, de l'idéation à la conception. Diplômée d'une Mise à Niveau en Arts Appliqués et d'un Bachelor en Graphisme, je me suis tournée vers l'UX avec un mastère en 2 ans. Avec une formation accrue en design et une appétence pour l'analyse et la recherche, mon profil s'adapte à tous types de projets.</p>
+  </div>
+
+  <div class="cv-body">
+
+    <!-- SIDEBAR -->
+    <aside class="cv-side">
+
+      <div class="side-section">
+        <p class="side-label">Compétences</p>
+        <div class="side-tags">
+          <span class="side-tag">Stratégie UX</span>
+          <span class="side-tag">Recherche utilisateur</span>
+          <span class="side-tag">Prototypage</span>
+          <span class="side-tag">Design System</span>
+          <span class="side-tag">Design d'interface</span>
+          <span class="side-tag">Tests utilisabilité</span>
+          <span class="side-tag">Facilitation atelier</span>
+          <span class="side-tag">Roadmap produit</span>
+          <span class="side-tag">Accompagnement PO</span>
+          <span class="side-tag">Agilité Scrum</span>
+          <span class="side-tag">Mobile-first</span>
+          <span class="side-tag">IA &amp; Design responsable</span>
+          <span class="side-tag">Éco-conception</span>
+        </div>
+      </div>
+
+      <div class="side-section">
+        <p class="side-label">Outils</p>
+        <div class="side-tags">
+          <span class="side-tag">Figma</span>
+          <span class="side-tag">Mural</span>
+          <span class="side-tag">Telerik</span>
+          <span class="side-tag">Zeplin</span>
+          <span class="side-tag">Jira</span>
+          <span class="side-tag">Azure DevOps</span>
+          <span class="side-tag">Loop</span>
+          <span class="side-tag">Notion</span>
+          <span class="side-tag">Claude</span>
+        </div>
+      </div>
+
+      <div class="side-section">
+        <p class="side-label">Langues</p>
+        <div class="side-item">
+          <b>Français</b>
+          <span>Langue maternelle</span>
+        </div>
+        <div class="side-item">
+          <b>Anglais</b>
+          <span>Professionnel</span>
+        </div>
+      </div>
+
+      <div class="side-section">
+        <p class="side-label">Centres d'intérêt</p>
+        <div class="side-tags">
+          <span class="side-tag">Randonnée</span>
+          <span class="side-tag">Tricot</span>
+          <span class="side-tag">Design</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="cv-main">
+
+      <!-- EXPÉRIENCE -->
+      <div class="main-section">
+        <p class="main-label">Expérience professionnelle</p>
+        <div class="tl">
+
+          <div class="tl-item">
+            <div class="tl-bar accent"></div>
+            <div class="tl-body">
+              <div class="tl-top">
+                <div class="tl-role">Product Designer</div>
+                <div class="tl-date">Sept. 2020 – Présent</div>
+              </div>
+              <div class="tl-co">Blue Soft · Paris / Orléans</div>
+              <div class="tl-note">Alternance 2020–2021 · CDI depuis sept. 2021</div>
+              <p class="tl-desc">Pilotage de projets UX-UI dans le cadre de projets de développement agiles pour des clients dans divers secteurs (Financier, immobilier, laboratoire, transport, luxe et associatif). Lead Designer sur des projets à fort enjeux business : refonte de parcours métiers, IA, POC, MVP et Design System.</p>
+              <div class="tl-tags">
+                <span class="tl-tag">UX Research</span>
+                <span class="tl-tag">UI Design</span>
+                <span class="tl-tag">Design System</span>
+                <span class="tl-tag">Lead Designer</span>
+                <span class="tl-tag">IA &amp; Design</span>
+                <span class="tl-tag">Agile</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-bar"></div>
+            <div class="tl-body">
+              <div class="tl-top">
+                <div class="tl-role">UX-UI Designer</div>
+                <div class="tl-date">Sept. 2019 – Juil. 2020</div>
+              </div>
+              <div class="tl-co">Société Générale · Paris</div>
+              <p class="tl-desc">Conception d'interfaces et d'expériences utilisateur dans le secteur bancaire, en alternance.</p>
+              <div class="tl-tags">
+                <span class="tl-tag">UX/UI</span>
+                <span class="tl-tag">Secteur bancaire</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-bar"></div>
+            <div class="tl-body">
+              <div class="tl-top">
+                <div class="tl-role">Graphiste</div>
+                <div class="tl-date">2018 – 2019</div>
+              </div>
+              <div class="tl-co">Terreal</div>
+              <p class="tl-desc">Création graphique et supports de communication pour un acteur industriel de la construction.</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-bar"></div>
+            <div class="tl-body">
+              <div class="tl-top">
+                <div class="tl-role">Graphiste (stage)</div>
+                <div class="tl-date">2015 – 2018</div>
+              </div>
+              <div class="tl-co">Idées Fraîches · Agence de communication</div>
+              <p class="tl-desc">Identité visuelle, supports print et digitaux.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FORMATION -->
+      <div class="main-section">
+        <p class="main-label">Formation</p>
+        <div class="edu">
+
+          <div class="edu-item">
+            <p class="edu-date">2019 – 2021</p>
+            <div>
+              <p class="edu-title">Mastère UX-UI Innovation — RNCP 4</p>
+              <p class="edu-school">Supdeweb</p>
+              <p class="edu-note">Alternance — Société Générale (2019–2020) puis Blue Soft (2020–2021)</p>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <p class="edu-date">2015 – 2019</p>
+            <div>
+              <p class="edu-title">Designer Graphique &amp; Direction artistique — RNCP 3</p>
+              <p class="edu-school">Esupcom</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PROJETS BLUE SOFT -->
+      <div class="main-section">
+        <details class="projects-wrap">
+          <summary class="projects-toggle">
+            Projets Blue Soft
+            <span class="projects-chevron">▾</span>
+          </summary>
+        <div class="accordion-list">
+
+          <!-- CHABE -->
+          <details class="accordion-item" open>
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Livre de Bord &amp; Portail Sous-traitants</span>
+                <span class="accordion-client">CHABE — Transport</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">2024–2025</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Livre de Bord : prise en main du projet et cadrage</li>
+                <li>Portail Sous-traitants : cadrage, accompagnement MOA, conception des parcours et des écrans, Design System</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Cadrage</span><span class="project-tag">Accompagnement MOA</span><span class="project-tag">Design System</span><span class="project-tag">Transport</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- AFM-Téléthon -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Application mobile iOS, Android &amp; Back Office</span>
+                <span class="accordion-client">AFM-Téléthon</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">2024–2025</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Cadrage avec les administrateurs et la DSI</li>
+                <li>Ateliers et interviews utilisateurs</li>
+                <li>Travail approfondi pour répondre aux normes RGAAA (accessibilité)</li>
+                <li>Collaboration avec les équipes IA · conception des écrans · accompagnement au développement</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">iOS / Android</span><span class="project-tag">Accessibilité RGAAA</span><span class="project-tag">IA</span><span class="project-tag">Back Office</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- Intersport NEW HERMES -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">NEW HERMES — Outil commandes de réassort</span>
+                <span class="accordion-client">Intersport</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">Depuis nov. 2023</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Lead UX-UI — comitologie Coproj et Copil</li>
+                <li>Ateliers, conception de l'arborescence, tests utilisateurs</li>
+                <li>Wireframes, écrans, relation client, suivi de sprints</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Lead UX-UI</span><span class="project-tag">B2B Retail</span><span class="project-tag">Agile</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- EUREXO -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Refonte application espace assurés</span>
+                <span class="accordion-client">EUREXO — Assurance</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">juin–déc. 2023 · déc. 2024–mars 2025</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Lead UX — audit de l'existant, ateliers zoning / arborescence / parcours</li>
+                <li>Tests utilisateurs, guide de style, wireframes et écrans</li>
+                <li>Mission 2024–2025 : wireframes, écrans, spécifications fonctionnelles, Design System</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Audit UX</span><span class="project-tag">Tests utilisateurs</span><span class="project-tag">Design System</span><span class="project-tag">Assurance</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- PER INTER -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Refonte du CRM</span>
+                <span class="accordion-client">PER INTER — Finance</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">Depuis mai 2024</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Atelier d'expression du besoin, maquettes génériques pour un générateur d'interface</li>
+                <li>Tests utilisateurs, conception des écrans, animation d'ateliers, relation client</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">CRM</span><span class="project-tag">Tests utilisateurs</span><span class="project-tag">Ateliers</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- ECOSYSTEM ODAIA -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Application de détection des déchets électroménagers</span>
+                <span class="accordion-client">ECOSYSTEM ODAIA</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">Déc. 2023</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Réponse à l'appel d'offre et soutenance · Lead UX du projet</li>
+                <li>Ateliers, tests utilisateurs à distance, wireframes et écrans, rituels agiles</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Lead UX</span><span class="project-tag">AO</span><span class="project-tag">Agile</span><span class="project-tag">Environnement</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- SDMIS 69 -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Outil de communication No-Desk</span>
+                <span class="accordion-client">SDMIS 69 — Sapeurs-pompiers</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">juin–nov. 2023</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Analyse des outils existants, interviews utilisateurs (pompiers pro. et volontaires)</li>
+                <li>Ateliers d'idéation et de parcours, wireframes, écrans, backlog V1</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">UX Research</span><span class="project-tag">No-Desk</span><span class="project-tag">Secteur public</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- NOVAXIA -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">UXIA — Extranet partenaires &amp; clients</span>
+                <span class="accordion-client">NOVAXIA — Immobilier</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">Depuis déc. 2022</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Planification UX, gestion de l'équipe, ateliers et tests utilisateurs</li>
+                <li>Wireframes, écrans, relation client, rituels agiles, mise en place des packages de données</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Lead UX</span><span class="project-tag">Extranet</span><span class="project-tag">Immobilier</span><span class="project-tag">Agile</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- Avenir Secours -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Refonte application syndicale</span>
+                <span class="accordion-client">Avenir Secours</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">Depuis déc. 2022</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Audit de l'existant, étude et rapport d'accessibilité</li>
+                <li>Guide de style, ateliers, tests utilisateurs, wireframes et écrans</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Audit UX</span><span class="project-tag">Accessibilité</span><span class="project-tag">Tests utilisateurs</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- COVAGE -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Conception du Design System</span>
+                <span class="accordion-client">COVAGE — Télécoms</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">Depuis mars 2024</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Création et enrichissement de la bibliothèque de composants</li>
+                <li>Cérémonies design &amp; développement, collaboration étroite avec les devs</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Design System</span><span class="project-tag">Bibliothèque</span><span class="project-tag">Collaboration dev</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- EGIDE / ORCHESTRA -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">ORCHESTRA — Refonte intranet</span>
+                <span class="accordion-client">EGIDE</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">juin–oct. 2022</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Audit ergonomique, guérilla tests, préconisations d'architecture et d'ergonomie</li>
+                <li>4 guides de style (veille bancaire / immobilier) · premiers écrans avec la nouvelle architecture</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Audit UX</span><span class="project-tag">Intranet</span><span class="project-tag">Guide de style</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- TRAPIL -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Applications BTR-CTR-MTR, Inventaire &amp; Suivis JP</span>
+                <span class="accordion-client">TRAPIL — Industrie pétrolière</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">Depuis 2022</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Maquettage from scratch et à partir de captures d'écrans existantes</li>
+                <li>Amélioration des parcours, maquettage des écrans, rituels agiles (3 missions distinctes)</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">UI Design</span><span class="project-tag">Agile</span><span class="project-tag">Industrie</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- CARTAKER -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Application service de conciergerie</span>
+                <span class="accordion-client">CARTAKER</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">janv. 2022</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Audit ergonomique de l'existant, analyse et recherche amont</li>
+                <li>Identité visuelle complète : logo, guide de style, design système</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Audit UX</span><span class="project-tag">Identité visuelle</span><span class="project-tag">Design System</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- SERGIC -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Logiciel de gestion (Québec) &amp; Dark Mode</span>
+                <span class="accordion-client">SERGIC — Immobilier</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">2024</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Conception de maquettes d'après spécifications, propositions d'ergonomie</li>
+                <li>Conception du Dark mode</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">UI Design</span><span class="project-tag">Dark mode</span><span class="project-tag">Immobilier</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- ESEIS -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Application de gestion de syndic</span>
+                <span class="accordion-client">ESEIS</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">2024</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Atelier de co-conception et de priorisation, maîtrise du budget</li>
+                <li>Wireframes, maquettes, amélioration de l'arborescence</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Co-conception</span><span class="project-tag">Immobilier</span><span class="project-tag">Budget</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- CCI FI CONNECT -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">FI CONNECT — Application mobile internationale</span>
+                <span class="accordion-client">CCI France Internationale</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">Depuis sept. 2020</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Gestion des retours ergonomiques, visuels et techniques · Users stories dans le backlog</li>
+                <li>Correction et création de maquettes · planification des actions UX-UI · suivi de sprints</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Application mobile</span><span class="project-tag">B2B</span><span class="project-tag">Agile</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- QUINTESS -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Service Agenda — Abonnement en ligne</span>
+                <span class="accordion-client">QUINTESS</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">janv.–sept. 2021</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Animation d'ateliers internes, parcours, architecture et zoning</li>
+                <li>Recherche utilisateurs, interviews, design de l'interface et maquettes</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">UX Research</span><span class="project-tag">Ateliers</span><span class="project-tag">UI Design</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- Le Renard Bleu -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Site web de l'agence</span>
+                <span class="accordion-client">Le Renard Bleu</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">Depuis fév. 2021</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Réalisation de l'univers graphique · ateliers · administration WordPress</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Direction artistique</span><span class="project-tag">WordPress</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- AGRUMES -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">Zest' avocat — Identité graphique</span>
+                <span class="accordion-client">AGRUMES</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">juin–août 2021</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>3 propositions de logo, 3 déclinaisons d'identité graphique, guide de style et design système</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Identité visuelle</span><span class="project-tag">Logotype</span><span class="project-tag">Design System</span>
+              </div>
+            </div>
+          </details>
+
+          <!-- GIROPHARM -->
+          <details class="accordion-item">
+            <summary>
+              <div class="accordion-summary-left">
+                <span class="accordion-title">L'univers de Lili — Application mobile</span>
+                <span class="accordion-client">GIROPHARM — Santé</span>
+              </div>
+              <div class="accordion-summary-right">
+                <span class="accordion-meta">juin–sept. 2021</span>
+                <span class="accordion-chevron">▾</span>
+              </div>
+            </summary>
+            <div class="accordion-body">
+              <ul class="project-results">
+                <li>Conception du design de l'interface de l'application mobile</li>
+              </ul>
+              <div class="project-tags">
+                <span class="project-tag">Application mobile</span><span class="project-tag">Santé</span><span class="project-tag">UI Design</span>
+              </div>
+            </div>
+          </details>
+
+        </div>
+        </details>
+      </div>
+
+    </main>
+  </div>
+
+</div>
+
+</body>
+</html>
