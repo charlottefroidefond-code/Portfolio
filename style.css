@@ -484,6 +484,14 @@ body {
 .skip-link:focus { top: 16px; }
 
 /* ── Responsive nav ───────────────────────────────────────── */
+@media (min-width: 1800px) {
+  .nav { padding-left: clamp(80px, 11vw, 300px); padding-right: clamp(80px, 11vw, 300px); }
+}
+
+@media (min-width: 1600px) and (max-width: 1799px) {
+  .nav { padding-left: clamp(60px, 8vw, 180px); padding-right: clamp(60px, 8vw, 180px); }
+}
+
 @media (max-width: 960px) {
   .nav { padding: 20px clamp(16px, 3vw, 40px); }
   .nav-link { padding: 8px 16px; }

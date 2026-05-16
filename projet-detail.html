@@ -17,6 +17,13 @@
 .nav { grid-template-columns: 1fr auto 1.6fr; }
 .projet-tabs-inner { transform: translateX(-16px); }
 
+@media (min-width: 1800px) {
+  .nav { padding-left: clamp(80px, 11vw, 300px); padding-right: clamp(80px, 11vw, 300px); }
+}
+@media (min-width: 1600px) and (max-width: 1799px) {
+  .nav { padding-left: clamp(60px, 8vw, 180px); padding-right: clamp(60px, 8vw, 180px); }
+}
+
 .nav-back-btn {
   display: flex;
   align-items: center;
