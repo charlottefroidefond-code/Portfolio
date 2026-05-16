@@ -13,9 +13,9 @@
 /* Navigation desktop : flèche retour + projet-tabs, pas de nav standard */
 .nav-links { display: none; }
 
-/* Décale les tabs vers la gauche — donne plus de poids à la col droite */
-.nav { grid-template-columns: 1fr auto 1.6fr; }
-.projet-tabs-inner { transform: translateX(-16px); }
+/* Tabs centrés — colonnes symétriques pour aligner avec detail-wrap */
+.nav { grid-template-columns: 1fr auto 1fr; }
+.projet-tabs-inner { transform: none; }
 
 @media (min-width: 1800px) {
   .nav { padding-left: clamp(80px, 11vw, 300px); padding-right: clamp(80px, 11vw, 300px); }
