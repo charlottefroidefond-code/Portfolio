@@ -1,0 +1,155 @@
+projets
+
+
+PROJET 01
+Titre : Refonte du parcours d'acquisition & qualification de partenaires
+Sous-titre : Optimisation du recrutement de partenaires pour une entreprise de transport de luxe
+Client : Entreprise de transport de luxe (secteur premium)
+Année : 2025
+Type de projet : Conception d'une plateforme web dédiée — parcours d'inscription et back-office de qualification
+Rôle : Product Designer (UX Research, UI Design, collaboration tech & PO)
+Durée : 12 mois — 7 mois de cadrage/conception + 5 mois de développement (10 sprints)
+Équipe : 1 Lead UX-UI · 1 UX · 1 UI · 1 PO · 1 Scrum Master · 2 Devs
+Outils : Mural, Figma, Loop
+Statut : Confidentiel
+Contexte & enjeux :
+Le client souhaitait élargir sa flotte en recrutant de nouveaux partenaires de qualité, sans recourir à une plateforme ouverte comme ses concurrents. Le processus de qualification, entièrement manuel (mails, téléphone, vérifications documentaires), mobilisait fortement les équipes internes réparties en France et à l'international, avec des critères hétérogènes selon les agences. Objectifs : fluidifier le travail des équipes de qualification, réduire les délais d'inscription et adresser une cible en mobilité (mobile-first).
+Démarche UX/UI :
+
+Cadrage — définition des objectifs, ateliers de priorisation, choix techniques et interopérabilité avec l'écosystème client, principes d'éco-conception.
+Recherche utilisateur — interviews terrain ayant révélé les principales frustrations (vérification documentaire chronophage, gestion par mail, RDV de formation non honorés, disparité des process entre agences).
+Conception — benchmark concurrentiel, création d'un design system, maquettage mobile-first, prototypage interactif et handoff développeurs.
+Accompagnement PO — co-rédaction du backlog, ateliers de priorisation MVP, découpage en 6 sprints (création de compte, qualification entreprise / chauffeurs / véhicules, entretiens, dashboard, gestion documentaire).
+Phase dev — validation des écrans à chaque sprint, itérations selon les contraintes techniques, échanges continus avec le lead tech.
+
+Défis & solutions :
+Défi 01 — Méthodologie user-centric remise en question côté client
+Le MOA souhaitait écarter entretiens et ateliers pour imposer sa vision produit.
+→ Restructuration du planning et accompagnement du chef de projet pour impliquer les utilisateurs sous sa supervision : co-animation des entretiens et ateliers communs.
+Défi 02 — Risque de ne pas atteindre l'objectif d'automatisation
+Le prestataire de vérification documentaire ne couvrait pas tous les besoins.
+→ Proposition d'intégrer le pôle IA interne de mon entreprise pour la vérification de conformité documentaire, validée en atelier technique après 4 mois de recherche.
+Défi 03 — Aucune documentation héritée des projets précédents
+Deux projets antérieurs avaient été menés avec d'autres équipes, sans design system ni guidelines.
+→ Création des fondations d'un design system, en m'appuyant sur les projets existants et en collaboration avec le lead front, validé ensuite par le client sur les principes graphiques clés.
+Résultats & KPIs :
+
+Taux d'occupation des véhicules de formation porté à 90 % (vs 50 % auparavant)
+Délai de traitement d'un dossier ramené à 1 mois (de la création de compte à la signature du contrat)
+Augmentation du taux de traitement des dossiers grâce à l'optimisation des créneaux d'entretien
+
+Compétences mobilisées :
+UX Research · Design System · Mobile-first · Prototypage · Éco-conception · Collaboration Agile · Accompagnement PO
+
+PROJET 02
+Titre : POC d'un outil de détection de dommages assisté par IA
+Sous-titre : Aider les compagnies aériennes à diagnostiquer et réparer leurs pièces plus rapidement grâce à l'IA
+Client : Constructeur aéronautique
+Année : 2025
+Type de projet : Proof of Concept (POC) — outil métier intégrant IA et reconnaissance d'image
+Rôle : Product Designer (UX Research, UI Design, collaboration avec l'équipe IA)
+Durée : 6 mois
+Équipe : 1 Lead UX-UI · 1 UX · 1 UI · 1 PO · 1 Développeur IA
+Outils : Figma, Mural
+Statut : Confidentiel
+Contexte & enjeux :
+Acteur majeur de la construction aéronautique, le client dispose d'un référentiel riche de plusieurs milliers de cas de réparation, couvrant une grande diversité de pièces et de dommages. L'objectif : rendre ses clients (compagnies aériennes) plus autonomes dans le diagnostic et la réparation de leurs pièces, en leur donnant un accès simplifié à ce référentiel. Un enjeu business critique, car un avion immobilisé en hangar représente un coût très élevé pour les compagnies. La promesse : réduire les délais de réparation et fluidifier le travail des techniciens sur le terrain.
+Démarche UX/UI :
+
+Cadrage — définition des objectifs du POC et alignement des parties prenantes.
+Recherche utilisateur — interviews terrain pour comprendre les processus métier, analyse du flow de réparation en hangar, observation de l'environnement utilisateur (contraintes physiques, outils existants), identification des leviers d'amélioration.
+Co-conception — ateliers pour assurer l'interopérabilité avec les différents référentiels et processus de réparation existants.
+Ateliers IA — 2 mois d'immersion avec l'équipe IA pour comprendre les mécaniques des référentiels et entraîner le modèle.
+Conception & prototypage — maquettage haute fidélité, prototypage interactif, tests utilisateurs et itérations conjointes design / IA.
+
+Bonnes pratiques IA appliquées : explicabilité (justification des suggestions), contrôle utilisateur (correction et enrichissement des réponses), information factuelle sans biais ni fausse certitude.
+Livrables fonctionnels du POC : parcours de détection de dommages assisté par IA via prise de photo · guidance pas-à-pas pour le technicien-réparateur · boucle de suivi des réparations enrichissant le référentiel constructeur.
+Défis & solutions :
+Défi 01 — Complexité des référentiels métier multiples
+Plusieurs référentiels coexistaient avec des logiques propres, rendant difficile la conception d'un parcours unifié.
+→ Organisation de 2 mois d'ateliers dédiés avec l'équipe IA pour cartographier les mécaniques et concevoir une expérience capable de s'adapter à cette diversité.
+Défi 02 — Intégration des bonnes pratiques IA dans une UX métier exigeante
+Risque que les techniciens en hangar rejettent les suggestions de l'IA si elles paraissaient opaques ou erronées.
+→ Application de principes d'IA responsable (explicabilité, possibilité d'amender la réponse, pas de réponse présentée comme certaine) intégrés dès la conception des écrans.
+Résultats & KPIs :
+
+POC validé par le client, démontrant le potentiel financier du produit
+Investissement de 190 K€ débloqué par le constructeur pour poursuivre le projet et concevoir l'ensemble des parcours
+Industrialisation de l'outil planifiée à l'issue du développement complet
+
+Compétences mobilisées :
+UX Research · IA & Design · Co-conception · Prototypage haute fidélité · Design responsable · Collaboration multidisciplinaire
+
+PROJET 03
+Titre : Plateforme de simulation financière pour projets de recherche
+Sous-titre : Conception du MVP suite au gain de l'appel d'offre
+Client : SATT (Société d'Accélération du Transfert de Technologies)
+Année : 2025 — 2026
+Type de projet : Conception et développement d'un MVP — plateforme web métier multi-utilisateurs
+Rôle : Product Designer (UX Research, UI Design, collaboration tech & PO)
+Durée : 6 mois (réponse à l'AO juillet 2025 · gain septembre 2025 · sprints du 1er décembre 2025 au 30 mai 2026)
+Équipe : 1 Lead UX-UI · 1 UX · 1 UI · 1 PO · 1 Dev Front · 1 Dev Back
+Outils : Figma, Mural
+Statut : Confidentiel
+Contexte & enjeux :
+La SATT (Société d'Accélération du Transfert de Technologies) porte une plateforme destinée à faciliter la conduite de projets de recherche partagés entre entreprises et universités. L'enjeu : adresser des profils utilisateurs très hétérogènes — scientifiques et chercheurs expérimentés, services de financement en charge des décisions, mais aussi utilisateurs moins familiers du sujet (étudiants laborantins, par exemple). La plateforme doit donc à la fois proposer un outil expert pour les profils aguerris et rester accessible à des utilisateurs novices en matière de financement public ou privé.
+Démarche UX/UI :
+
+Cadrage — réalisé pendant la phase d'appel d'offre via plusieurs échanges avec le client, permettant d'affiner sa vision et d'identifier les enjeux clés du MVP.
+Recherche utilisateur — 1 interview par typologie d'utilisateur, ayant permis de corriger plusieurs flows définis dans le CDC qui ne reflétaient pas la réalité terrain.
+Parcours utilisateurs — formalisation des différents parcours à partir des enseignements des interviews.
+Conception — interface de formulaire pas-à-pas (proposée et validée dès l'appel d'offre), conçue à partir du design system Telerik pour exploiter un générateur d'interface — choix qui a permis d'accélérer significativement la phase de conception, de design et de développement.
+Phase dev — validation des écrans à chaque sprint, itérations selon les contraintes techniques, échanges continus avec l'équipe de développement.
+
+Livrables fonctionnels du MVP : formulaire de création de simulation financière · génération automatique de bilan financier · paramétrage des formulaires · système de chat intégré au sein d'une simulation.
+Défis & solutions :
+Défi 01 — Un Product Owner côté client sans expérience préalable dans ce rôle
+Le PO client manquait de temps et de culture agile pour structurer un backlog exploitable.
+→ Mise en place d'un PO interne en accompagnement, et animation d'ateliers dédiés (Product Vision, Roadmap, priorisation des sprints) pour structurer le pilotage produit.
+Défi 02 — Un métier technique complexe (calculs financiers spécifiques)
+La phase d'acculturation a pris du temps pour l'ensemble de l'équipe.
+→ Mutualisation des connaissances acquises tout au long du projet et restitution structurée aux développeurs pour leur donner une vision métier claire et partagée.
+Résultats & KPIs :
+MVP en cours — livraison prévue le 30/05/2026.
+
+Méthodologie de conception accélérée grâce au choix du design system Telerik et du générateur d'interface
+Validation continue du client à chaque étape (cadrage, design, sprints)
+Section à enrichir post-livraison avec les premiers indicateurs d'usage et de satisfaction
+
+Compétences mobilisées :
+UX Research · Design System · Conception métier · Accompagnement PO · Collaboration Agile · Adaptation multi-profils utilisateurs
+
+PROJET 04
+Titre : Conception d'un Design System multi-marque
+Sous-titre : Création from scratch du design system d'une entreprise multi-marque
+Client : Entreprise multi-marque
+Année : 2024 — 2025
+Type de projet : Création d'un Design System scalable — composants React et Angular, documentation design & dev
+Rôle : Designer (analyse technique, recherche d'usage, conception des composants)
+Durée : 1 an et 6 mois
+Équipe : 1 Lead UX-UI · 1 Designer · 1 Tech Lead · 1 Développeur
+Outils : Figma, Telerik, Mural, Zeplin, Azure
+Statut : Confidentiel
+Contexte & enjeux :
+Une entreprise multi-marque souhaitait se doter d'un Design System unifié, capable de s'adapter sans friction à l'identité de chacune de ses marques. L'objectif : accélérer les développements futurs, garantir la cohérence visuelle entre les différents outils et marques, et poser des fondations techniques solides pour l'écosystème produit.
+Démarche UX/UI :
+
+Inspiration & cadrage — design system pensé dans l'esprit du Material Design, adapté aux contraintes multi-marque.
+Organisation projet — design sprints parallélisés avec les sprints de développement, cérémonies communes entre les deux équipes pour assurer un alignement continu.
+Répartition design — tâches de conception réparties entre les deux designers, avec utilisation du système de branches Figma pour itérer sans casser les composants déjà validés.
+Conception — analyse technique conjointe avec l'équipe dev pour garantir l'adaptabilité des composants à différents langages (React, Angular), technologies et supports.
+Livrable final — 38 composants intégrant l'ensemble de leurs variants, accompagnés d'une double documentation : l'une pour les designers, l'autre pour les développeurs.
+
+Défis & solutions :
+Défi 01 — Complexité technique multi-environnement
+Le principal défi a résidé dans la conception de composants suffisamment flexibles pour fonctionner sur plusieurs frameworks (React, Angular), supports et identités de marque, sans dégradation de cohérence.
+→ Travail rapproché et continu avec l'équipe technique dès la phase de conception, intégration des contraintes dev en amont du design, et validation systématique de la faisabilité de chaque composant avant industrialisation.
+Résultats & impacts :
+
+38 composants livrés avec leurs variants et leur double documentation
+Temps de développement réduit sur les nouveaux projets grâce à la réutilisation des composants
+Forte adoption par les équipes design et développement
+Cohérence visuelle assurée entre les différentes marques et outils de l'écosystème
+
+Compétences mobilisées :
+Design System · Conception de composants · Documentation design & dev · Collaboration tech · Material Design · Multi-framework (React / Angular) · Figma branching
