@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Charlotte Froidefond — Product Designer</title>
+<title>Charlotte Froidefond — Product Designer (v2)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
@@ -304,12 +304,69 @@ body {
    ══════════════════════════════════════════════════════════ */
 .v2-hero {
   position: relative;
-  padding: clamp(40px, 8vh, 90px) clamp(24px, 8vw, 130px) clamp(56px, 7vh, 96px);
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: clamp(40px, 8vh, 90px) clamp(24px, 8vw, 130px) clamp(90px, 12vh, 140px);
+  overflow: hidden;
 }
+
+@media (max-width: 900px) {
+  .v2-hero { min-height: 0; }
+}
+
+/* Fond photo — uniquement dans le bloc Accueil, pas fixe au scroll */
+.v2-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.v2-hero-bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.v2-hero-bg img[data-hero-bg="nuit"] { opacity: 1; }
+html[data-theme="light"] .v2-hero-bg img[data-hero-bg="nuit"] { opacity: 0; }
+html[data-theme="light"] .v2-hero-bg img[data-hero-bg="jour"] { opacity: 1; }
+.v2-hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(4,4,18,0.38) 0%, rgba(4,4,18,0.20) 45%, rgba(4,4,18,0) 75%);
+}
+/* Texte du hero — blanc en thème sombre (photo nuit), sombre en thème clair (comme le reste du site) */
+.v2-hero-text .v2-hero-name,
+.v2-hero-text .v2-headline,
+.v2-hero-text .v2-tagline p,
+.v2-hero-text .v2-tagline strong,
+.v2-hero-text .v2-tagline .lead {
+  color: #fff;
+}
+.v2-hero-text .v2-hero-name,
+.v2-hero-text .v2-headline .period {
+  color: #A370FF;
+}
+.v2-hero-text .v2-tagline .lead { opacity: 0.85; }
+
+html[data-theme="light"] .v2-hero-text .v2-hero-name { color: var(--v2-accent); }
+html[data-theme="light"] .v2-hero-text .v2-headline { color: var(--v2-fg); }
+html[data-theme="light"] .v2-hero-text .v2-headline .period { color: var(--v2-accent); }
+html[data-theme="light"] .v2-hero-text .v2-tagline p,
+html[data-theme="light"] .v2-hero-text .v2-tagline .lead { color: var(--v2-fg-soft); opacity: 1; }
+html[data-theme="light"] .v2-hero-text .v2-tagline strong { color: var(--v2-fg); }
 
 .v2-hero-grid {
   position: relative;
   z-index: 1;
+  width: 100%;
   display: grid;
   grid-template-columns: minmax(280px, 460px) minmax(280px, 420px);
   justify-content: space-between;
@@ -831,6 +888,10 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
 
   <!-- ═══ Section 1 — Accueil ══════════════════════════════ -->
   <section id="accueil" class="v2-hero">
+    <div class="v2-hero-bg" aria-hidden="true">
+      <img src="Sources/fond/Jour.png" alt="" data-hero-bg="jour">
+      <img src="Sources/fond/Nuit.png" alt="" data-hero-bg="nuit">
+    </div>
     <div class="v2-hero-grid">
       <div class="v2-hero-text">
         <span class="v2-hero-name accent-font">Charlotte Froidefond</span>
