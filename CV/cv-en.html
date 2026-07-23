@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume — Charlotte Froidefond</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+
+@page { margin: 12mm 10mm; size: A4; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --purple:  #7B29C8;
+  --text:    #1C1C2E;
+  --sub:     #555570;
+  --line:    #E2D9F3;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #EDE9F8;
+  color: var(--text);
+  padding: 32px 16px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ── Export button ────────────────────────────────── */
+.top-bar {
+  width: 100%;
+  max-width: 870px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.print-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.print-btn:hover { background: #621fa8; }
+
+/* ── CV card ──────────────────────────────────────── */
+.cv {
+  width: 100%;
+  max-width: 870px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.13);
+  display: grid;
+  grid-template-columns: 258px 1fr;
+}
+
+/* ── Left column ──────────────────────────────────── */
+.cv-left {
+  padding: 32px 22px 32px 30px;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Identity */
+.cv-id {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+
+.cv-photo {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 3px solid var(--purple);
+  margin-bottom: 8px;
+}
+
+.cv-name {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.cv-job {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--purple);
+  margin-top: 2px;
+}
+
+.cv-status {
+  font-size: 10px;
+  color: var(--purple);
+  font-style: italic;
+  margin-top: 1px;
+}
+
+/* Section labels */
+.s-label {
+  display: block;
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--purple);
+  border-bottom: 1.5px solid var(--purple);
+  padding-bottom: 4px;
+  margin-bottom: 9px;
+}
+
+/* Contact */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contact-item {
+  font-size: 10.5px;
+  color: var(--sub);
+  text-decoration: none;
+  line-height: 1.5;
+}
+
+a.contact-item:hover { color: var(--purple); }
+
+/* Skill tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.tag {
+  font-size: 9.5px;
+  font-style: italic;
+  color: var(--purple);
+  border: 1px solid var(--purple);
+  border-radius: 999px;
+  padding: 2px 9px;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+/* Bullet lists */
+.ul-list {
+  list-style: disc;
+  padding-left: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ul-list li {
+  font-size: 10.5px;
+  color: var(--sub);
+  line-height: 1.55;
+}
+
+.ul-list li::marker { color: var(--purple); }
+
+/* Education */
+.edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.edu-entry {
+  font-size: 10px;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.edu-entry strong { font-weight: 700; }
+.edu-entry em { color: var(--sub); font-style: normal; }
+
+/* ── Right column ─────────────────────────────────── */
+.cv-right {
+  padding: 32px 32px 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Profile */
+.profil p {
+  font-size: 11.5px;
+  font-style: italic;
+  color: var(--sub);
+  line-height: 1.85;
+}
+
+.profil p + p { margin-top: 8px; }
+
+/* Experience */
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.exp-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.exp-left {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.exp-role { font-size: 13px; font-weight: 700; color: var(--text); }
+.exp-dash { font-size: 12px; color: var(--sub); }
+.exp-co   { font-size: 12px; font-style: italic; color: var(--purple); }
+.exp-date { font-size: 11px; font-style: italic; color: var(--sub); white-space: nowrap; }
+.exp-note { font-size: 10px; font-style: italic; color: var(--sub); margin: 2px 0 7px; }
+
+/* Blue Soft sub-categories */
+.cat-block { margin-top: 8px; }
+
+.cat-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.cat-list {
+  list-style: disc;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cat-list li {
+  font-size: 10.5px;
+  color: var(--sub);
+  line-height: 1.6;
+}
+
+.cat-list li::marker { color: var(--purple); }
+
+/* ── Print ────────────────────────────────────────── */
+@media print {
+  body { background: #fff; padding: 12mm 10mm; gap: 0; }
+  .top-bar { display: none; }
+  .cv {
+    box-shadow: none;
+    border-radius: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .cv-left  { padding: 20px 18px 20px 20px; gap: 15px; }
+  .cv-right { padding: 20px 24px 20px 20px; gap: 16px; }
+  .exp-list { gap: 12px; }
+  .cat-block { margin-top: 5px; }
+  .profil p { font-size: 11px; line-height: 1.7; }
+}
+
+/* ── Mobile ───────────────────────────────────────── */
+@media (max-width: 640px) {
+  body { padding: 0 0 32px; }
+  .top-bar { padding: 16px 16px 10px; }
+
+  .cv {
+    grid-template-columns: 1fr;
+    border-radius: 0;
+  }
+
+  .cv-left {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding: 24px 20px;
+  }
+
+  .cv-id {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .cv-photo { margin-bottom: 0; flex-shrink: 0; }
+
+  .cv-right { padding: 24px 20px; }
+
+  .exp-head { flex-direction: column; gap: 2px; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <button class="print-btn" onclick="window.print()">↓ Download as PDF</button>
+</div>
+
+<div class="cv">
+
+  <!-- ── LEFT COLUMN ── -->
+  <div class="cv-left">
+
+    <div class="cv-id">
+      <img class="cv-photo" src="photo.png" alt="Charlotte Froidefond">
+      <p class="cv-name">Charlotte FROIDEFOND</p>
+      <p class="cv-job">Product Design — Lead UX-UI</p>
+      <p class="cv-status">Currently on permanent contract</p>
+    </div>
+
+    <div>
+      <span class="s-label">Contact</span>
+      <div class="contact-list">
+        <span class="contact-item">Paris – Orléans, France</span>
+        <a class="contact-item" href="tel:+33786182851">+33 7 86 18 28 51</a>
+        <a class="contact-item" href="mailto:charlotte.froidefond@gmail.com">charlotte.froidefond@gmail.com</a>
+        <a class="contact-item" href="https://charlottefroidefond.com">charlottefroidefond.com</a>
+        <a class="contact-item" href="https://linkedin.com/in/charlotte-froidefond-993b3391">LinkedIn</a>
+      </div>
+    </div>
+
+    <div>
+      <span class="s-label">Skills</span>
+      <div class="tags">
+        <span class="tag">UX Strategy</span>
+        <span class="tag">User Research</span>
+        <span class="tag">Facilitation</span>
+        <span class="tag">Mentoring</span>
+        <span class="tag">Mobile‑first</span>
+        <span class="tag">Usability Testing</span>
+        <span class="tag">UX-UI Evangelism</span>
+        <span class="tag">Project Management</span>
+        <span class="tag">Design System</span>
+        <span class="tag">AI</span>
+        <span class="tag">Advisory</span>
+      </div>
+    </div>
+
+    <div>
+      <span class="s-label">Domains</span>
+      <ul class="ul-list">
+        <li>SaaS &amp; Business CRM</li>
+        <li>Healthcare &amp; Non-profit</li>
+        <li>Real Estate &amp; Finance</li>
+        <li>Innovation &amp; AI POC</li>
+        <li>Design Systems</li>
+      </ul>
+    </div>
+
+    <div>
+      <span class="s-label">Education</span>
+      <div class="edu-list">
+        <p class="edu-entry"><strong>Master's in UX/UI (Year 2)</strong> — Blue Soft — <em>2021</em></p>
+        <p class="edu-entry"><strong>Master's in UX/UI (Year 1)</strong> — Société Générale — <em>2020</em></p>
+        <p class="edu-entry"><strong>Bachelor's in Graphic Design</strong> — Terreal — <em>2019</em></p>
+        <p class="edu-entry"><strong>Advanced Diploma in Graphic Design</strong> — <em>2018</em></p>
+        <p class="edu-entry"><strong>Foundation Year in Art &amp; Design</strong> — <em>2016</em></p>
+        <p class="edu-entry"><strong>French Baccalaureate (Literature)</strong> — <em>2015</em></p>
+      </div>
+    </div>
+
+    <div>
+      <span class="s-label">Languages</span>
+      <div class="edu-list">
+        <p class="edu-entry"><strong>French</strong> : native</p>
+        <p class="edu-entry"><strong>English</strong> : C1</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── RIGHT COLUMN ── -->
+  <div class="cv-right">
+
+    <div>
+      <span class="s-label">Profile</span>
+      <div class="profil">
+        <p>Product Designer with 7 years of experience. I design experiences that hold up — both in depth and in form — from user research through to production.</p>
+        <p>I'm comfortable with complex business products like SaaS and CRM: balancing business logic, technical constraints and simplicity of use. I also enjoy innovation projects and AI POCs, where you move forward with uncertainty without compromising on design quality.</p>
+        <p>I like making interfaces accessible and consistent, sharing knowledge by mentoring junior designers and apprentices, and staying close to technical challenges.</p>
+      </div>
+    </div>
+
+    <div>
+      <span class="s-label">Experience</span>
+      <div class="exp-list">
+
+        <div>
+          <div class="exp-head">
+            <div class="exp-left">
+              <span class="exp-role">Product Designer</span>
+              <span class="exp-dash">—</span>
+              <span class="exp-co">Blue Soft</span>
+            </div>
+            <span class="exp-date">since 2021</span>
+          </div>
+
+          <div class="cat-block">
+            <p class="cat-title">Design Systems</p>
+            <ul class="cat-list">
+              <li>Contributing to the Blue Soft Digital Factory's design system</li>
+              <li>Designing a design system for a client across three products</li>
+              <li>Designing a multi-brand design system for a telecoms operator</li>
+            </ul>
+          </div>
+
+          <div class="cat-block">
+            <p class="cat-title">Healthcare &amp; Non-profit</p>
+            <ul class="cat-list">
+              <li>Télédiag: mentoring a designer on the visual redesign of a showcase website</li>
+              <li>BVIDF: initiating the redesign of the patient care pathway</li>
+              <li>AFM Téléthon: designing an iOS/Android app for beneficiaries</li>
+            </ul>
+          </div>
+
+          <div class="cat-block">
+            <p class="cat-title">Real Estate &amp; Finance</p>
+            <ul class="cat-list">
+              <li>SERGIC: designing tenant, owner and property management company spaces</li>
+              <li>NOVAXIA: subscription journeys for SCPI and 150-0 B ter investment products</li>
+            </ul>
+          </div>
+
+          <div class="cat-block">
+            <p class="cat-title">Transport &amp; Mobility</p>
+            <ul class="cat-list">
+              <li>Chabé: facilitating a design workshop for a B2C self-service booking journey; designing the partner portal</li>
+            </ul>
+          </div>
+
+          <div class="cat-block">
+            <p class="cat-title">Mentoring</p>
+            <ul class="cat-list">
+              <li>Coaching junior designers and apprentices</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="exp-head">
+            <div class="exp-left">
+              <span class="exp-role">UX-UI Designer</span>
+              <span class="exp-dash">—</span>
+              <span class="exp-co">Société Générale</span>
+            </div>
+            <span class="exp-date">2019–2020</span>
+          </div>
+          <p class="exp-note">(work-study — Master's Year 1 in UX/UI)</p>
+          <ul class="cat-list">
+            <li>Sole UX/UI Designer within the Knowledge Management team</li>
+            <li>Designing internal communication tools, particularly on SharePoint</li>
+            <li>Improving the document space and the employee onboarding journey</li>
+            <li>Active involvement in Société Générale's design community</li>
+            <li>Contributing to cross-functional innovation projects</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="exp-head">
+            <div class="exp-left">
+              <span class="exp-role">Graphic Designer</span>
+              <span class="exp-dash">—</span>
+              <span class="exp-co">Terreal</span>
+            </div>
+            <span class="exp-date">2018–2019</span>
+          </div>
+          <p class="exp-note">(work-study — Bachelor's in Graphic Design)</p>
+          <ul class="cat-list">
+            <li>Sole graphic designer within the communications team</li>
+            <li>Designing product catalogues</li>
+            <li>Creating commercial materials for sales teams</li>
+            <li>Producing POS materials for a building industry trade fair</li>
+            <li>Photographing buildings for social media and communication materials</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

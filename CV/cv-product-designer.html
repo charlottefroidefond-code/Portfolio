@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Product Designer — Charlotte Froidefond</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+
+@page { margin: 0; size: A4; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --purple:  #6B2ECC;
+  --purple2: #ede8f9;
+  --text:    #111118;
+  --sub:     #50505f;
+  --line:    #e0e0ea;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #F2F2F7;
+  color: var(--text);
+  padding: 32px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ── Bouton ───────────────────────────────────────── */
+.top-bar {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.print-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.print-btn:hover { background: #5522aa; }
+
+/* ── Page CV ──────────────────────────────────────── */
+.cv {
+  width: 100%;
+  max-width: 860px;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 28px rgba(0,0,0,0.08);
+}
+
+/* ── Header ───────────────────────────────────────── */
+.cv-header {
+  padding: 30px 36px 22px;
+  border-bottom: 2.5px solid var(--purple);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.cv-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cv-header-left h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+  margin-bottom: 3px;
+}
+
+.cv-header-left .cv-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--purple);
+  letter-spacing: 0.02em;
+}
+
+.cv-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.cv-header-right a,
+.cv-header-right span {
+  font-size: 11px;
+  color: var(--sub);
+  text-decoration: none;
+}
+.cv-header-right a:hover { color: var(--purple); text-decoration: underline; }
+
+.cv-photo {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 2.5px solid var(--purple);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* ── Introduction ─────────────────────────────────── */
+.cv-intro {
+  padding: 16px 36px;
+  background: var(--purple2);
+  border-bottom: 1px solid var(--line);
+}
+
+.cv-intro p {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--sub);
+  line-height: 1.75;
+  font-style: italic;
+}
+
+/* ── Corps 2 colonnes ─────────────────────────────── */
+.cv-body {
+  display: grid;
+  grid-template-columns: 194px 1fr;
+}
+
+/* ── Sidebar ──────────────────────────────────────── */
+.cv-side {
+  padding: 24px 20px 24px 36px;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.side-section { display: flex; flex-direction: column; gap: 7px; }
+
+.side-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--purple);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+}
+
+.side-item {
+  font-size: 11px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.side-item b {
+  display: block;
+  font-weight: 600;
+}
+
+.side-item span {
+  color: var(--sub);
+  font-size: 10px;
+}
+
+.side-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.side-tag {
+  font-size: 10px;
+  color: var(--sub);
+  border: 0.5px solid var(--line);
+  border-radius: 3px;
+  padding: 2px 6px;
+  line-height: 1.4;
+}
+
+/* ── Main ─────────────────────────────────────────── */
+.cv-main {
+  padding: 24px 36px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main-section { display: flex; flex-direction: column; gap: 10px; }
+
+.main-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--purple);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ── Entrée expérience principale ─────────────────── */
+.tl { display: flex; flex-direction: column; gap: 12px; }
+
+.tl-item { display: grid; grid-template-columns: 4px 1fr; gap: 0 10px; }
+
+.tl-bar {
+  width: 2px;
+  background: var(--line);
+  border-radius: 2px;
+  justify-self: center;
+  margin-top: 5px;
+}
+.tl-bar.accent { background: var(--purple); }
+
+.tl-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 1px;
+}
+
+.tl-role  { font-size: 13px; font-weight: 700; color: var(--text); }
+.tl-date  { font-size: 10px; color: var(--sub); white-space: nowrap; }
+.tl-co    { font-size: 11px; font-weight: 600; color: var(--purple); margin-bottom: 3px; }
+.tl-note  { font-size: 10px; color: var(--sub); font-style: italic; margin-bottom: 6px; }
+.tl-desc  { font-size: 11px; color: var(--sub); line-height: 1.65; margin-bottom: 5px; }
+.tl-tags  { display: flex; flex-wrap: wrap; gap: 3px; }
+.tl-tag {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--purple);
+  border: 0.5px solid var(--purple);
+  border-radius: 3px;
+  padding: 1px 5px;
+  opacity: 0.75;
+}
+
+/* ── Wrapper section projets ─────────────────────── */
+.projects-wrap { border: none; }
+
+.projects-toggle {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--purple);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 10px;
+  user-select: none;
+}
+.projects-toggle::-webkit-details-marker { display: none; }
+
+.projects-chevron {
+  font-size: 12px;
+  color: var(--purple);
+  transition: transform 0.2s;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.projects-wrap[open] .projects-chevron { transform: rotate(180deg); }
+
+.projects-wrap > .accordion-list { margin-top: 0; }
+
+/* ── Accordéon projets ────────────────────────────── */
+.accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.accordion-item {
+  border: 0.5px solid var(--line);
+  border-left: 2.5px solid var(--purple);
+  border-radius: 0 4px 4px 0;
+  overflow: hidden;
+}
+
+.accordion-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 8px 10px 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  background: #f9f9fc;
+  user-select: none;
+}
+
+.accordion-item summary::-webkit-details-marker { display: none; }
+
+.accordion-item[open] summary { background: var(--purple2); }
+
+.accordion-summary-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.accordion-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.accordion-client {
+  font-size: 10px;
+  color: var(--purple);
+  font-weight: 500;
+}
+
+.accordion-summary-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.accordion-meta {
+  font-size: 9.5px;
+  color: var(--sub);
+  white-space: nowrap;
+}
+
+.accordion-chevron {
+  font-size: 14px;
+  color: var(--purple);
+  transition: transform 0.2s;
+  line-height: 1;
+}
+
+.accordion-item[open] .accordion-chevron { transform: rotate(180deg); }
+
+.accordion-body {
+  padding: 10px 12px 11px;
+  border-top: 0.5px solid var(--line);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-desc {
+  font-size: 10.5px;
+  color: var(--sub);
+  line-height: 1.65;
+}
+
+.project-results {
+  margin: 0;
+  padding-left: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.project-results li {
+  font-size: 10px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.project-results li::marker { color: var(--purple); }
+
+.project-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+.project-tag {
+  font-size: 9px;
+  color: var(--sub);
+  border: 0.5px solid var(--line);
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+/* ── Formation ────────────────────────────────────── */
+.edu { display: flex; flex-direction: column; gap: 9px; }
+
+.edu-item {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  gap: 0 10px;
+}
+
+.edu-date   { font-size: 10px; color: var(--sub); padding-top: 2px; }
+.edu-title  { font-size: 11.5px; font-weight: 700; color: var(--text); }
+.edu-school { font-size: 10.5px; color: var(--purple); font-weight: 500; }
+.edu-note   { font-size: 10px; color: var(--sub); font-style: italic; }
+
+/* ── Responsive mobile ────────────────────────────── */
+@media (max-width: 640px) {
+  body { padding: 16px 0 32px; }
+
+  .top-bar { padding: 0 16px 12px; }
+
+  .cv-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 20px 16px;
+    gap: 12px;
+  }
+  .cv-header-right { align-items: flex-start; }
+
+  .cv-intro { padding: 12px 20px; }
+
+  .cv-body {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-side {
+    padding: 20px 20px;
+    border-right: none;
+    border-top: 1px solid var(--line);
+    order: 2;
+  }
+
+  .cv-main {
+    padding: 20px 20px;
+    order: 1;
+  }
+
+  .tl-top { flex-direction: column; align-items: flex-start; gap: 2px; }
+
+  .edu-item { grid-template-columns: 70px 1fr; }
+
+  .accordion-item summary { padding: 8px 10px; }
+  .accordion-summary-right { flex-direction: column; align-items: flex-end; gap: 2px; }
+
+  .side-tags { gap: 5px; }
+}
+
+/* ── Print ────────────────────────────────────────── */
+@media print {
+  body { background: #fff; padding: 8mm 10mm; }
+  .top-bar { display: none; }
+  .cv { box-shadow: none; border-radius: 0; max-width: 100%; }
+  .projects-wrap > .accordion-list { display: none; }
+  .projects-chevron { display: none; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page-break { page-break-before: always; }
+  .cv-header { padding: 18px 28px 13px; }
+  .cv-header-left h1 { font-size: 22px; }
+  .cv-photo { width: 58px; height: 58px; }
+  .cv-intro { padding: 9px 28px; }
+  .cv-intro p { font-size: 11px; line-height: 1.6; }
+  .cv-side { padding: 16px 14px 16px 28px; gap: 14px; }
+  .cv-main { padding: 16px 28px 16px 20px; gap: 14px; }
+  .side-section { gap: 5px; }
+  .main-section { gap: 8px; }
+  .tl { gap: 8px; }
+  .tl-note { margin-bottom: 3px; }
+  .tl-co { margin-bottom: 1px; }
+  .tl-desc { line-height: 1.5; margin-bottom: 3px; }
+  .edu { gap: 6px; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <button class="print-btn" onclick="window.print()">↓ Exporter en PDF</button>
+</div>
+
+<div class="cv">
+
+  <!-- HEADER -->
+  <header class="cv-header">
+    <div class="cv-header-left">
+      <img class="cv-photo" src="photo.png" alt="Charlotte Froidefond">
+      <div>
+        <h1>Charlotte Froidefond</h1>
+        <p class="cv-title">Product Designer · 7 ans d'expérience</p>
+      </div>
+    </div>
+    <div class="cv-header-right">
+      <span>Paris – Orléans</span>
+      <a href="tel:+33786182851">07 86 18 28 51</a>
+      <a href="mailto:charlotte.froidefond@gmail.com">charlotte.froidefond@gmail.com</a>
+      <a href="https://charlottefroidefond.com">charlottefroidefond.com</a>
+      <a href="https://linkedin.com/in/charlotte-froidefond-993b3391">LinkedIn</a>
+    </div>
+  </header>
+
+  <!-- INTRODUCTION -->
+  <div class="cv-intro">
+    <p>J'accompagne les entreprises pour trouver le bon équilibre entre leurs ambitions business et les besoins de leurs utilisateurs, en couvrant l'ensemble du cycle produit : de la définition stratégique à la livraison. Diplômée d'un Mastère UX-UI Innovation, je combine recherche utilisateur, vision produit et conception d'interfaces pour transformer des enjeux complexes en expériences cohérentes et mémorables. Mon expérience en ESN m'a permis d'intervenir sur des projets variés — IA, MVP, POC, Design System — dans des secteurs exigeants (transport, finance, assurance, immobilier, santé).</p>
+  </div>
+
+  <div class="cv-body">
+
+    <!-- SIDEBAR -->
+    <aside class="cv-side">
+
+      <div class="side-section">
+        <p class="side-label">Compétences</p>
+        <div class="side-tags">
+          <span class="side-tag">Stratégie produit</span>
+          <span class="side-tag">Cadrage</span>
+          <span class="side-tag">Recherche utilisateur</span>
+          <span class="side-tag">Roadmap produit</span>
+          <span class="side-tag">Prototypage</span>
+          <span class="side-tag">Tests utilisabilité</span>
+          <span class="side-tag">Design System</span>
+          <span class="side-tag">Facilitation ateliers</span>
+          <span class="side-tag">Accompagnement PO</span>
+          <span class="side-tag">IA &amp; Design responsable</span>
+          <span class="side-tag">Agilité Scrum</span>
+          <span class="side-tag">Mobile-first</span>
+          <span class="side-tag">Éco-conception</span>
+        </div>
+      </div>
+
+      <div class="side-section">
+        <p class="side-label">Outils</p>
+        <div class="side-tags">
+          <span class="side-tag">Figma</span>
+          <span class="side-tag">Mural</span>
+          <span class="side-tag">Cosmos</span>
+          <span class="side-tag">Zeplin</span>
+          <span class="side-tag">Jira</span>
+          <span class="side-tag">Azure DevOps</span>
+          <span class="side-tag">GitHub</span>
+          <span class="side-tag">Loop</span>
+          <span class="side-tag">Notion</span>
+          <span class="side-tag">Mermaid</span>
+          <span class="side-tag">Claude</span>
+          <span class="side-tag">Claude Code</span>
+          <span class="side-tag">Gemini</span>
+        </div>
+      </div>
+
+      <div class="side-section">
+        <p class="side-label">Langues</p>
+        <div class="side-item">
+          <b>Français</b>
+          <span>Langue maternelle</span>
+        </div>
+        <div class="side-item">
+          <b>Anglais</b>
+          <span>Professionnel</span>
+        </div>
+      </div>
+
+      <div class="side-section">
+        <p class="side-label">Centres d'intérêt</p>
+        <div class="side-tags">
+          <span class="side-tag">Randonnée</span>
+          <span class="side-tag">Tricot</span>
+          <span class="side-tag">Design</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="cv-main">
+
+      <!-- EXPÉRIENCE -->
+      <div class="main-section">
+        <p class="main-label">Expérience professionnelle</p>
+        <div class="tl">
+
+          <div class="tl-item">
+            <div class="tl-bar accent"></div>
+            <div class="tl-body">
+              <div class="tl-top">
+                <div class="tl-role">Product Designer</div>
+                <div class="tl-date">Sept. 2020 – Présent</div>
+              </div>
+              <div class="tl-co">Blue Soft · Paris / Orléans</div>
+              <div class="tl-note">Alternance 2020–2021 · CDI depuis sept. 2021</div>
+              <p class="tl-desc">Couverture du cycle produit complet pour des clients multi-secteurs : cadrage business, recherche utilisateur, idéation, conception et livraison. Lead Designer sur des projets à fort enjeux — IA, MVP, POC, Design System. Collaboration étroite avec les PO, développeurs et parties prenantes pour aligner vision produit et réalité technique, dans des environnements agiles.</p>
+              <div class="tl-tags">
+                <span class="tl-tag">Product Strategy</span>
+                <span class="tl-tag">UX Research</span>
+                <span class="tl-tag">UI Design</span>
+                <span class="tl-tag">Design System</span>
+                <span class="tl-tag">IA &amp; Design</span>
+                <span class="tl-tag">Agile</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-bar"></div>
+            <div class="tl-body">
+              <div class="tl-top">
+                <div class="tl-role">UX-UI Designer</div>
+                <div class="tl-date">Sept. 2019 – Juil. 2020</div>
+              </div>
+              <div class="tl-co">Société Générale · Paris</div>
+              <p class="tl-desc">Conception d'interfaces et d'expériences utilisateur dans le secteur bancaire, en alternance.</p>
+              <div class="tl-tags">
+                <span class="tl-tag">UX/UI</span>
+                <span class="tl-tag">Secteur bancaire</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-bar"></div>
+            <div class="tl-body">
+              <div class="tl-top">
+                <div class="tl-role">Graphiste</div>
+                <div class="tl-date">2018 – 2019</div>
+              </div>
+              <div class="tl-co">Terreal</div>
+              <p class="tl-desc">Création graphique et supports de communication pour un acteur industriel de la construction.</p>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-bar"></div>
+            <div class="tl-body">
+              <div class="tl-top">
+                <div class="tl-role">Graphiste (stage)</div>
+                <div class="tl-date">2015 – 2018</div>
+              </div>
+              <div class="tl-co">Idées Fraîches · Agence de communication</div>
+              <p class="tl-desc">Identité visuelle, stratégie de communication, supports print et digitaux.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FORMATION -->
+      <div class="main-section">
+        <p class="main-label">Formation</p>
+        <div class="edu">
+
+          <div class="edu-item">
+            <p class="edu-date">2019 – 2021</p>
+            <div>
+              <p class="edu-title">Mastère UX-UI Innovation — RNCP 4</p>
+              <p class="edu-school">Supdeweb</p>
+              <p class="edu-note">Alternance — Société Générale (2019–2020) puis Blue Soft (2020–2021)</p>
+            </div>
+          </div>
+
+          <div class="edu-item">
+            <p class="edu-date">2015 – 2019</p>
+            <div>
+              <p class="edu-title">Designer Graphique &amp; Direction artistique — RNCP 3</p>
+              <p class="edu-school">Esupcom</p>
+              <p class="edu-note">MANAA · BTS Design Graphique (stages) · Bachelor en alternance chez Terreal</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Management — Charlotte Froidefond</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+
+@page { margin: 0; size: A4; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:         #13112B;
+  --navy-mid:     #1c1940;
+  --purple:       #7B3AED;
+  --purple-light: #A370FF;
+  --grad:         linear-gradient(135deg, #7B3AED, #A370FF);
+  --text-light:   #FFFFFF;
+  --text-muted:   rgba(255,255,255,0.60);
+  --border-side:  rgba(255,255,255,0.10);
+  --glass:        rgba(255,255,255,0.07);
+
+  --text-dark:    #111118;
+  --sub-dark:     #50505f;
+  --line:         #e4e4ef;
+  --purple-cv:    #6B2ECC;
+  --purple2:      #ede8f9;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 20px 48px;
+  gap: 14px;
+}
+
+/* ── Bouton ───────────────────────────────────────── */
+.top-bar {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.print-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  color: var(--purple-light);
+  border: 0.5px solid rgba(163,112,255,0.45);
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.print-btn:hover {
+  background: rgba(123,58,237,0.22);
+  border-color: rgba(163,112,255,0.7);
+  color: #fff;
+}
+
+/* ── Page CV ──────────────────────────────────────── */
+.cv {
+  width: 100%;
+  max-width: 860px;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 60px rgba(0,0,0,0.45), 0 0 0 0.5px rgba(163,112,255,0.18);
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  grid-template-rows: auto auto 1fr;
+}
+
+/* ── Header ───────────────────────────────────────── */
+.cv-header {
+  grid-column: 1 / -1;
+  background: var(--navy);
+  padding: 32px 36px 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cv-header::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(123,58,237,0.30) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cv-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--grad);
+}
+
+.cv-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cv-header-left h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: -0.3px;
+  margin-bottom: 4px;
+  line-height: 1.1;
+}
+
+.cv-header-left .cv-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--purple-light);
+  letter-spacing: 0.04em;
+}
+
+.cv-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.cv-header-right a,
+.cv-header-right span {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.cv-header-right a:hover { color: var(--purple-light); }
+
+.cv-photo {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 2px solid rgba(163,112,255,0.55);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* ── Introduction ─────────────────────────────────── */
+.cv-intro {
+  grid-column: 1 / -1;
+  padding: 16px 36px;
+  background: var(--navy-mid);
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+}
+
+.cv-intro p {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-style: italic;
+  max-width: 700px;
+}
+
+/* ── Sidebar ──────────────────────────────────────── */
+.cv-side {
+  grid-column: 1;
+  background: var(--navy);
+  padding: 26px 22px 28px 32px;
+  border-right: 0.5px solid rgba(255,255,255,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.side-section { display: flex; flex-direction: column; gap: 8px; }
+
+.side-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding-bottom: 6px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.10);
+  display: block;
+}
+
+.side-item {
+  font-size: 11px;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.side-item b {
+  display: block;
+  font-weight: 600;
+  color: #fff;
+}
+
+.side-item span {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.side-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.side-tag {
+  font-size: 10px;
+  color: var(--text-muted);
+  border: 0.5px solid rgba(255,255,255,0.14);
+  border-radius: 999px;
+  padding: 2px 8px;
+  line-height: 1.5;
+  background: var(--glass);
+}
+
+/* ── Main ─────────────────────────────────────────── */
+.cv-main {
+  grid-column: 2;
+  padding: 26px 36px 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #fff;
+}
+
+.main-section { display: flex; flex-direction: column; gap: 10px; }
+
+.main-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--purple-cv);
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid var(--purple2);
+  display: block;
+  position: relative;
+}
+
+.main-label::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5px;
+  left: 0;
+  width: 28px;
+  height: 1.5px;
+  background: var(--grad);
+}
+
+/* ── Timeline ─────────────────────────────────────── */
+.tl { display: flex; flex-direction: column; gap: 13px; }
+
+.tl-item { display: grid; grid-template-columns: 10px 1fr; gap: 0 10px; }
+
+.tl-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+  justify-self: center;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.tl-dot.accent {
+  background: var(--grad);
+  box-shadow: 0 0 0 2px rgba(163,112,255,0.20);
+}
+
+.tl-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 1px;
+}
+
+.tl-role  { font-size: 13px; font-weight: 700; color: var(--text-dark); }
+.tl-date  { font-size: 10px; color: var(--sub-dark); white-space: nowrap; }
+.tl-co    { font-size: 11px; font-weight: 600; color: var(--purple-cv); margin-bottom: 3px; }
+.tl-note  { font-size: 10px; color: var(--sub-dark); font-style: italic; margin-bottom: 6px; }
+.tl-desc  { font-size: 11px; color: var(--sub-dark); line-height: 1.65; margin-bottom: 5px; }
+.tl-tags  { display: flex; flex-wrap: wrap; gap: 3px; }
+.tl-tag {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--purple-cv);
+  border: 0.5px solid rgba(107,46,204,0.30);
+  border-radius: 999px;
+  padding: 1px 7px;
+  background: rgba(107,46,204,0.04);
+}
+
+/* ── Formation ────────────────────────────────────── */
+.edu { display: flex; flex-direction: column; gap: 9px; }
+
+.edu-item {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  gap: 0 10px;
+}
+
+.edu-date   { font-size: 10px; color: var(--sub-dark); padding-top: 2px; }
+.edu-title  { font-size: 11.5px; font-weight: 700; color: var(--text-dark); }
+.edu-school { font-size: 10.5px; color: var(--purple-cv); font-weight: 500; }
+.edu-note   { font-size: 10px; color: var(--sub-dark); font-style: italic; }
+
+/* ── Print ────────────────────────────────────────── */
+@media print {
+  body { background: #fff; padding: 0; }
+  .top-bar { display: none; }
+  .cv { box-shadow: none; border-radius: 0; max-width: 100%; width: 100%; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .cv-header { padding: 20px 28px 15px; }
+  .cv-header-left h1 { font-size: 24px; }
+  .cv-photo { width: 58px; height: 58px; }
+  .cv-intro { padding: 10px 28px; }
+  .cv-intro p { font-size: 11px; line-height: 1.65; }
+  .cv-side { padding: 18px 16px 18px 28px; gap: 16px; }
+  .cv-main { padding: 18px 28px 18px 22px; gap: 16px; }
+  .side-section { gap: 5px; }
+  .main-section { gap: 8px; }
+  .tl { gap: 9px; }
+  .tl-note { margin-bottom: 3px; }
+  .tl-co { margin-bottom: 1px; }
+  .tl-desc { line-height: 1.5; margin-bottom: 3px; }
+  .edu { gap: 6px; }
+}
+
+/* ── Responsive mobile ────────────────────────────── */
+@media (max-width: 640px) {
+  body { padding: 16px 0 32px; }
+  .top-bar { padding: 0 16px 12px; }
+
+  .cv {
+    grid-template-columns: 1fr;
+    border-radius: 0;
+  }
+
+  .cv-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 20px 20px;
+    gap: 12px;
+  }
+  .cv-header-right { align-items: flex-start; }
+
+  .cv-intro { padding: 14px 20px; }
+
+  .cv-side {
+    grid-column: 1;
+    padding: 20px 20px;
+    border-right: none;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    order: 2;
+  }
+
+  .cv-main {
+    grid-column: 1;
+    padding: 20px 20px;
+    order: 1;
+  }
+
+  .tl-top { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .edu-item { grid-template-columns: 70px 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <button class="print-btn" onclick="window.print()">↓ Exporter en PDF</button>
+</div>
+
+<div class="cv">
+
+  <!-- HEADER -->
+  <header class="cv-header">
+    <div class="cv-header-left">
+      <img class="cv-photo" src="../photo.png" alt="Charlotte Froidefond">
+      <div>
+        <h1>Charlotte Froidefond</h1>
+        <p class="cv-title">Lead Designer — Pilotage &amp; Management de Projets · 7 ans d'expérience</p>
+      </div>
+    </div>
+    <div class="cv-header-right">
+      <span>Paris – Orléans</span>
+      <a href="tel:+33786182851">07 86 18 28 51</a>
+      <a href="mailto:charlotte.froidefond@gmail.com">charlotte.froidefond@gmail.com</a>
+      <a href="https://charlottefroidefond.com">charlottefroidefond.com</a>
+      <a href="https://linkedin.com/in/charlotte-froidefond-993b3391">LinkedIn</a>
+    </div>
+  </header>
+
+  <!-- INTRODUCTION -->
+  <div class="cv-intro">
+    <p>Avec 5 ans d'expérience en ESN, j'ai développé une capacité solide à piloter des projets UX-UI de bout en bout : cadrage avec les parties prenantes, animation des instances de gouvernance (Coproj, Copil), gestion et coordination d'équipe design, accompagnement MOA/PO et relation client. Intervenant en tant que Lead Designer sur des projets à fort enjeux business (IA, refonte de parcours métier, Design System, réponses à appels d'offre), je fais le lien entre les équipes métier, la maîtrise d'ouvrage et le développement pour garantir la cohérence et la livraison des projets.</p>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="cv-side">
+
+    <div class="side-section">
+      <span class="side-label">Compétences</span>
+      <div class="side-tags">
+        <span class="side-tag">Pilotage de projet</span>
+        <span class="side-tag">Lead Designer</span>
+        <span class="side-tag">Animation d'ateliers</span>
+        <span class="side-tag">Facilitation</span>
+        <span class="side-tag">Accompagnement MOA/PO</span>
+        <span class="side-tag">Relation client</span>
+        <span class="side-tag">Gestion backlog</span>
+        <span class="side-tag">Roadmap produit</span>
+        <span class="side-tag">Comitologie</span>
+        <span class="side-tag">Agilité Scrum</span>
+        <span class="side-tag">Réponse AO</span>
+        <span class="side-tag">Cadrage</span>
+      </div>
+    </div>
+
+    <div class="side-section">
+      <span class="side-label">Outils</span>
+      <div class="side-tags">
+        <span class="side-tag">Figma</span>
+        <span class="side-tag">Mural</span>
+        <span class="side-tag">Cosmos</span>
+        <span class="side-tag">Zeplin</span>
+        <span class="side-tag">Jira</span>
+        <span class="side-tag">Azure DevOps</span>
+        <span class="side-tag">GitHub</span>
+        <span class="side-tag">Loop</span>
+        <span class="side-tag">Notion</span>
+        <span class="side-tag">Mermaid</span>
+        <span class="side-tag">Claude</span>
+        <span class="side-tag">Claude Code</span>
+        <span class="side-tag">Gemini</span>
+      </div>
+    </div>
+
+    <div class="side-section">
+      <span class="side-label">Langues</span>
+      <div class="side-item">
+        <b>Français</b>
+        <span>Langue maternelle</span>
+      </div>
+      <div class="side-item">
+        <b>Anglais</b>
+        <span>Professionnel</span>
+      </div>
+    </div>
+
+    <div class="side-section">
+      <span class="side-label">Centres d'intérêt</span>
+      <div class="side-tags">
+        <span class="side-tag">Randonnée</span>
+        <span class="side-tag">Tricot</span>
+        <span class="side-tag">Design</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="cv-main">
+
+    <!-- EXPÉRIENCE -->
+    <div class="main-section">
+      <span class="main-label">Expérience professionnelle</span>
+      <div class="tl">
+
+        <div class="tl-item">
+          <div class="tl-dot accent"></div>
+          <div class="tl-body">
+            <div class="tl-top">
+              <div class="tl-role">Lead Designer / Product Designer</div>
+              <div class="tl-date">Sept. 2020 – Présent</div>
+            </div>
+            <div class="tl-co">Blue Soft · Paris / Orléans</div>
+            <div class="tl-note">Alternance 2020–2021 · CDI depuis sept. 2021</div>
+            <p class="tl-desc">Pilotage de projets UX-UI de A à Z pour des clients multi-secteurs (financier, immobilier, transport, luxe, associatif). Lead Designer sur les projets stratégiques : animation des instances de gouvernance (Coproj, Copil), gestion et coordination d'équipe design, accompagnement des MOA et PO, suivi des sprints et relation client. Réponse à des appels d'offre et soutenance client.</p>
+            <div class="tl-tags">
+              <span class="tl-tag">Lead Designer</span>
+              <span class="tl-tag">Pilotage projet</span>
+              <span class="tl-tag">Relation client</span>
+              <span class="tl-tag">Accompagnement MOA</span>
+              <span class="tl-tag">Comitologie</span>
+              <span class="tl-tag">Agile</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-top">
+              <div class="tl-role">UX-UI Designer</div>
+              <div class="tl-date">Sept. 2019 – Juil. 2020</div>
+            </div>
+            <div class="tl-co">Société Générale · Paris</div>
+            <p class="tl-desc">Conception d'interfaces et d'expériences utilisateur dans le secteur bancaire, en alternance.</p>
+            <div class="tl-tags">
+              <span class="tl-tag">UX/UI</span>
+              <span class="tl-tag">Secteur bancaire</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-top">
+              <div class="tl-role">Graphiste</div>
+              <div class="tl-date">2018 – 2019</div>
+            </div>
+            <div class="tl-co">Terreal</div>
+            <p class="tl-desc">Création graphique et supports de communication pour un acteur industriel de la construction.</p>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-body">
+            <div class="tl-top">
+              <div class="tl-role">Graphiste (stage)</div>
+              <div class="tl-date">2015 – 2018</div>
+            </div>
+            <div class="tl-co">Idées Fraîches · Agence de communication</div>
+            <p class="tl-desc">Identité visuelle, stratégie de communication, supports print et digitaux.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FORMATION -->
+    <div class="main-section">
+      <span class="main-label">Formation</span>
+      <div class="edu">
+
+        <div class="edu-item">
+          <p class="edu-date">2019 – 2021</p>
+          <div>
+            <p class="edu-title">Mastère UX-UI Innovation — RNCP 4</p>
+            <p class="edu-school">Supdeweb</p>
+            <p class="edu-note">Alternance — Société Générale (2019–2020) puis Blue Soft (2020–2021)</p>
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <p class="edu-date">2015 – 2019</p>
+          <div>
+            <p class="edu-title">Designer Graphique &amp; Direction artistique — RNCP 3</p>
+            <p class="edu-school">Esupcom</p>
+            <p class="edu-note">MANAA · BTS Design Graphique (stages) · Bachelor en alternance chez Terreal</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>
