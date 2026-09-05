@@ -363,12 +363,28 @@ html[data-theme="light"] .v2-hero-text .v2-tagline p,
 html[data-theme="light"] .v2-hero-text .v2-tagline .lead { color: var(--v2-fg-soft); opacity: 1; }
 html[data-theme="light"] .v2-hero-text .v2-tagline strong { color: var(--v2-fg); }
 
+/* Thème clair : le texte est sombre sur une photo de jour claire et contrastée.
+   Plutôt qu'un effet sur les lettres, on éclaircit la photo du côté du texte —
+   un voile dégradé qui se dissipe avant les cartes, à droite. */
+html[data-theme="light"] .v2-hero-bg::after {
+  background:
+    linear-gradient(104deg,
+      rgba(255, 255, 255, 0.90) 0%,
+      rgba(255, 255, 255, 0.78) 24%,
+      rgba(255, 255, 255, 0.42) 42%,
+      rgba(255, 255, 255, 0.10) 58%,
+      rgba(255, 255, 255, 0) 70%),
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.30) 0%,
+      rgba(255, 255, 255, 0) 34%);
+}
+
 .v2-hero-grid {
   position: relative;
   z-index: 1;
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(280px, 460px) minmax(280px, 420px);
+  grid-template-columns: minmax(280px, 460px) minmax(280px, 464px);
   justify-content: space-between;
   gap: clamp(40px, 6vw, 100px);
   align-items: center;
@@ -475,12 +491,13 @@ html[data-theme="light"] .v2-hero-text .v2-tagline strong { color: var(--v2-fg);
    ══════════════════════════════════════════════════════════ */
 .v2-projects-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
   margin-bottom: 30px;
 }
 
 .v2-project-card {
+  position: relative;
   background: var(--v2-card);
   border-radius: 18px;
   padding: 16px;
@@ -493,12 +510,215 @@ html[data-theme="light"] .v2-hero-text .v2-tagline strong { color: var(--v2-fg);
 }
 .v2-project-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(123,58,237,0.25); }
 
+.v2-project-thumb-wrap { position: relative; }
+
 .v2-project-thumb {
   width: 100%;
   aspect-ratio: 266 / 239;
   border-radius: 14px;
   object-fit: cover;
   display: block;
+}
+
+.v2-project-num {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1;
+  color: #FFFFFF;
+  background: rgba(28, 14, 63, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 7px 12px 8px;
+}
+
+.v2-project-client {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--v2-accent);
+  margin: 0;
+}
+
+/* ══ Autres projets — accordéon replié par défaut ════════ */
+.v2-autres {
+  margin-top: 48px;
+  border: 1px solid var(--v2-line);
+  border-radius: 18px;
+  background: var(--v2-card);
+  box-shadow: 0 4px 40px var(--v2-shadow);
+}
+
+.v2-autres-toggle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 28px;
+  cursor: pointer;
+  list-style: none;
+  border-radius: 18px;
+  transition: color 0.2s;
+}
+.v2-autres-toggle::-webkit-details-marker { display: none; }
+.v2-autres-toggle:hover .v2-autres-title { color: var(--v2-accent); }
+.v2-autres-toggle:focus-visible {
+  outline: 2px solid var(--v2-accent);
+  outline-offset: 2px;
+}
+
+.v2-autres-title {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(19px, 2.2vw, 24px);
+  color: var(--v2-fg);
+  transition: color 0.2s;
+}
+
+.v2-autres-count {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--v2-accent);
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--v2-tint);
+  white-space: nowrap;
+}
+
+.v2-autres-chevron {
+  margin-left: auto;
+  color: var(--v2-fg-muted);
+  transition: transform 0.25s ease;
+}
+.v2-autres[open] .v2-autres-chevron { transform: rotate(180deg); }
+
+.v2-autres-body { padding: 0 28px 26px; }
+
+.v2-autres-intro {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--v2-fg-muted);
+  font-weight: 300;
+  max-width: 720px;
+  margin: 0 0 22px;
+}
+
+.v2-autres-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.v2-autre-card {
+  background: var(--v2-card);
+  border: 1px solid var(--v2-line);
+  border-radius: 18px;
+  padding: 26px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 4px 40px var(--v2-shadow);
+}
+
+.v2-autre-visuel {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  background: var(--v2-tint);
+  margin-bottom: 4px;
+}
+
+.v2-autre-client {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--v2-accent);
+  margin: 0;
+}
+
+.v2-autre-titre {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--v2-fg);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.v2-autre-resume {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--v2-fg-soft);
+  font-weight: 300;
+  margin: 0;
+}
+
+.v2-autre-actions {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+.v2-autre-actions li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 300;
+  color: var(--v2-fg-muted);
+}
+.v2-autre-actions li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--v2-accent);
+}
+
+.v2-autre-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+.v2-autre-tags span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: var(--v2-tint);
+  border: 0.5px solid var(--v2-line);
+  color: var(--v2-accent);
+}
+
+@media (max-width: 860px) { .v2-autres-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .v2-autres-toggle { padding: 18px 20px; flex-wrap: wrap; gap: 10px; }
+  .v2-autres-chevron { margin-left: auto; }
+  .v2-autres-body { padding: 0 20px 22px; }
 }
 
 .v2-project-title {
@@ -527,6 +747,7 @@ html[data-theme="light"] .v2-hero-text .v2-tagline strong { color: var(--v2-fg);
 
 @media (max-width: 1100px) { .v2-projects-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 620px)  { .v2-projects-grid { grid-template-columns: 1fr; } }
+@media (max-width: 620px)  { .v2-autre-card { padding: 22px 20px; } }
 
 /* ══════════════════════════════════════════════════════════
    SECTION 3 — À propos
@@ -853,8 +1074,8 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
         <a href="#contact"  class="v2-nav-link"        role="listitem" data-en="Contact"  data-fr="Contact">Contact</a>
       </div>
       <div class="v2-nav-right">
-        <a href="CV/CharlotteFroidefond-CV.pdf" target="_blank" class="v2-cv-btn"
-           data-href-en="CV/CharlotteFroidefond-CV-en.pdf" data-href-fr="CV/CharlotteFroidefond-CV.pdf">
+        <a href="CV/ATS/CharlotteFroidefond-CV-ATS.pdf" target="_blank" class="v2-cv-btn"
+           data-href-en="CV/ATS/CharlotteFroidefond-CV-ATS-en.pdf" data-href-fr="CV/ATS/CharlotteFroidefond-CV-ATS.pdf">
           <span class="material-icons-round" aria-hidden="true">download</span>
           <span data-en="Resume" data-fr="Mon CV">Mon CV</span>
         </a>
@@ -878,8 +1099,8 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
       <a href="#projets"  class="v2-mobile-link"        data-en="Projects" data-fr="Projets">Projets</a>
       <a href="#a-propos" class="v2-mobile-link"        data-en="About"    data-fr="À propos">À propos</a>
       <a href="#contact"  class="v2-mobile-link"        data-en="Contact"  data-fr="Contact">Contact</a>
-      <a href="CV/CharlotteFroidefond-CV.pdf" target="_blank" class="v2-mobile-cv"
-         data-href-en="CV/CharlotteFroidefond-CV-en.pdf" data-href-fr="CV/CharlotteFroidefond-CV.pdf">
+      <a href="CV/ATS/CharlotteFroidefond-CV-ATS.pdf" target="_blank" class="v2-mobile-cv"
+         data-href-en="CV/ATS/CharlotteFroidefond-CV-ATS-en.pdf" data-href-fr="CV/ATS/CharlotteFroidefond-CV-ATS.pdf">
         <span class="material-icons-round" aria-hidden="true">download</span>
         <span data-en="Download my resume" data-fr="Télécharger mon CV">Télécharger mon CV</span>
       </a>
@@ -933,6 +1154,15 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
           <p data-en="My design process is enhanced by both my experience and my sensitivity to design, as well as by AI, on a daily basis."
              data-fr="Mon processus de conception est augmenté à la fois par mon expérience et ma sensibilité au design, mais également par l'IA, au quotidien.">Mon processus de conception est augmenté à la fois par mon expérience et ma sensibilité au design, mais également par l'IA, au quotidien.</p>
         </div>
+
+        <div class="v2-hero-card">
+          <div class="v2-hero-card-head">
+            <span class="material-icons-round" aria-hidden="true">widgets</span>
+            <strong data-en="Design System" data-fr="Design System">Design System</strong>
+          </div>
+          <p data-en="Design systems built in Figma and Storybook, token-based and structured with atomic design. I co-designed the Digital Factory's design system in React and Angular, building on the Telerik libraries and adopting some of Material Design's principles for variants and usage."
+             data-fr="Conception, via Figma et Storybook, de design systems à base de tokens au format atomic design. J'ai co-conçu le design system de la Digital Factory en React et Angular, en m'appuyant sur les bibliothèques Telerik et en reprenant certains principes de variants et d'usages du Material Design.">Conception, via Figma et Storybook, de design systems à base de tokens au format atomic design. J'ai co-conçu le design system de la Digital Factory en React et Angular, en m'appuyant sur les bibliothèques Telerik et en reprenant certains principes de variants et d'usages du Material Design.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -945,37 +1175,29 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
         <h2 class="v2-section-title" data-en="My latest projects" data-fr="Mes derniers projets">Mes derniers projets</h2>
       </div>
 
-      <div class="v2-projects-grid">
-        <a href="projet-detail.html?id=1" class="v2-project-card">
-          <img class="v2-project-thumb" src="Sources/projets/transport luxe/Frame 35422729.png" alt="">
-          <h3 class="v2-project-title" data-en="Workflow redesign" data-fr="Refonte workflow">Refonte workflow</h3>
-          <p class="v2-project-desc" data-en="Streamlining partner recruitment for a luxury transportation company." data-fr="Optimisation du recrutement de partenaires pour une entreprise de transport de luxe.">Optimisation du recrutement de partenaires pour une entreprise de transport de luxe.</p>
-        </a>
-
-        <a href="projet-detail.html?id=2" class="v2-project-card">
-          <img class="v2-project-thumb" src="Sources/preview aéronautic.png" alt="">
-          <h3 class="v2-project-title" data-en="Aeronautics &amp; AI" data-fr="Aéronautique &amp; IA">Aéronautique &amp; IA</h3>
-          <p class="v2-project-desc" data-en="Helping airlines diagnose and repair parts faster thanks to AI." data-fr="Aider les compagnies aériennes à diagnostiquer et réparer leurs pièces plus rapidement grâce à l'IA.">Aider les compagnies aériennes à diagnostiquer et réparer leurs pièces plus rapidement grâce à l'IA.</p>
-        </a>
-
-        <a href="projet-detail.html?id=3" class="v2-project-card">
-          <img class="v2-project-thumb" src="Sources/preview simulateur.png" alt="">
-          <h3 class="v2-project-title" data-en="Financial simulator" data-fr="Simulateur financier">Simulateur financier</h3>
-          <p class="v2-project-desc" data-en="Designing the MVP of a financial simulator for research projects, following a successful RFP response." data-fr="Conception du MVP d'un simulateur financier pour des projets de recherche, après une réponse d'appel d'offres.">Conception du MVP d'un simulateur financier pour des projets de recherche, après une réponse d'appel d'offres.</p>
-        </a>
-
-        <a href="projet-detail.html?id=4" class="v2-project-card">
-          <img class="v2-project-thumb" src="Sources/preview design system.png" alt="">
-          <h3 class="v2-project-title" data-en="Design system" data-fr="Design system">Design system</h3>
-          <p class="v2-project-desc" data-en="Building a multi-brand design system from scratch." data-fr="Création from scratch du design system d'une entreprise multi-marque.">Création from scratch du design system d'une entreprise multi-marque.</p>
-        </a>
-      </div>
+      <div class="v2-projects-grid" id="projets-grid"></div>
 
       <p class="v2-projects-note"
          data-en="I have also worked on mobile application and B2B website projects, CRM design, and have extensive experience designing data-driven dashboards with customization. I have also worked on several Design System projects for various clients."
          data-fr="J'ai aussi travaillé sur des projets d'applications mobile et de sites B2B, de conception de CRM ; j'ai également de nombreuses expériences de conception de dashboards basés sur des données concrètes avec de la customisation. J'ai pu par ailleurs travailler sur plusieurs projets de Design System pour divers clients.">
         J'ai aussi travaillé sur des projets d'applications mobile et de sites B2B, de conception de CRM ; j'ai également de nombreuses expériences de conception de dashboards basés sur des données concrètes avec de la customisation. J'ai pu par ailleurs travailler sur plusieurs projets de Design System pour divers clients.
       </p>
+
+      <details class="v2-autres">
+        <summary class="v2-autres-toggle">
+          <span class="v2-autres-title" data-en="Other projects" data-fr="Autres projets">Autres projets</span>
+          <span class="v2-autres-count" id="autres-count"></span>
+          <span class="material-icons-round v2-autres-chevron" aria-hidden="true">expand_more</span>
+        </summary>
+        <div class="v2-autres-body">
+          <p class="v2-autres-intro"
+             data-en="Shorter engagements, from RFP responses to design handover, across retail, property, finance and the circular economy."
+             data-fr="Des missions plus courtes, de la réponse à l'appel d'offres à la passation des maquettes, dans le retail, l'immobilier, la finance et l'économie circulaire.">
+            Des missions plus courtes, de la réponse à l'appel d'offres à la passation des maquettes, dans le retail, l'immobilier, la finance et l'économie circulaire.
+          </p>
+          <div class="v2-autres-grid" id="autres-grid"></div>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -1203,8 +1425,70 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
 
 </div>
 
+<script src="projets-data.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ── Cartes projets ──────────────────────────────────────
+  // Rendues depuis projets-data.js : le contenu bilingue vit dans les
+  // attributs data-en / data-fr, applyLang() s'en charge ensuite.
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  const bi = (fr, en) => `data-fr="${esc(fr)}" data-en="${esc(en || fr)}"`;
+
+  function renderProjets() {
+    const grid = document.getElementById('projets-grid');
+    if (!grid || typeof PROJETS === 'undefined') return;
+    grid.innerHTML = PROJETS.map(p => {
+      const en = p.en || {};
+      return `<a href="projet-detail-v2.html?id=${p.id}" class="v2-project-card">
+        <div class="v2-project-thumb-wrap">
+          <img class="v2-project-thumb" src="${esc(p.thumb)}" alt="" loading="lazy">
+          <span class="v2-project-num">${esc(p.num)}</span>
+        </div>
+        <p class="v2-project-client" ${bi(p.clientCourt, en.clientCourt)}>${esc(p.clientCourt)}</p>
+        <h3 class="v2-project-title" ${bi(p.titreCourt, en.titreCourt)}>${esc(p.titreCourt)}</h3>
+        <p class="v2-project-desc" ${bi(p.sousTitreCourt, en.sousTitreCourt)}>${esc(p.sousTitreCourt)}</p>
+      </a>`;
+    }).join('');
+  }
+
+  function renderAutres() {
+    const grid = document.getElementById('autres-grid');
+    if (!grid || typeof AUTRES_PROJETS === 'undefined') return;
+
+    // Compteur de l'accordéon, renseigné en bilingue pour applyLang()
+    const compteur = document.getElementById('autres-count');
+    if (compteur) {
+      const n = AUTRES_PROJETS.length;
+      compteur.dataset.fr = `${n} missions`;
+      compteur.dataset.en = `${n} projects`;
+      compteur.textContent = compteur.dataset.fr;
+    }
+
+    grid.innerHTML = AUTRES_PROJETS.map(a => {
+      const en = a.en || {};
+      const actions = a.actions.map((act, i) =>
+        `<li ${bi(act, (en.actions || [])[i])}>${esc(act)}</li>`).join('');
+      const tags = a.tags.map((tag, i) =>
+        `<span ${bi(tag, (en.tags || [])[i])}>${esc(tag)}</span>`).join('');
+      const visuel = a.image
+        ? `<img class="v2-autre-visuel" src="${esc(a.image)}" alt="" loading="lazy">`
+        : '';
+      return `<article class="v2-autre-card">
+        ${visuel}
+        <p class="v2-autre-client" ${bi(a.client, en.client)}>${esc(a.client)}</p>
+        <h4 class="v2-autre-titre" ${bi(a.titre, en.titre)}>${esc(a.titre)}</h4>
+        <p class="v2-autre-resume" ${bi(a.resume, en.resume)}>${esc(a.resume)}</p>
+        <ul class="v2-autre-actions">${actions}</ul>
+        <div class="v2-autre-tags">${tags}</div>
+      </article>`;
+    }).join('');
+  }
+
+  renderProjets();
+  renderAutres();
 
   // ── Langue ──────────────────────────────────────────────
   function applyLang(lang) {
