@@ -860,17 +860,24 @@ document.addEventListener('DOMContentLoaded', () => {
           img.zoom ? `--zoom:${img.zoom}` : '',
         ].filter(Boolean).join(';');
         const cadre = styles ? ` style="${styles}"` : '';
+
+        // Légende bilingue : `altEn` complète `alt`. Les attributs data-*
+        // permettent à applyLang() de la basculer sans re-rendre la galerie.
+        const legendeFr = img.alt || '';
+        const legendeEn = img.altEn || legendeFr;
+        const legende = lang === 'en' ? legendeEn : legendeFr;
+
         const visuel = img.frames
           ? `<div class="shot-anim">${img.frames.map((f, i) =>
-              `<img src="${f}" alt="${i === 0 ? (img.alt || '') : ''}"${i === 0 ? '' : ' aria-hidden="true"'}${dim} loading="lazy">`
+              `<img src="${f}" alt="${i === 0 ? legende : ''}"${i === 0 ? '' : ' aria-hidden="true"'}${dim} loading="lazy">`
             ).join('')}</div>`
-          : `<div class="shot-media"><img src="${img.src}" alt="${img.alt || ''}"${dim}${cadre} loading="lazy"></div>`;
+          : `<div class="shot-media"><img src="${img.src}" alt="${legende}"${dim}${cadre} loading="lazy"></div>`;
         // `span` fixe la largeur du visuel dans la grille ; `type: 'full'`
         // reste accepté pour les projets écrits avant l'ajout de `span`.
         const span = img.span || (img.type === 'full' ? 'full' : '');
         return `<figure class="shot${span ? ` shot--${span}` : ''}${img.ratio ? ' shot--cadre' : ''}${img.zoom ? ' shot--zoom' : ''}">
           ${visuel}
-          ${img.alt ? `<figcaption>${img.alt}</figcaption>` : ''}
+          ${legende ? `<figcaption data-fr="${legendeFr}" data-en="${legendeEn}">${legende}</figcaption>` : ''}
         </figure>`;
       }).join('');
 

@@ -46,7 +46,7 @@ const PROJETS = [
       // Les deux visuels paysage d'abord, puis la planche des écrans mobiles.
       {
         type: 'animated',
-        alt: 'Parcours de création de compte',
+        alt: 'Parcours de création de compte', altEn: 'Account creation journey',
         w: 918, h: 506,
         frames: [
           'Sources/projets/refonte%20parcours/animation/1.png',
@@ -55,13 +55,13 @@ const PROJETS = [
           'Sources/projets/refonte%20parcours/animation/4.png',
         ],
       },
-      { src: 'Sources/projets/refonte%20parcours/criteres.png', w: 899, h: 590, type: 'desktop', alt: 'Critères de qualification' },
-      { src: 'Sources/projets/refonte%20parcours/S6%20%E2%80%94%20Mon%20entreprise.png', w: 393, h: 1117, span: 'narrow', type: 'mobile', alt: 'Tableau de bord partenaire' },
-      { src: 'Sources/annexe-book/chabe-1.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Création de compte partenaire' },
-      { src: 'Sources/annexe-book/chabe-2.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Qualification — informations entreprise' },
-      { src: 'Sources/annexe-book/chabe-3.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Qualification — déclaration des véhicules' },
-      { src: 'Sources/annexe-book/chabe-4.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Fin de qualification et programmation des entretiens' },
-      { src: 'Sources/annexe-book/chabe-5.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Tableau de bord partenaire — suivi de la progression' },
+      { src: 'Sources/projets/refonte%20parcours/criteres.png', w: 899, h: 590, type: 'desktop', alt: 'Critères de qualification', altEn: 'Qualification criteria' },
+      { src: 'Sources/projets/refonte%20parcours/S6%20%E2%80%94%20Mon%20entreprise.png', w: 393, h: 1117, span: 'narrow', type: 'mobile', alt: 'Tableau de bord partenaire', altEn: 'Partner dashboard' },
+      { src: 'Sources/annexe-book/chabe-1.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Création de compte partenaire', altEn: 'Partner account creation' },
+      { src: 'Sources/annexe-book/chabe-2.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Qualification — informations entreprise', altEn: 'Qualification — company details' },
+      { src: 'Sources/annexe-book/chabe-3.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Qualification — déclaration des véhicules', altEn: 'Qualification — vehicle declaration' },
+      { src: 'Sources/annexe-book/chabe-4.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Fin de qualification et programmation des entretiens', altEn: 'End of qualification and interview scheduling' },
+      { src: 'Sources/annexe-book/chabe-5.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Tableau de bord partenaire — suivi de la progression', altEn: 'Partner dashboard — progress tracking' },
     ],
     en: {
       titreCourt: 'Journey redesign',
@@ -152,17 +152,17 @@ const PROJETS = [
       // présentés en planche de trois pour rester compacts.
       // Mockups en pleine largeur (sources haute définition), puis le parcours
       // complet de l'outil en planche de trois.
-      { src: 'Sources/annexe-book/sna-mockup-1.jpg', w: 2200, h: 1650, span: 'full', type: 'desktop', alt: 'L\'outil de diagnostic sur tablette' },
-      { src: 'Sources/annexe-book/sna-parcours.jpg', w: 893, h: 341, span: 'full', type: 'full', alt: 'Parcours cible : du diagnostic terrain à la tâche de réparation' },
-      { src: 'Sources/annexe-book/sna-mockup-2.jpg', w: 2200, h: 1466, span: 'full', type: 'desktop', alt: 'L\'outil en situation, en hangar' },
-      { src: 'Sources/annexe-book/sna-mockup-3.jpg', w: 2200, h: 1466, span: 'full', type: 'desktop', alt: 'Prise de vue du dommage par le technicien' },
-      { src: 'Sources/projets/aeronautique/Acceuil.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Accueil de l\'outil' },
-      { src: 'Sources/projets/aeronautique/Nouveau%20diagnostic.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Nouveau diagnostic — import et prise de photos' },
-      { src: 'Sources/projets/aeronautique/Plaque%20signal%C3%A9tique.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Lecture de la plaque signalétique de la pièce' },
-      { src: 'Sources/annexe-book/sna-ecran-resume.jpg', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Résumé des photographies et des données récupérées' },
-      { src: 'Sources/projets/aeronautique/Analyse%20de%20l\'IA.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Analyse du dommage par l\'IA' },
-      { src: 'Sources/annexe-book/sna-ecran-rapport.jpg', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Récapitulatif du damage report avant envoi' },
-      { src: 'Sources/projets/aeronautique/R%C3%A9sultat%20du%20diagnostic.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Résultat du diagnostic et tâche de réparation associée' },
+      { src: 'Sources/annexe-book/sna-mockup-1.jpg', w: 2200, h: 1650, span: 'full', type: 'desktop', alt: 'L\'outil de diagnostic sur tablette', altEn: 'The diagnostic tool on a tablet' },
+      { src: 'Sources/annexe-book/sna-parcours.jpg', w: 893, h: 341, span: 'full', type: 'full', alt: 'Parcours cible : du diagnostic terrain à la tâche de réparation', altEn: 'Target journey: from on-site diagnosis to the repair task' },
+      { src: 'Sources/annexe-book/sna-mockup-2.jpg', w: 2200, h: 1466, span: 'full', type: 'desktop', alt: 'L\'outil en situation, en hangar', altEn: 'The tool in use, in the hangar' },
+      { src: 'Sources/annexe-book/sna-mockup-3.jpg', w: 2200, h: 1466, span: 'full', type: 'desktop', alt: 'Prise de vue du dommage par le technicien', altEn: 'The technician photographing the damage' },
+      { src: 'Sources/projets/aeronautique/Acceuil.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Accueil de l\'outil', altEn: 'Tool home screen' },
+      { src: 'Sources/projets/aeronautique/Nouveau%20diagnostic.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Nouveau diagnostic — import et prise de photos', altEn: 'New diagnosis — importing and taking photos' },
+      { src: 'Sources/projets/aeronautique/Plaque%20signal%C3%A9tique.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Lecture de la plaque signalétique de la pièce', altEn: 'Reading the part nameplate' },
+      { src: 'Sources/annexe-book/sna-ecran-resume.jpg', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Résumé des photographies et des données récupérées', altEn: 'Summary of the photographs and data captured' },
+      { src: 'Sources/projets/aeronautique/Analyse%20de%20l\'IA.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Analyse du dommage par l\'IA', altEn: 'AI analysis of the damage' },
+      { src: 'Sources/annexe-book/sna-ecran-rapport.jpg', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Récapitulatif du damage report avant envoi', altEn: 'Damage report summary before sending' },
+      { src: 'Sources/projets/aeronautique/R%C3%A9sultat%20du%20diagnostic.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Résultat du diagnostic et tâche de réparation associée', altEn: 'Diagnosis result and matching repair task' },
     ],
     en: {
       titreCourt: 'Aeronautics & AI',
@@ -248,8 +248,8 @@ const PROJETS = [
       'Validation continue du client à chaque étape (cadrage, design, sprints)',
     ],
     images: [
-      { src: 'Sources/projets/simulateur%20financier/annexlabe%20simulation%201%201.png', w: 646, h: 420, type: 'desktop', alt: 'Liste des simulations' },
-      { src: 'Sources/projets/simulateur%20financier/annexlabe%20simulation%202%201.png', w: 647, h: 420, type: 'desktop', alt: 'Formulaire de simulation' },
+      { src: 'Sources/projets/simulateur%20financier/annexlabe%20simulation%201%201.png', w: 646, h: 420, type: 'desktop', alt: 'Liste des simulations', altEn: 'Simulation list' },
+      { src: 'Sources/projets/simulateur%20financier/annexlabe%20simulation%202%201.png', w: 647, h: 420, type: 'desktop', alt: 'Formulaire de simulation', altEn: 'Simulation form' },
     ],
     en: {
       titreCourt: 'Financial simulator',
@@ -339,11 +339,11 @@ const PROJETS = [
       'Cohérence visuelle assurée entre les différentes marques et outils de l\'écosystème',
     ],
     images: [
-      { src: 'Sources/projets/Design%20System/image%202.png', w: 1322, h: 209, span: 'full', type: 'full',    alt: 'Documentation couleurs & typographie' },
-      { src: 'Sources/projets/Design%20System/image%201.png', w: 522, h: 532, type: 'desktop', alt: 'Vue composants — Figma' },
-      { src: 'Sources/projets/Design%20System/image%203.png', w: 768, h: 532, type: 'desktop', alt: 'Panel variables — tokens de couleur' },
-      { src: 'Sources/annexe-book/covage-1.jpg', w: 402, h: 753, span: 'narrow', type: 'desktop', alt: 'Documentation d\'un composant — anatomie et usages' },
-      { src: 'Sources/annexe-book/covage-2.jpg', w: 415, h: 1080, span: 'narrow', type: 'desktop', alt: 'Guidelines : tailles, états et cas d\'usage' },
+      { src: 'Sources/projets/Design%20System/image%202.png', w: 1322, h: 209, span: 'full', type: 'full',    alt: 'Documentation couleurs & typographie', altEn: 'Colour & typography documentation' },
+      { src: 'Sources/projets/Design%20System/image%201.png', w: 522, h: 532, type: 'desktop', alt: 'Vue composants — Figma', altEn: 'Component view — Figma' },
+      { src: 'Sources/projets/Design%20System/image%203.png', w: 768, h: 532, type: 'desktop', alt: 'Panel variables — tokens de couleur', altEn: 'Variables panel — colour tokens' },
+      { src: 'Sources/annexe-book/covage-1.jpg', w: 402, h: 753, span: 'narrow', type: 'desktop', alt: 'Documentation d\'un composant — anatomie et usages', altEn: 'Component documentation — anatomy and usage' },
+      { src: 'Sources/annexe-book/covage-2.jpg', w: 415, h: 1080, span: 'narrow', type: 'desktop', alt: 'Guidelines : tailles, états et cas d\'usage', altEn: 'Guidelines: sizes, states and use cases' },
     ],
     en: {
       titreCourt: 'Design System',
@@ -424,11 +424,11 @@ const PROJETS = [
     resultats: [],
     images: [
       // Le mockup ouvre la galerie sur toute la largeur, les photos d'atelier suivent.
-      { src: 'Sources/annexe-book/edc-hero.jpg', w: 1800, h: 1350, span: 'full', type: 'desktop', alt: 'Écran de saisie d\'un prêt' },
-      { src: 'Sources/annexe-book/edc-atelier-1.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Atelier de cadrage — co-construction des parcours au mur' },
-      { src: 'Sources/annexe-book/edc-atelier-2.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Types, informations, états et événements posés en atelier' },
-      { src: 'Sources/annexe-book/edc-atelier-3.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Le « bâton de parole » de l\'atelier' },
-      { src: 'Sources/annexe-book/edc-atelier-4.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Table de travail pendant l\'atelier de cadrage' },
+      { src: 'Sources/annexe-book/edc-hero.jpg', w: 1800, h: 1350, span: 'full', type: 'desktop', alt: 'Écran de saisie d\'un prêt', altEn: 'Loan entry screen' },
+      { src: 'Sources/annexe-book/edc-atelier-1.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Atelier de cadrage — co-construction des parcours au mur', altEn: 'Scoping workshop — co-building the journeys on the wall' },
+      { src: 'Sources/annexe-book/edc-atelier-2.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Types, informations, états et événements posés en atelier', altEn: 'Types, data, statuses and events mapped in the workshop' },
+      { src: 'Sources/annexe-book/edc-atelier-3.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Le « bâton de parole » de l\'atelier', altEn: 'The workshop \u201Ctalking stick\u201D' },
+      { src: 'Sources/annexe-book/edc-atelier-4.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Table de travail pendant l\'atelier de cadrage', altEn: 'The working table during the scoping workshop' },
     ],
     en: {
       titreCourt: 'Migration & redesign',
@@ -491,10 +491,10 @@ const PROJETS = [
     images: [
       // afm-multiscreen.jpg sert de vignette et de bandeau (champs `thumb` et
       // `banner`) : volontairement absente de la galerie pour ne pas la répéter.
-      { src: 'Sources/annexe/afm-hero.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Écrans de l\'application mobile' },
-      { src: 'Sources/annexe/afm-1.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Parcours d\'accompagnement' },
-      { src: 'Sources/annexe/afm-2.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Agent conversationnel' },
-      { src: 'Sources/annexe/afm-3.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Écrans de contenu' },
+      { src: 'Sources/annexe/afm-hero.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Écrans de l\'application mobile', altEn: 'Mobile app screens' },
+      { src: 'Sources/annexe/afm-1.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Parcours d\'accompagnement', altEn: 'Support journey' },
+      { src: 'Sources/annexe/afm-2.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Agent conversationnel', altEn: 'Conversational agent' },
+      { src: 'Sources/annexe/afm-3.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Écrans de contenu', altEn: 'Content screens' },
     ],
     en: {
       titreCourt: 'Family portal & LLM',
@@ -550,9 +550,9 @@ const PROJETS = [
     defis: [],
     resultats: [],
     images: [
-      { src: 'Sources/annexe-book/per-inter-hero.jpg', w: 943, h: 1082, type: 'desktop', alt: 'Écrans du CRM' },
-      { src: 'Sources/annexe-book/per-inter-1.jpg', w: 685, h: 317, span: 'full', type: 'desktop', alt: 'Service Blueprint' },
-      { src: 'Sources/annexe-book/per-inter-2.jpg', w: 684, h: 243, span: 'full', type: 'desktop', alt: 'Atelier persona' },
+      { src: 'Sources/annexe-book/per-inter-hero.jpg', w: 943, h: 1082, type: 'desktop', alt: 'Écrans du CRM', altEn: 'CRM screens' },
+      { src: 'Sources/annexe-book/per-inter-1.jpg', w: 685, h: 317, span: 'full', type: 'desktop', alt: 'Service Blueprint', altEn: 'Service Blueprint' },
+      { src: 'Sources/annexe-book/per-inter-2.jpg', w: 684, h: 243, span: 'full', type: 'desktop', alt: 'Atelier persona', altEn: 'Persona workshop' },
     ],
     en: {
       titreCourt: 'CRM redesign',
@@ -606,8 +606,8 @@ const PROJETS = [
     defis: [],
     resultats: [],
     images: [
-      { src: 'Sources/annexe/sdmis-hero.jpg', w: 1800, h: 1200, type: 'mobile', alt: 'Écrans de l\'application' },
-      { src: 'Sources/annexe/sdmis-1.jpg', w: 1800, h: 1200, type: 'mobile', alt: 'Fil d\'actualités' },
+      { src: 'Sources/annexe/sdmis-hero.jpg', w: 1800, h: 1200, type: 'mobile', alt: 'Écrans de l\'application', altEn: 'App screens' },
+      { src: 'Sources/annexe/sdmis-1.jpg', w: 1800, h: 1200, type: 'mobile', alt: 'Fil d\'actualités', altEn: 'News feed' },
     ],
     en: {
       titreCourt: 'No-desk app',
@@ -665,13 +665,13 @@ const PROJETS = [
     resultats: [],
     images: [
       // Les deux tablettes partagent le même format pour s'aligner en hauteur.
-      { src: 'Sources/annexe-book/eurexo-ipad-1.jpg', w: 1800, h: 1721, ratio: '4 / 3', type: 'desktop', alt: 'L\'espace assurés sur tablette' },
-      { src: 'Sources/annexe-book/eurexo-mobile.jpg', w: 1800, h: 1200, type: 'full', alt: 'Le parcours mobile-first : suivi de dossier, prise de rendez-vous et messagerie' },
-      { src: 'Sources/annexe-book/eurexo-ipad-2.jpg', w: 1800, h: 1350, ratio: '4 / 3', type: 'desktop', alt: 'Tableau de bord du dossier de sinistre' },
+      { src: 'Sources/annexe-book/eurexo-ipad-1.jpg', w: 1800, h: 1721, ratio: '4 / 3', type: 'desktop', alt: 'L\'espace assurés sur tablette', altEn: 'The policyholder area on a tablet' },
+      { src: 'Sources/annexe-book/eurexo-mobile.jpg', w: 1800, h: 1200, type: 'full', alt: 'Le parcours mobile-first : suivi de dossier, prise de rendez-vous et messagerie', altEn: 'The mobile-first journey: claim tracking, appointment booking and messaging' },
+      { src: 'Sources/annexe-book/eurexo-ipad-2.jpg', w: 1800, h: 1350, ratio: '4 / 3', type: 'desktop', alt: 'Tableau de bord du dossier de sinistre', altEn: 'Claim dashboard' },
       // eurexo-1.jpg et eurexo-2.jpg retirés : doublons exacts de
       // eurexo-ipad-1 et eurexo-ipad-2, en moins bonne qualité.
       // Le mockup ordinateur ferme la galerie, sur toute la largeur.
-      { src: 'Sources/annexe-book/eurexo-laptop.jpg', w: 1800, h: 1215, span: 'full', zoom: 1.2, type: 'desktop', alt: 'La même interface sur ordinateur' },
+      { src: 'Sources/annexe-book/eurexo-laptop.jpg', w: 1800, h: 1215, span: 'full', zoom: 1.2, type: 'desktop', alt: 'La même interface sur ordinateur', altEn: 'The same interface on desktop' },
     ],
     en: {
       titreCourt: 'Policyholder area',
