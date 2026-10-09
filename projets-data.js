@@ -2,6 +2,7 @@ const PROJETS = [
   {
     id: 1,
     num: '01',
+    categorie: 'metier',
     thumb: 'Sources/projets/transport luxe/Frame 35422729.png',
     titreCourt: 'Refonte d\'un parcours',
     sousTitreCourt: 'Optimisation du recrutement de partenaires pour une entreprise de transport de luxe',
@@ -57,11 +58,11 @@ const PROJETS = [
       },
       { src: 'Sources/projets/refonte%20parcours/criteres.png', w: 899, h: 590, type: 'desktop', alt: 'Critères de qualification', altEn: 'Qualification criteria' },
       { src: 'Sources/projets/refonte%20parcours/S6%20%E2%80%94%20Mon%20entreprise.png', w: 393, h: 1117, span: 'narrow', type: 'mobile', alt: 'Tableau de bord partenaire', altEn: 'Partner dashboard' },
-      { src: 'Sources/annexe-book/chabe-1.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Création de compte partenaire', altEn: 'Partner account creation' },
-      { src: 'Sources/annexe-book/chabe-2.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Qualification — informations entreprise', altEn: 'Qualification — company details' },
-      { src: 'Sources/annexe-book/chabe-3.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Qualification — déclaration des véhicules', altEn: 'Qualification — vehicle declaration' },
-      { src: 'Sources/annexe-book/chabe-4.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Fin de qualification et programmation des entretiens', altEn: 'End of qualification and interview scheduling' },
-      { src: 'Sources/annexe-book/chabe-5.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Tableau de bord partenaire — suivi de la progression', altEn: 'Partner dashboard — progress tracking' },
+      { src: 'Sources/annexe-book/projet-01-1.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Création de compte partenaire', altEn: 'Partner account creation' },
+      { src: 'Sources/annexe-book/projet-01-2.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Qualification — informations entreprise', altEn: 'Qualification — company details' },
+      { src: 'Sources/annexe-book/projet-01-3.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Qualification — déclaration des véhicules', altEn: 'Qualification — vehicle declaration' },
+      { src: 'Sources/annexe-book/projet-01-4.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Fin de qualification et programmation des entretiens', altEn: 'End of qualification and interview scheduling' },
+      { src: 'Sources/annexe-book/projet-01-5.jpg', w: 402, h: 874, span: 'narrow', type: 'mobile', alt: 'Tableau de bord partenaire — suivi de la progression', altEn: 'Partner dashboard — progress tracking' },
     ],
     en: {
       titreCourt: 'Journey redesign',
@@ -103,6 +104,7 @@ const PROJETS = [
   {
     id: 2,
     num: '02',
+    categorie: 'fondations',
     thumb: 'Sources/preview aéronautic.png',
     titreCourt: 'Aéronautique & IA',
     sousTitreCourt: 'Aider les compagnies aériennes à diagnostiquer et réparer leurs pièces plus rapidement grâce à l\'IA',
@@ -152,16 +154,16 @@ const PROJETS = [
       // présentés en planche de trois pour rester compacts.
       // Mockups en pleine largeur (sources haute définition), puis le parcours
       // complet de l'outil en planche de trois.
-      { src: 'Sources/annexe-book/sna-mockup-1.jpg', w: 2200, h: 1650, span: 'full', type: 'desktop', alt: 'L\'outil de diagnostic sur tablette', altEn: 'The diagnostic tool on a tablet' },
-      { src: 'Sources/annexe-book/sna-parcours.jpg', w: 893, h: 341, span: 'full', type: 'full', alt: 'Parcours cible : du diagnostic terrain à la tâche de réparation', altEn: 'Target journey: from on-site diagnosis to the repair task' },
-      { src: 'Sources/annexe-book/sna-mockup-2.jpg', w: 2200, h: 1466, span: 'full', type: 'desktop', alt: 'L\'outil en situation, en hangar', altEn: 'The tool in use, in the hangar' },
-      { src: 'Sources/annexe-book/sna-mockup-3.jpg', w: 2200, h: 1466, span: 'full', type: 'desktop', alt: 'Prise de vue du dommage par le technicien', altEn: 'The technician photographing the damage' },
+      { src: 'Sources/annexe-book/projet-02-mockup-1.jpg', w: 2200, h: 1650, span: 'full', type: 'desktop', alt: 'L\'outil de diagnostic sur tablette', altEn: 'The diagnostic tool on a tablet' },
+      { src: 'Sources/annexe-book/projet-02-parcours.jpg', w: 893, h: 341, span: 'full', type: 'full', alt: 'Parcours cible : du diagnostic terrain à la tâche de réparation', altEn: 'Target journey: from on-site diagnosis to the repair task' },
+      { src: 'Sources/annexe-book/projet-02-mockup-2.jpg', w: 2200, h: 1466, span: 'full', type: 'desktop', alt: 'L\'outil en situation, en hangar', altEn: 'The tool in use, in the hangar' },
+      { src: 'Sources/annexe-book/projet-02-mockup-3.jpg', w: 2200, h: 1466, span: 'full', type: 'desktop', alt: 'Prise de vue du dommage par le technicien', altEn: 'The technician photographing the damage' },
       { src: 'Sources/projets/aeronautique/Acceuil.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Accueil de l\'outil', altEn: 'Tool home screen' },
       { src: 'Sources/projets/aeronautique/Nouveau%20diagnostic.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Nouveau diagnostic — import et prise de photos', altEn: 'New diagnosis — importing and taking photos' },
       { src: 'Sources/projets/aeronautique/Plaque%20signal%C3%A9tique.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Lecture de la plaque signalétique de la pièce', altEn: 'Reading the part nameplate' },
-      { src: 'Sources/annexe-book/sna-ecran-resume.jpg', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Résumé des photographies et des données récupérées', altEn: 'Summary of the photographs and data captured' },
+      { src: 'Sources/annexe-book/projet-02-ecran-resume.jpg', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Résumé des photographies et des données récupérées', altEn: 'Summary of the photographs and data captured' },
       { src: 'Sources/projets/aeronautique/Analyse%20de%20l\'IA.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Analyse du dommage par l\'IA', altEn: 'AI analysis of the damage' },
-      { src: 'Sources/annexe-book/sna-ecran-rapport.jpg', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Récapitulatif du damage report avant envoi', altEn: 'Damage report summary before sending' },
+      { src: 'Sources/annexe-book/projet-02-ecran-rapport.jpg', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Récapitulatif du damage report avant envoi', altEn: 'Damage report summary before sending' },
       { src: 'Sources/projets/aeronautique/R%C3%A9sultat%20du%20diagnostic.png', w: 1171, h: 782, span: 'third', type: 'desktop', alt: 'Résultat du diagnostic et tâche de réparation associée', altEn: 'Diagnosis result and matching repair task' },
     ],
     en: {
@@ -208,6 +210,7 @@ const PROJETS = [
   {
     id: 3,
     num: '03',
+    categorie: 'metier',
     thumb: 'Sources/preview simulateur.png',
     titreCourt: 'Simulateur financier',
     sousTitreCourt: 'Conception du MVP d\'un simulateur financier pour des projets de recherche, après une réponse d\'appel d\'offre',
@@ -221,7 +224,7 @@ const PROJETS = [
     ],
     titre: 'Plateforme de simulation financière pour projets de recherche',
     sousTitre: 'Conception du MVP suite au gain de l\'appel d\'offre',
-    client: 'SATT (Société d\'Accélération du Transfert de Technologies)',
+    client: 'Structure de valorisation de la recherche',
     annee: '2025 — 2026',
     type: 'Conception et développement d\'un MVP — plateforme web métier multi-utilisateurs',
     role: 'Product Designer (UX Research, UI Design, collaboration tech & PO)',
@@ -230,7 +233,7 @@ const PROJETS = [
     outils: ['Figma', 'Mural'],
     statut: 'Confidentiel',
     competences: ['UX Research', 'Design System', 'Conception métier', 'Accompagnement PO', 'Collaboration Agile', 'Adaptation multi-profils utilisateurs'],
-    contexte: 'La SATT porte une plateforme destinée à faciliter la conduite de projets de recherche partagés entre entreprises et universités. L\'enjeu : adresser des profils utilisateurs très hétérogènes — scientifiques et chercheurs expérimentés, services de financement en charge des décisions, mais aussi utilisateurs moins familiers du sujet. La plateforme doit donc proposer un outil expert pour les profils aguerris et rester accessible à des utilisateurs novices en matière de financement public ou privé.',
+    contexte: 'Une structure de valorisation de la recherche porte une plateforme destinée à faciliter la conduite de projets de recherche partagés entre entreprises et universités. L\'enjeu : adresser des profils utilisateurs très hétérogènes — scientifiques et chercheurs expérimentés, services de financement en charge des décisions, mais aussi utilisateurs moins familiers du sujet. La plateforme doit donc proposer un outil expert pour les profils aguerris et rester accessible à des utilisateurs novices en matière de financement public ou privé.',
     demarche: [
       { titre: 'Cadrage', desc: 'Réalisé pendant la phase d\'appel d\'offre via plusieurs échanges avec le client, permettant d\'affiner sa vision et d\'identifier les enjeux clés du MVP.' },
       { titre: 'Recherche utilisateur', desc: '1 interview par typologie d\'utilisateur, ayant permis de corriger plusieurs flows définis dans le CDC qui ne reflétaient pas la réalité terrain.' },
@@ -248,8 +251,8 @@ const PROJETS = [
       'Validation continue du client à chaque étape (cadrage, design, sprints)',
     ],
     images: [
-      { src: 'Sources/projets/simulateur%20financier/annexlabe%20simulation%201%201.png', w: 646, h: 420, type: 'desktop', alt: 'Liste des simulations', altEn: 'Simulation list' },
-      { src: 'Sources/projets/simulateur%20financier/annexlabe%20simulation%202%201.png', w: 647, h: 420, type: 'desktop', alt: 'Formulaire de simulation', altEn: 'Simulation form' },
+      { src: 'Sources/projets/simulateur%20financier/simulation-1.png', w: 646, h: 420, type: 'desktop', alt: 'Liste des simulations', altEn: 'Simulation list' },
+      { src: 'Sources/projets/simulateur%20financier/simulation-2.png', w: 647, h: 420, type: 'desktop', alt: 'Formulaire de simulation', altEn: 'Simulation form' },
     ],
     en: {
       titreCourt: 'Financial simulator',
@@ -261,7 +264,7 @@ const PROJETS = [
       role: 'Product Designer (UX Research, UI Design, tech & PO collaboration)',
       dureeCourte: '6 months',
       statut: 'Confidential',
-      contexte: 'The SATT supports a platform designed to facilitate the management of shared research projects between companies and universities. The challenge: addressing very diverse user profiles — experienced scientists and researchers, finance teams in charge of decisions, and users less familiar with the subject. The platform must therefore offer an expert tool for experienced profiles while remaining accessible to users unfamiliar with public or private funding.',
+      contexte: 'A research commercialisation body supports a platform designed to facilitate the management of shared research projects between companies and universities. The challenge: addressing very diverse user profiles — experienced scientists and researchers, finance teams in charge of decisions, and users less familiar with the subject. The platform must therefore offer an expert tool for experienced profiles while remaining accessible to users unfamiliar with public or private funding.',
       demarche: [
         { titre: 'Scoping', desc: 'Conducted during the RFP phase through several exchanges with the client, refining their vision and identifying key MVP challenges.' },
         { titre: 'User research', desc: '1 interview per user type, which corrected several flows defined in the specifications that did not reflect field reality.' },
@@ -290,6 +293,7 @@ const PROJETS = [
   {
     id: 4,
     num: '04',
+    categorie: 'fondations',
     thumb: 'Sources/preview design system.png',
     titreCourt: 'Design System',
     sousTitreCourt: 'Création from scratch du design system d\'une entreprise multi-marque',
@@ -342,8 +346,8 @@ const PROJETS = [
       { src: 'Sources/projets/Design%20System/image%202.png', w: 1322, h: 209, span: 'full', type: 'full',    alt: 'Documentation couleurs & typographie', altEn: 'Colour & typography documentation' },
       { src: 'Sources/projets/Design%20System/image%201.png', w: 522, h: 532, type: 'desktop', alt: 'Vue composants — Figma', altEn: 'Component view — Figma' },
       { src: 'Sources/projets/Design%20System/image%203.png', w: 768, h: 532, type: 'desktop', alt: 'Panel variables — tokens de couleur', altEn: 'Variables panel — colour tokens' },
-      { src: 'Sources/annexe-book/covage-1.jpg', w: 402, h: 753, span: 'narrow', type: 'desktop', alt: 'Documentation d\'un composant — anatomie et usages', altEn: 'Component documentation — anatomy and usage' },
-      { src: 'Sources/annexe-book/covage-2.jpg', w: 415, h: 1080, span: 'narrow', type: 'desktop', alt: 'Guidelines : tailles, états et cas d\'usage', altEn: 'Guidelines: sizes, states and use cases' },
+      { src: 'Sources/annexe-book/projet-04-1.jpg', w: 402, h: 753, span: 'narrow', type: 'desktop', alt: 'Documentation d\'un composant — anatomie et usages', altEn: 'Component documentation — anatomy and usage' },
+      { src: 'Sources/annexe-book/projet-04-2.jpg', w: 415, h: 1080, span: 'narrow', type: 'desktop', alt: 'Guidelines : tailles, états et cas d\'usage', altEn: 'Guidelines: sizes, states and use cases' },
     ],
     en: {
       titreCourt: 'Design System',
@@ -393,7 +397,8 @@ const PROJETS = [
   {
     id: 5,
     num: '05',
-    thumb: 'Sources/annexe-book/edc-hero.jpg',
+    categorie: 'metier',
+    thumb: 'Sources/annexe-book/projet-05-hero.jpg',
     titreCourt: 'Migration & refonte',
     sousTitreCourt: 'Refonte ergonomique d\'un logiciel métier de gestion des cautionnements',
     clientCourt: 'Acteur du cautionnement financier',
@@ -424,11 +429,11 @@ const PROJETS = [
     resultats: [],
     images: [
       // Le mockup ouvre la galerie sur toute la largeur, les photos d'atelier suivent.
-      { src: 'Sources/annexe-book/edc-hero.jpg', w: 1800, h: 1350, span: 'full', type: 'desktop', alt: 'Écran de saisie d\'un prêt', altEn: 'Loan entry screen' },
-      { src: 'Sources/annexe-book/edc-atelier-1.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Atelier de cadrage — co-construction des parcours au mur', altEn: 'Scoping workshop — co-building the journeys on the wall' },
-      { src: 'Sources/annexe-book/edc-atelier-2.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Types, informations, états et événements posés en atelier', altEn: 'Types, data, statuses and events mapped in the workshop' },
-      { src: 'Sources/annexe-book/edc-atelier-3.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Le « bâton de parole » de l\'atelier', altEn: 'The workshop \u201Ctalking stick\u201D' },
-      { src: 'Sources/annexe-book/edc-atelier-4.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Table de travail pendant l\'atelier de cadrage', altEn: 'The working table during the scoping workshop' },
+      { src: 'Sources/annexe-book/projet-05-hero.jpg', w: 1800, h: 1350, span: 'full', type: 'desktop', alt: 'Écran de saisie d\'un prêt', altEn: 'Loan entry screen' },
+      { src: 'Sources/annexe-book/projet-05-atelier-1.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Atelier de cadrage — co-construction des parcours au mur', altEn: 'Scoping workshop — co-building the journeys on the wall' },
+      { src: 'Sources/annexe-book/projet-05-atelier-2.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Types, informations, états et événements posés en atelier', altEn: 'Types, data, statuses and events mapped in the workshop' },
+      { src: 'Sources/annexe-book/projet-05-atelier-3.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Le « bâton de parole » de l\'atelier', altEn: 'The workshop \u201Ctalking stick\u201D' },
+      { src: 'Sources/annexe-book/projet-05-atelier-4.jpg', w: 1134, h: 2016, span: 'narrow', type: 'mobile', alt: 'Table de travail pendant l\'atelier de cadrage', altEn: 'The working table during the scoping workshop' },
     ],
     en: {
       titreCourt: 'Migration & redesign',
@@ -459,8 +464,9 @@ const PROJETS = [
   {
     id: 6,
     num: '06',
-    thumb: 'Sources/annexe-book/afm-multiscreen.jpg',
-    banner: 'Sources/annexe-book/afm-multiscreen.jpg',
+    categorie: 'clients',
+    thumb: 'Sources/annexe-book/projet-06-multiscreen.jpg',
+    banner: 'Sources/annexe-book/projet-06-multiscreen.jpg',
     titreCourt: 'Portail familles & LLM',
     sousTitreCourt: 'Accompagner les familles dans le parcours d\'acquisition d\'un fauteuil roulant',
     clientCourt: 'Association nationale de santé',
@@ -489,12 +495,12 @@ const PROJETS = [
     resultats: [],
     enjeux: 'L\'enjeu majeur portait sur la perception de l\'application par des utilisateurs se trouvant dans des situations complexes : le ton, les couleurs et le rythme du parcours ne pouvaient pas être ceux d\'un produit standard. S\'y ajoutait l\'intégration d\'un LLM fourni par un prestataire, à faire tenir dans un parcours entièrement conforme au RGAA.',
     images: [
-      // afm-multiscreen.jpg sert de vignette et de bandeau (champs `thumb` et
+      // projet-06-multiscreen.jpg sert de vignette et de bandeau (champs `thumb` et
       // `banner`) : volontairement absente de la galerie pour ne pas la répéter.
-      { src: 'Sources/annexe/afm-hero.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Écrans de l\'application mobile', altEn: 'Mobile app screens' },
-      { src: 'Sources/annexe/afm-1.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Parcours d\'accompagnement', altEn: 'Support journey' },
-      { src: 'Sources/annexe/afm-2.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Agent conversationnel', altEn: 'Conversational agent' },
-      { src: 'Sources/annexe/afm-3.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Écrans de contenu', altEn: 'Content screens' },
+      { src: 'Sources/annexe/projet-06-hero.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Écrans de l\'application mobile', altEn: 'Mobile app screens' },
+      { src: 'Sources/annexe/projet-06-1.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Parcours d\'accompagnement', altEn: 'Support journey' },
+      { src: 'Sources/annexe/projet-06-2.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Agent conversationnel', altEn: 'Conversational agent' },
+      { src: 'Sources/annexe/projet-06-3.jpg', w: 1800, h: 1350, type: 'mobile', alt: 'Écrans de contenu', altEn: 'Content screens' },
     ],
     en: {
       titreCourt: 'Family portal & LLM',
@@ -524,7 +530,8 @@ const PROJETS = [
   {
     id: 7,
     num: '07',
-    thumb: 'Sources/annexe-book/per-inter-hero.jpg',
+    categorie: 'metier',
+    thumb: 'Sources/annexe-book/projet-07-hero.jpg',
     titreCourt: 'Refonte CRM',
     sousTitreCourt: 'Concevoir un CRM sur-mesure pour remplacer un outil de gestion coûteux et surdimensionné',
     clientCourt: 'Grossiste en produits alimentaires',
@@ -550,9 +557,9 @@ const PROJETS = [
     defis: [],
     resultats: [],
     images: [
-      { src: 'Sources/annexe-book/per-inter-hero.jpg', w: 943, h: 1082, type: 'desktop', alt: 'Écrans du CRM', altEn: 'CRM screens' },
-      { src: 'Sources/annexe-book/per-inter-1.jpg', w: 685, h: 317, span: 'full', type: 'desktop', alt: 'Service Blueprint', altEn: 'Service Blueprint' },
-      { src: 'Sources/annexe-book/per-inter-2.jpg', w: 684, h: 243, span: 'full', type: 'desktop', alt: 'Atelier persona', altEn: 'Persona workshop' },
+      { src: 'Sources/annexe-book/projet-07-hero.jpg', w: 943, h: 1082, type: 'desktop', alt: 'Écrans du CRM', altEn: 'CRM screens' },
+      { src: 'Sources/annexe-book/projet-07-1.jpg', w: 685, h: 317, span: 'full', type: 'desktop', alt: 'Service Blueprint', altEn: 'Service Blueprint' },
+      { src: 'Sources/annexe-book/projet-07-2.jpg', w: 684, h: 243, span: 'full', type: 'desktop', alt: 'Atelier persona', altEn: 'Persona workshop' },
     ],
     en: {
       titreCourt: 'CRM redesign',
@@ -579,7 +586,8 @@ const PROJETS = [
   {
     id: 8,
     num: '08',
-    thumb: 'Sources/annexe/sdmis-hero.jpg',
+    categorie: 'clients',
+    thumb: 'Sources/annexe/projet-08-hero.jpg',
     titreCourt: 'Application no-desk',
     sousTitreCourt: 'Diffuser l\'information à plus de 5 000 sapeurs-pompiers volontaires sans poste de travail',
     clientCourt: 'Service départemental d\'incendie et de secours',
@@ -606,8 +614,8 @@ const PROJETS = [
     defis: [],
     resultats: [],
     images: [
-      { src: 'Sources/annexe/sdmis-hero.jpg', w: 1800, h: 1200, type: 'mobile', alt: 'Écrans de l\'application', altEn: 'App screens' },
-      { src: 'Sources/annexe/sdmis-1.jpg', w: 1800, h: 1200, type: 'mobile', alt: 'Fil d\'actualités', altEn: 'News feed' },
+      { src: 'Sources/annexe/projet-08-hero.jpg', w: 1800, h: 1200, type: 'mobile', alt: 'Écrans de l\'application', altEn: 'App screens' },
+      { src: 'Sources/annexe/projet-08-1.jpg', w: 1800, h: 1200, type: 'mobile', alt: 'Fil d\'actualités', altEn: 'News feed' },
     ],
     en: {
       titreCourt: 'No-desk app',
@@ -635,8 +643,9 @@ const PROJETS = [
   {
     id: 9,
     num: '09',
-    thumb: 'Sources/annexe-book/eurexo-ipad-1.jpg',
-    banner: 'Sources/annexe-book/eurexo-mobile.jpg',
+    categorie: 'clients',
+    thumb: 'Sources/annexe-book/projet-09-mobile.jpg',  // même visuel que le bandeau de la page détail
+    banner: 'Sources/annexe-book/projet-09-mobile.jpg',
     titreCourt: 'Espace assurés',
     sousTitreCourt: 'Donner aux assurés l\'autonomie sur le suivi de leur dossier de sinistre',
     clientCourt: 'Acteur de l\'expertise sinistre en assurance',
@@ -665,13 +674,13 @@ const PROJETS = [
     resultats: [],
     images: [
       // Les deux tablettes partagent le même format pour s'aligner en hauteur.
-      { src: 'Sources/annexe-book/eurexo-ipad-1.jpg', w: 1800, h: 1721, ratio: '4 / 3', type: 'desktop', alt: 'L\'espace assurés sur tablette', altEn: 'The policyholder area on a tablet' },
-      { src: 'Sources/annexe-book/eurexo-mobile.jpg', w: 1800, h: 1200, type: 'full', alt: 'Le parcours mobile-first : suivi de dossier, prise de rendez-vous et messagerie', altEn: 'The mobile-first journey: claim tracking, appointment booking and messaging' },
-      { src: 'Sources/annexe-book/eurexo-ipad-2.jpg', w: 1800, h: 1350, ratio: '4 / 3', type: 'desktop', alt: 'Tableau de bord du dossier de sinistre', altEn: 'Claim dashboard' },
-      // eurexo-1.jpg et eurexo-2.jpg retirés : doublons exacts de
-      // eurexo-ipad-1 et eurexo-ipad-2, en moins bonne qualité.
+      { src: 'Sources/annexe-book/projet-09-ipad-1.jpg', w: 1800, h: 1721, ratio: '4 / 3', type: 'desktop', alt: 'L\'espace assurés sur tablette', altEn: 'The policyholder area on a tablet' },
+      { src: 'Sources/annexe-book/projet-09-mobile.jpg', w: 1800, h: 1200, type: 'full', alt: 'Le parcours mobile-first : suivi de dossier, prise de rendez-vous et messagerie', altEn: 'The mobile-first journey: claim tracking, appointment booking and messaging' },
+      { src: 'Sources/annexe-book/projet-09-ipad-2.jpg', w: 1800, h: 1350, ratio: '4 / 3', type: 'desktop', alt: 'Tableau de bord du dossier de sinistre', altEn: 'Claim dashboard' },
+      // Deux anciens visuels retirés : doublons exacts de
+      // projet-09-ipad-1 et projet-09-ipad-2, en moins bonne qualité.
       // Le mockup ordinateur ferme la galerie, sur toute la largeur.
-      { src: 'Sources/annexe-book/eurexo-laptop.jpg', w: 1800, h: 1215, span: 'full', zoom: 1.2, type: 'desktop', alt: 'La même interface sur ordinateur', altEn: 'The same interface on desktop' },
+      { src: 'Sources/annexe-book/projet-09-laptop.jpg', w: 1800, h: 1215, span: 'full', zoom: 1.2, type: 'desktop', alt: 'La même interface sur ordinateur', altEn: 'The same interface on desktop' },
     ],
     en: {
       titreCourt: 'Policyholder area',
@@ -704,8 +713,8 @@ const PROJETS = [
    ══════════════════════════════════════════════════════════════════════ */
 const AUTRES_PROJETS = [
   {
-    id: 'odaia',
-    image: 'Sources/annexe-book/autre-odaia.jpg',
+    id: 'recyclage',
+    image: 'Sources/annexe-book/autre-recyclage.jpg',
     titre: 'Outil de détection assisté par IA',
     client: 'Éco-organisme du recyclage d\'électroménager',
     resume: 'Proposer aux opérateurs de tri un outil de détection assisté par intelligence artificielle, de la réponse à l\'appel d\'offres jusqu\'à l\'approbation des écrans en développement.',
@@ -734,8 +743,8 @@ const AUTRES_PROJETS = [
     },
   },
   {
-    id: 'sergic',
-    image: 'Sources/annexe-book/autre-sergic.jpg',
+    id: 'immobilier',
+    image: 'Sources/annexe-book/autre-immobilier.jpg',
     titre: 'Refonte d\'une application copropriétaires & locataires',
     client: 'Groupe de services immobiliers',
     resume: 'Refonte complète d\'une application destinée aux copropriétaires et aux locataires, sur toute la chaîne de valeur de la gestion immobilière.',
@@ -821,4 +830,20 @@ const AUTRES_PROJETS = [
       tags: ['UX research', 'Co-design', 'Figma', 'Phased design', 'Finance'],
     },
   },
+];
+
+/* Sélection (non exhaustive) de clients accompagnés chez Blue Soft, plus la Société
+   Générale (alternance M1, pas un client Blue Soft : d'où les libellés « Ils m'ont fait
+   confiance » plutôt que « clients Blue Soft »). Bandeau du site (sous le hero) et
+   diapositive 02 du book. Logos en blanc, détourés à ras : Sources/clients/.
+   `ratio` = largeur / hauteur du fichier, sert à égaliser le poids visuel.
+   Ces noms ne doivent apparaître qu'ici : les projets restent anonymisés. */
+const CLIENTS = [
+  { nom: 'Société Générale', logo: 'Sources/clients/societe-generale.png', ratio: 5.11, secteur: 'Banque', secteurEn: 'Banking' },
+  { nom: 'Safran',       logo: 'Sources/clients/safran.png',       ratio: 4.76, secteur: 'Aéronautique',        secteurEn: 'Aerospace' },
+  { nom: 'Intersport',   logo: 'Sources/clients/intersport.png',   ratio: 9.36, secteur: 'Retail sport',        secteurEn: 'Sports retail' },
+  { nom: 'AFM-Téléthon', logo: 'Sources/clients/afm-telethon.png', ratio: 4.67, secteur: 'Santé · associatif',  secteurEn: 'Health · non-profit' },
+  { nom: 'Saur',         logo: 'Sources/clients/saur.png',         ratio: 0.78, secteur: 'Eau · environnement', secteurEn: 'Water · environment' },
+  { nom: 'Covage',       logo: 'Sources/clients/covage.png',       ratio: 2.57, secteur: 'Télécoms · fibre',    secteurEn: 'Telecoms · fibre' },
+  { nom: 'Ecosystem',    logo: 'Sources/clients/ecosystem.png',    ratio: 8.28, secteur: 'Économie circulaire', secteurEn: 'Circular economy' },
 ];

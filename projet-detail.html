@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projet — Charlotte Froidefond</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<!-- Polices hébergées avec le site (fonts/fonts.css). DM Sans, celle du grand
+     titre du hero, est préchargée : le texte principal s'affiche sans attendre. -->
+<link rel="preload" href="fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
 <style>
 
 /* ══════════════════════════════════════════════════════════
-   V2 — Design tokens (identiques à index.html)
+   V2 — Design tokens (identiques à index-v2.html)
    ══════════════════════════════════════════════════════════ */
 :root {
   --v2-bg:              #1C0E3F;
@@ -73,11 +73,17 @@ body {
 
 .detail-page { padding-bottom: 120px; }
 
-/* ══ Bannière projet ═══════════════════════════════════ */
+/* ══ Bannière projet ═══════════════════════════════════
+   Toutes les sources n'ont pas la même définition. Quand un recadrage
+   plein cadre obligerait à agrandir l'image (et donc à la rendre floue),
+   le script bascule en mode « net » : l'image garde sa taille, une copie
+   floutée comble les côtés.                                            */
 .detail-banner {
+  position: relative;
   width: 100%;
   height: clamp(220px, 32vw, 420px);
   overflow: hidden;
+  background: var(--v2-bg);
 }
 .detail-banner img {
   width: 100%;
@@ -85,6 +91,18 @@ body {
   object-fit: cover;
   display: block;
 }
+#detail-banner-img { position: relative; z-index: 1; }
+
+.detail-banner-fond {
+  position: absolute;
+  inset: 0;
+  filter: blur(30px);
+  transform: scale(1.15);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.detail-banner--net .detail-banner-fond { opacity: 1; }
+.detail-banner--net #detail-banner-img { object-fit: contain; }
 
 /* ══ Navigation ══════════════════════════════════════ */
 .nav-links { display: none; }
@@ -325,6 +343,234 @@ body {
   white-space: nowrap;
 }
 
+/* ══ Objectifs ═══════════════════════════════════════ */
+.objectifs-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.objectifs-list li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--v2-fg-soft);
+  line-height: 1.7;
+}
+.objectifs-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--v2-accent);
+  font-weight: 700;
+}
+
+/* ══ Enjeux — encart ═════════════════════════════════ */
+.enjeux-block {
+  background: var(--v2-tint);
+  border-left: 3px solid var(--v2-accent);
+  border-radius: 0 14px 14px 0;
+  padding: 22px 26px;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--v2-fg-soft);
+  line-height: 1.8;
+}
+
+/* ══ Méthodologie ════════════════════════════════════ */
+.methodo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.methodo-card {
+  background: var(--v2-card);
+  border: 1px solid var(--v2-line);
+  border-radius: 14px;
+  padding: 24px 26px;
+  box-shadow: 0 4px 30px var(--v2-shadow);
+}
+.methodo-titre {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--v2-fg);
+  margin-bottom: 14px;
+}
+.methodo-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.methodo-card li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--v2-fg-muted);
+  line-height: 1.6;
+}
+.methodo-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--v2-accent);
+}
+
+/* ══ Galerie visuels ═════════════════════════════════
+   Grille de 12 colonnes : chaque visuel occupe une largeur adaptée à son
+   format (portrait = quart de largeur, panoramique = pleine largeur), ce
+   qui évite les grandes marges vides autour des images verticales.       */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-flow: row dense;
+  align-items: start;
+  gap: 18px;
+}
+.shot {
+  grid-column: span 6;          /* défaut : demi-largeur */
+  margin: 0;
+  border: 1px solid var(--v2-line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--v2-card);
+  box-shadow: 0 4px 30px var(--v2-shadow);
+}
+
+.shot--narrow { grid-column: span 3; }   /* portrait : 4 par ligne */
+.shot--third  { grid-column: span 4; }   /* planche d'écrans : 3 par ligne */
+.shot--full   { grid-column: 1 / -1; }   /* panoramique ou mockup mis en avant */
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* `ratio` dans les données : le visuel est recadré à un format imposé, ce qui
+   permet d'aligner en hauteur deux visuels placés côte à côte. */
+.shot--cadre img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Cadre du visuel : c'est lui qui rogne un éventuel zoom, pour que l'image
+   agrandie ne déborde pas sur la légende. */
+.shot-media { overflow: hidden; line-height: 0; }
+
+/* `zoom` dans les données : resserre le cadrage sans changer la place occupée
+   par le visuel dans la grille. */
+.shot--zoom .shot-media img { transform: scale(var(--zoom, 1)); }
+/* Séquence animée : la première frame porte la hauteur, les suivantes
+   se superposent et s'enchaînent en fondu. */
+.shot-anim { position: relative; line-height: 0; }
+.shot-anim img + img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.shot-anim img.is-on { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .shot-anim img + img { display: none; }
+}
+
+.shot figcaption {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--v2-fg-muted);
+  padding: 12px 16px 14px;
+  border-top: 1px solid var(--v2-line-soft);
+}
+/* Tablette : on repasse sur 6 colonnes, les portraits restent 2 par ligne. */
+@media (max-width: 860px) {
+  .gallery { grid-template-columns: repeat(6, 1fr); }
+  .shot, .shot--third { grid-column: span 6; }
+  .shot--narrow { grid-column: span 3; }
+}
+
+@media (max-width: 520px) {
+  .gallery { grid-template-columns: 1fr; }
+  .shot, .shot--narrow, .shot--third, .shot--full { grid-column: 1 / -1; }
+}
+
+/* ══ Visionneuse plein écran ═════════════════════════ */
+.shot img, #detail-banner-img { cursor: zoom-in; }
+
+.visionneuse {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  padding: 40px 32px 32px;
+  background: rgba(8, 4, 22, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: zoom-out;
+  animation: visionneuse-entree 0.18s ease;
+}
+/* `display: flex` l'emporterait sur l'attribut `hidden` : on le rétablit. */
+.visionneuse[hidden] { display: none; }
+@keyframes visionneuse-entree { from { opacity: 0; } to { opacity: 1; } }
+
+.visionneuse img {
+  max-width: 100%;
+  max-height: calc(100vh - 130px);
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
+.visionneuse-legende {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  max-width: 760px;
+  margin: 0;
+}
+
+.visionneuse-fermer {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.visionneuse-fermer:hover { background: rgba(255, 255, 255, 0.18); }
+.visionneuse-fermer:focus-visible { outline: 2px solid #FFFFFF; outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .visionneuse { animation: none; }
+}
+
+@media (max-width: 600px) {
+  .visionneuse { padding: 64px 16px 24px; }
+  .visionneuse img { max-height: calc(100vh - 150px); }
+}
+
 .detail-footer-note {
   text-align: center;
   font-size: 14px;
@@ -339,6 +585,7 @@ body {
 }
 
 </style>
+<link rel="stylesheet" href="v4/v4.css">
 </head>
 <body>
 
@@ -369,17 +616,28 @@ body {
   </header>
 
   <div class="detail-banner">
+    <img class="detail-banner-fond" id="detail-banner-fond" src="" alt="" aria-hidden="true">
     <img id="detail-banner-img" src="" alt="">
   </div>
 
   <div class="detail-wrap">
     <div id="detail-content"></div>
-    <p class="detail-footer-note" data-en="Portfolio updated July 2026 — Confidential document" data-fr="Portfolio mis à jour en juillet 2026 — Document confidentiel">Portfolio mis à jour en juillet 2026 — Document confidentiel</p>
+    <p class="detail-footer-note" data-en="Portfolio updated September 2026 — Confidential document" data-fr="Portfolio mis à jour en septembre 2026 — Document confidentiel">Portfolio mis à jour en septembre 2026 — Document confidentiel</p>
   </div>
 
 </div>
 
-<script src="projets-data.js"></script>
+<!-- Visionneuse : agrandissement d'un visuel au clic -->
+<div class="visionneuse" id="visionneuse" role="dialog" aria-modal="true" hidden>
+  <button class="visionneuse-fermer" id="visionneuse-fermer" type="button"
+          data-label-en="Close" data-label-fr="Fermer" aria-label="Fermer">
+    <span class="material-icons-round" aria-hidden="true">close</span>
+  </button>
+  <img id="visionneuse-img" src="" alt="">
+  <p class="visionneuse-legende" id="visionneuse-legende"></p>
+</div>
+
+<script src="projets-data.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   let currentId = parseInt(new URLSearchParams(location.search).get('id'), 10) || 1;
@@ -391,11 +649,24 @@ document.addEventListener('DOMContentLoaded', () => {
     4: 'Sources/projets/Design System/banner - design system.png',
   };
 
+  // Bandeau : `banner` dans les données en priorité, sinon la bannière
+  // dédiée historique, sinon le premier visuel du projet. null si aucun.
+  function bannerFor(projet) {
+    if (projet.banner) return projet.banner;
+    if (BANNERS[projet.id]) return BANNERS[projet.id];
+    return (projet.images && projet.images.length) ? projet.images[0].src : null;
+  }
+
   // ── Langue ──────────────────────────────────────────────
   function applyLang(lang) {
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-en]').forEach(el => {
       el.textContent = el.dataset[lang] || el.textContent;
+    });
+    // libellés portés par aria-label plutôt que par le texte
+    document.querySelectorAll('[data-label-en]').forEach(el => {
+      const v = el.dataset[`label${lang.charAt(0).toUpperCase()}${lang.slice(1)}`];
+      if (v) el.setAttribute('aria-label', v);
     });
     document.querySelectorAll('.lang-btn').forEach(btn => {
       const active = btn.dataset.lang === lang;
@@ -427,8 +698,68 @@ document.addEventListener('DOMContentLoaded', () => {
   const systemPrefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
   applyTheme(savedTheme || (systemPrefersLight ? 'light' : 'dark'));
   document.querySelectorAll('.v2-theme-btn').forEach(btn =>
-    btn.addEventListener('click', () => applyTheme(btn.dataset.themeBtn))
+    btn.addEventListener('click', () => window.v4Theme ? window.v4Theme(btn, () => applyTheme(btn.dataset.themeBtn)) : applyTheme(btn.dataset.themeBtn))
   );
+
+  // ── Visionneuse ─────────────────────────────────────────
+  // Clic sur n'importe quel visuel (bandeau ou galerie) : agrandissement
+  // plein écran. Fermeture au clic sur le fond, sur la croix ou par Échap.
+  const visionneuse = document.getElementById('visionneuse');
+  const visionneuseImg = document.getElementById('visionneuse-img');
+  const visionneuseLegende = document.getElementById('visionneuse-legende');
+  let elementRendu = null;
+
+  function ouvrirVisionneuse(img) {
+    if (!visionneuse) return;
+    // Dans une séquence animée, les frames se superposent : on prend celle
+    // réellement visible, pas la dernière du DOM.
+    const anim = img.closest('.shot-anim');
+    if (anim) img = anim.querySelector('img.is-on') || anim.querySelector('img');
+    if (!img || (!img.currentSrc && !img.src)) return;
+    elementRendu = document.activeElement;
+    visionneuseImg.src = img.currentSrc || img.src;
+    visionneuseImg.alt = img.alt || '';
+    const legende = img.closest('figure')?.querySelector('figcaption')?.textContent || img.alt || '';
+    visionneuseLegende.textContent = legende;
+    visionneuseLegende.hidden = !legende;
+    visionneuse.hidden = false;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('visionneuse-fermer').focus();
+  }
+
+  function fermerVisionneuse() {
+    if (!visionneuse || visionneuse.hidden) return;
+    visionneuse.hidden = true;
+    visionneuseImg.src = '';
+    document.body.style.overflow = '';
+    if (elementRendu && elementRendu.focus) elementRendu.focus();
+  }
+
+  document.addEventListener('click', e => {
+    const img = e.target.closest('.gallery img, #detail-banner-img');
+    if (img) { ouvrirVisionneuse(img); return; }
+    // clic sur le fond de la visionneuse (pas sur l'image elle-même)
+    if (e.target === visionneuse || e.target.closest('.visionneuse-fermer')) fermerVisionneuse();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') fermerVisionneuse();
+  });
+
+  // Bascule le bandeau en mode « net » dès que le recadrage plein cadre
+  // agrandirait trop l'image. Au-delà de 1,15× le flou devient visible.
+  function ajusterBanniere() {
+    const el = document.querySelector('.detail-banner');
+    const img = document.getElementById('detail-banner-img');
+    if (!el || !img || !img.naturalWidth) return;
+    const boite = el.getBoundingClientRect();
+    const couvrir = Math.max(boite.width / img.naturalWidth, boite.height / img.naturalHeight);
+    el.classList.toggle('detail-banner--net', couvrir > 1.15);
+  }
+  window.addEventListener('resize', ajusterBanniere);
+
+  // Déclaré avant le premier render() : demarrerAnimations() y accède.
+  let animTimers = [];
 
   render(currentId);
 
@@ -461,19 +792,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.title = `${projet.num} — ${t.titreCourt} · Charlotte Froidefond`;
 
+    const bannerEl = document.querySelector('.detail-banner');
     const bannerImg = document.getElementById('detail-banner-img');
-    if (bannerImg) {
-      bannerImg.src = BANNERS[projet.id] || '';
+    const bannerFond = document.getElementById('detail-banner-fond');
+    const bannerSrc = bannerFor(projet);
+    if (bannerEl) bannerEl.hidden = !bannerSrc;
+    if (bannerImg && bannerSrc) {
+      bannerImg.src = bannerSrc;
       bannerImg.alt = t.titreCourt;
+      if (bannerFond) bannerFond.src = bannerSrc;
+      if (bannerImg.complete && bannerImg.naturalWidth) ajusterBanniere();
+      else bannerImg.addEventListener('load', ajusterBanniere, { once: true });
     }
 
     const roleCourt = t.role.split(' (')[0];
 
-    const demarche = t.demarche.map(s =>
+    // Les projets n'ont pas tous le même niveau de détail : chaque bloc n'est
+    // rendu que si les données correspondantes existent.
+    const has = v => Array.isArray(v) ? v.length > 0 : Boolean(v);
+    const section = (labelFr, labelEn, body) =>
+      `<div class="detail-sep"></div>
+       <div class="section-label" data-en="${labelEn}" data-fr="${labelFr}">${labelFr}</div>
+       ${body}`;
+
+    const demarche = (t.demarche || []).map(s =>
       `<li class="step-item"><span class="step-name">${s.titre}</span><span class="step-dot">·</span>— ${s.desc}</li>`
     ).join('');
 
-    const defis = t.defis.map((d, i) =>
+    const objectifs = (t.objectifs || []).map(o => `<li>${o}</li>`).join('');
+
+    const methodo = (t.methodo || []).map(m =>
+      `<div class="methodo-card">
+        <div class="methodo-titre">${m.titre}</div>
+        <ul>${m.items.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>`
+    ).join('');
+
+    const defis = (t.defis || []).map((d, i) =>
       `<div class="defi-card">
         <div class="defi-num" data-en="Challenge 0${i + 1}" data-fr="Défi 0${i + 1}">Défi 0${i + 1}</div>
         <div class="defi-titre">${d.titre}</div>
@@ -486,15 +841,64 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>`
     ).join('');
 
-    const kpis = t.kpis.map(k =>
+    const kpis = (t.kpis || []).map(k =>
       `<div class="kpi-card">
         <div class="kpi-titre">${k.titre}</div>
         <div class="kpi-desc">${k.desc}</div>
       </div>`
     ).join('');
 
-    const competences = t.competences.map(c =>
+    // La galerie montre tous les visuels, y compris celui repris en bandeau :
+    // le bandeau est recadré, la galerie le donne en entier.
+    const galerie = (projet.images || [])
+      .filter(img => img.src || (img.frames || []).length)
+      .map(img => {
+        // w/h natifs : le navigateur réserve la place avant le chargement
+        // lazy, ce qui évite les sauts de mise en page au scroll.
+        const dim = (img.w && img.h) ? ` width="${img.w}" height="${img.h}"` : '';
+        const styles = [
+          img.ratio ? `aspect-ratio:${img.ratio}` : '',
+          img.zoom ? `--zoom:${img.zoom}` : '',
+        ].filter(Boolean).join(';');
+        const cadre = styles ? ` style="${styles}"` : '';
+
+        // Légende bilingue : `altEn` complète `alt`. Les attributs data-*
+        // permettent à applyLang() de la basculer sans re-rendre la galerie.
+        const legendeFr = img.alt || '';
+        const legendeEn = img.altEn || legendeFr;
+        const legende = lang === 'en' ? legendeEn : legendeFr;
+
+        const visuel = img.frames
+          ? `<div class="shot-anim">${img.frames.map((f, i) =>
+              `<img src="${f}" alt="${i === 0 ? legende : ''}"${i === 0 ? '' : ' aria-hidden="true"'}${dim} loading="lazy">`
+            ).join('')}</div>`
+          : `<div class="shot-media"><img src="${img.src}" alt="${legende}"${dim}${cadre} loading="lazy"></div>`;
+        // `span` fixe la largeur du visuel dans la grille ; `type: 'full'`
+        // reste accepté pour les projets écrits avant l'ajout de `span`.
+        const span = img.span || (img.type === 'full' ? 'full' : '');
+        return `<figure class="shot${span ? ` shot--${span}` : ''}${img.ratio ? ' shot--cadre' : ''}${img.zoom ? ' shot--zoom' : ''}">
+          ${visuel}
+          ${legende ? `<figcaption data-fr="${legendeFr}" data-en="${legendeEn}">${legende}</figcaption>` : ''}
+        </figure>`;
+      }).join('');
+
+    const competences = (t.competences || []).map(c =>
       `<span class="tag">${c}</span>`
+    ).join('');
+
+    const metaCells = [
+      ['Client', 'Client', t.clientCourt || projet.clientCourt],
+      ['Année', 'Year', projet.annee],
+      ['Rôle', 'Role', roleCourt],
+      ['Équipe', 'Team', projet.equipe],
+      ['Outils', 'Tools', (projet.outils || []).join(' · ')],
+      ['Statut', 'Status', t.statut, true],
+      ['Durée', 'Duration', t.dureeCourte],
+    ].filter(c => has(c[2])).map(([fr, en, value, isStatut]) =>
+      `<div class="meta-cell">
+        <div class="meta-label" data-en="${en}" data-fr="${fr}">${fr}</div>
+        <div class="meta-value${isStatut ? ' meta-statut' : ''}">${isStatut ? '<span class="statut-dot"></span>' : ''}${value}</div>
+      </div>`
     ).join('');
 
     const detailEl = document.getElementById('detail-content');
@@ -502,36 +906,41 @@ document.addEventListener('DOMContentLoaded', () => {
       <h1 class="detail-titre">${t.titre}</h1>
       <p class="detail-sous-titre">${t.sousTitreCourt}</p>
 
-      <div class="meta-block">
-        <div class="meta-cell"><div class="meta-label" data-en="Client" data-fr="Client">Client</div><div class="meta-value">${projet.clientCourt}</div></div>
-        <div class="meta-cell"><div class="meta-label" data-en="Year" data-fr="Année">Année</div><div class="meta-value">${projet.annee}</div></div>
-        <div class="meta-cell"><div class="meta-label" data-en="Role" data-fr="Rôle">Rôle</div><div class="meta-value">${roleCourt}</div></div>
-        <div class="meta-cell"><div class="meta-label" data-en="Team" data-fr="Équipe">Équipe</div><div class="meta-value">${projet.equipe}</div></div>
-        <div class="meta-cell"><div class="meta-label" data-en="Tools" data-fr="Outils">Outils</div><div class="meta-value">${projet.outils.join(' · ')}</div></div>
-        <div class="meta-cell"><div class="meta-label" data-en="Status" data-fr="Statut">Statut</div><div class="meta-value meta-statut"><span class="statut-dot"></span>${t.statut}</div></div>
-        <div class="meta-cell"><div class="meta-label" data-en="Duration" data-fr="Durée">Durée</div><div class="meta-value">${t.dureeCourte}</div></div>
-      </div>
+      <div class="meta-block">${metaCells}</div>
 
       <div class="section-label" data-en="Context &amp; challenges" data-fr="Contexte &amp; enjeux">Contexte &amp; enjeux</div>
       <p class="section-text">${t.contexte}</p>
 
-      <div class="detail-sep"></div>
-      <div class="section-label" data-en="UX/UI Approach" data-fr="Démarche UX/UI">Démarche UX/UI</div>
-      <ul class="steps-list">${demarche}</ul>
-
-      <div class="detail-sep"></div>
-      <div class="section-label" data-en="Challenges &amp; solutions" data-fr="Défis &amp; solutions">Défis &amp; solutions</div>
-      <div class="defi-list">${defis}</div>
-
-      <div class="detail-sep"></div>
-      <div class="section-label" data-en="Results &amp; KPIs" data-fr="Résultats &amp; KPIs">Résultats &amp; KPIs</div>
-      <div class="kpis-grid">${kpis}</div>
-
-      <div class="detail-sep"></div>
-      <div class="section-label" data-en="Skills involved" data-fr="Compétences mobilisées">Compétences mobilisées</div>
-      <div class="competences-wrap">${competences}</div>
+      ${has(objectifs) ? section('Objectifs', 'Objectives', `<ul class="objectifs-list">${objectifs}</ul>`) : ''}
+      ${has(t.enjeux) ? section('Enjeux de conception', 'Design challenges', `<div class="enjeux-block">${t.enjeux}</div>`) : ''}
+      ${has(demarche) ? section('Démarche UX/UI', 'UX/UI Approach', `<ul class="steps-list">${demarche}</ul>`) : ''}
+      ${has(methodo) ? section('Méthodologie', 'Methodology', `<div class="methodo-grid">${methodo}</div>`) : ''}
+      ${has(defis) ? section('Défis &amp; solutions', 'Challenges &amp; solutions', `<div class="defi-list">${defis}</div>`) : ''}
+      ${has(kpis) ? section('Résultats &amp; KPIs', 'Results &amp; KPIs', `<div class="kpis-grid">${kpis}</div>`) : ''}
+      ${has(galerie) ? section('Aperçu', 'Visuals', `<div class="gallery">${galerie}</div>`) : ''}
+      ${has(competences) ? section('Compétences mobilisées', 'Skills involved', `<div class="competences-wrap">${competences}</div>`) : ''}
     `;
     applyLang(document.documentElement.lang || 'fr');
+    demarrerAnimations();
+    if (window.v4Detail) window.v4Detail();
+  }
+
+  // Enchaînement des séquences animées de la galerie. Les timers sont
+  // remis à zéro à chaque rendu (changement de langue ou de projet).
+  function demarrerAnimations() {
+    animTimers.forEach(clearInterval);
+    animTimers = [];
+    if (window.v4Detail) return; // v4 : les séquences suivent le défilement
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll('.shot-anim').forEach(bloc => {
+      const frames = Array.from(bloc.querySelectorAll('img'));
+      if (frames.length < 2) return;
+      let i = 0;
+      animTimers.push(setInterval(() => {
+        i = (i + 1) % frames.length;
+        frames.forEach((f, n) => f.classList.toggle('is-on', n === i && n > 0));
+      }, 1400));
+    });
   }
 
   document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -539,6 +948,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+
+<script src="v4/v4.js"></script>
 
 <!-- Vercel Analytics -->
 <script>

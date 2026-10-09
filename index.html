@@ -3,11 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+/* Thème choisi avant le premier affichage : pas de flash de l'autre thème, et
+   seule la photo du hero qui sera visible est préchargée, en priorité. */
+(function () {
+  var t = null;
+  try { t = localStorage.getItem('portfolio-theme'); } catch (e) {}
+  if (t !== 'light' && t !== 'dark') t = (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  // v4 : les animations d'entrée partent d'un état posé avant le premier affichage
+  // (v4.js est chargé en différé). Sécurité : tout s'affiche après 3 s quoi qu'il arrive.
+  if (!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+    document.documentElement.classList.add('v4', 'v4-anim');
+    setTimeout(function () { document.documentElement.classList.add('v4-pret'); }, 3000);
+  }
+  var n = t === 'light' ? 'jour' : 'nuit';
+  var l = document.createElement('link');
+  l.rel = 'preload'; l.as = 'image';
+  l.setAttribute('fetchpriority', 'high');
+  l.setAttribute('imagesrcset', 'Sources/fond/' + n + '-960.webp 960w, Sources/fond/' + n + '-1728.webp 1728w');
+  l.setAttribute('imagesizes', '100vw');
+  document.head.appendChild(l);
+})();
+</script>
 <title>Charlotte Froidefond — Product Designer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+<!-- Polices hébergées avec le site (fonts/fonts.css). DM Sans, celle du grand
+     titre du hero, est préchargée : le texte principal s'affiche sans attendre. -->
+<link rel="preload" href="fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
 <style>
 
@@ -317,10 +340,16 @@ body {
 }
 
 /* Fond photo — uniquement dans le bloc Accueil, pas fixe au scroll */
+/* v4 : la photo passe derrière le décor fixe (halo et anneaux animés, z-index 0),
+   qui s'affiche ainsi par-dessus ; le texte du hero (z-index 1) reste au-dessus.
+   Le décor est dans .page (son propre plan d'empilement) : les autres sections
+   passent au-dessus de lui, pour que ni le halo ni les anneaux ne recouvrent
+   leur texte. */
+.page > section:not(.v2-hero) { position: relative; z-index: 1; }
 .v2-hero-bg {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: -1;
 }
 .v2-hero-bg img {
   position: absolute;
@@ -432,7 +461,8 @@ html[data-theme="light"] .v2-hero-bg::after {
   box-shadow: 0 4px 30px var(--v2-shadow);
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease;
 }
-.v2-hero-card:hover { transform: translateY(-4px); border-color: rgba(123,58,237,0.4); }
+/* v4 : la carte reste immobile au survol ; seuls la bordure et la lueur (v4.css) réagissent. */
+.v2-hero-card:hover { border-color: rgba(123,58,237,0.4); }
 
 .v2-hero-card-head {
   display: flex;
@@ -487,13 +517,101 @@ html[data-theme="light"] .v2-hero-bg::after {
 }
 
 /* ══════════════════════════════════════════════════════════
+   Bandeau clients — entre l'accueil et les projets
+   ══════════════════════════════════════════════════════════ */
+/* Logos en <img> (PNG blancs, Sources/clients/). Pas de mask-image : Chrome
+   bloque les masques ouverts en file://, le bandeau restait vide hors serveur.
+   Thème clair : brightness(0) passe le blanc en noir, l'opacité l'adoucit.
+   Largeur et hauteur sont calculées par renderClients() pour égaliser le
+   poids visuel, puis multipliées par --logo-echelle. */
+.v2-clients {
+  --logo-echelle: 1;
+  padding: 26px clamp(24px, 8vw, 130px);
+  border-top: 1px solid var(--v2-line-soft);
+  border-bottom: 1px solid var(--v2-line-soft);
+}
+.v2-clients-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+}
+.v2-clients-label {
+  flex: none;
+  max-width: 150px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--v2-fg-muted);
+  margin: 0;
+}
+.v2-clients-list {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.v2-client-logo {
+  display: block;
+  width: calc(var(--w) * var(--logo-echelle) * 1px);
+  height: calc(var(--h) * var(--logo-echelle) * 1px);
+  opacity: 0.62;
+}
+html[data-theme="light"] .v2-client-logo { filter: brightness(0); opacity: 0.5; }
+
+/* Sept logos tiennent sur une ligne à partir de ~1300 px. En dessous, le
+   libellé passe au-dessus et les logos se répartissent en lignes centrées
+   (4 + 3, puis 3 + 2 + 2 en mobile) plutôt que de laisser un logo isolé à gauche. */
+.v2-clients-saut { display: none; }
+@media (max-width: 1300px) {
+  .v2-clients-inner { flex-direction: column; align-items: center; gap: 18px; }
+  .v2-clients-label { max-width: none; text-align: center; }
+  .v2-clients-list { width: 100%; justify-content: center; gap: 22px 40px; }
+  /* La ligne vide du saut compte deux fois le gap vertical : on en retire un. */
+  .v2-clients-saut { display: block; flex-basis: 100%; height: 0; margin-top: -22px; }
+}
+@media (max-width: 620px) {
+  .v2-clients { --logo-echelle: 0.62; padding-block: 24px; }
+  .v2-clients-list { gap: 20px 26px; }
+  .v2-clients-saut { display: none; }
+}
+
+/* ══════════════════════════════════════════════════════════
    SECTION 2 — Projets
    ══════════════════════════════════════════════════════════ */
-.v2-projects-grid {
+/* ══ Projets ═════════════════════════════════════════════
+   Les familles existent dans le balisage mais ne servent qu'en mobile.
+   Sur desktop, `display: contents` les efface : les cartes redeviennent
+   les enfants directs d'une grille unique, comme avant le regroupement. */
+.v2-projects {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
   margin-bottom: 30px;
+}
+
+.v2-cat,
+.v2-projects-grid { display: contents; }
+
+.v2-cat-titre {
+  display: none;
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(18px, 2vw, 22px);
+  color: var(--v2-fg);
+  margin: 0 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--v2-line);
 }
 
 .v2-project-card {
@@ -510,7 +628,9 @@ html[data-theme="light"] .v2-hero-bg::after {
 }
 .v2-project-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(123,58,237,0.25); }
 
-.v2-project-thumb-wrap { position: relative; }
+/* Conserve la vignette dans son propre bloc : elle passe à gauche du texte
+   en mobile. */
+.v2-project-thumb-wrap { line-height: 0; }
 
 .v2-project-thumb {
   width: 100%;
@@ -520,21 +640,12 @@ html[data-theme="light"] .v2-hero-bg::after {
   display: block;
 }
 
-.v2-project-num {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  font-family: 'DM Serif Display', serif;
-  font-style: italic;
-  font-size: 15px;
-  line-height: 1;
-  color: #FFFFFF;
-  background: rgba(28, 14, 63, 0.72);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
-  padding: 7px 12px 8px;
+/* Le texte de la carte est regroupé pour pouvoir passer à droite de la
+   vignette en mobile ; le `gap` reprend l'espacement d'origine. */
+.v2-project-texte {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .v2-project-client {
@@ -745,8 +856,37 @@ html[data-theme="light"] .v2-hero-bg::after {
   max-width: 980px;
 }
 
-@media (max-width: 1100px) { .v2-projects-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 620px)  { .v2-projects-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1100px) { .v2-projects { grid-template-columns: 1fr 1fr; } }
+
+/* Mobile : les familles reprennent leur rôle et la carte passe en format
+   compact. Neuf projets empilés en grand format faisaient cinq écrans. */
+@media (max-width: 620px) {
+  .v2-projects { display: block; }
+  .v2-cat { display: block; }
+  .v2-cat + .v2-cat { margin-top: 32px; }
+  .v2-cat-titre { display: block; }
+
+  .v2-projects-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+
+  .v2-project-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    padding: 12px;
+  }
+
+  .v2-project-thumb-wrap { flex: 0 0 92px; }
+  .v2-project-thumb { aspect-ratio: 1; border-radius: 10px; }
+
+  .v2-project-texte { min-width: 0; gap: 4px; }
+  .v2-project-title { font-size: 17px; }
+  .v2-project-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
 @media (max-width: 620px)  { .v2-autre-card { padding: 22px 20px; } }
 
 /* ══════════════════════════════════════════════════════════
@@ -1042,24 +1182,28 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
 }
 </style>
+<link rel="stylesheet" href="v4/v4.css">
 </head>
 <body>
 
 <a class="skip-link" href="#accueil">Skip to main content</a>
 
-<div class="v2-decor" aria-hidden="true">
-  <div class="v2-decor-glow"></div>
-  <div class="v2-decor-rings">
-    <span></span><span></span><span></span><span></span>
-    <span class="v2-decor-dot"></span>
-    <span class="v2-decor-dot"></span>
-    <span class="v2-decor-dot"></span>
-    <span class="v2-decor-dot"></span>
-    <span class="v2-decor-dot"></span>
-  </div>
-</div>
-
 <div class="page">
+
+  <!-- v4 : le décor est placé dans .page pour passer entre la photo du hero
+       (z-index -1) et son texte (z-index 1). -->
+  <div class="v2-decor" aria-hidden="true">
+    <div class="v2-decor-glow"></div>
+    <div class="v2-decor-rings">
+      <span></span><span></span><span></span><span></span>
+      <span class="v2-decor-dot"></span>
+      <span class="v2-decor-dot"></span>
+      <span class="v2-decor-dot"></span>
+      <span class="v2-decor-dot"></span>
+      <span class="v2-decor-dot"></span>
+    </div>
+  </div>
+
 
   <!-- ═══ Navigation ══════════════════════════════════════ -->
   <header class="v2-header">
@@ -1110,8 +1254,22 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
   <!-- ═══ Section 1 — Accueil ══════════════════════════════ -->
   <section id="accueil" class="v2-hero">
     <div class="v2-hero-bg" aria-hidden="true">
-      <img src="Sources/fond/Jour.png" alt="" data-hero-bg="jour">
-      <img src="Sources/fond/Nuit.png" alt="" data-hero-bg="nuit">
+      <!-- WebP en deux tailles. Seule la photo du thème actif se charge tout de
+           suite ; l'autre attend la fin du chargement (bascule de thème instantanée). -->
+      <img alt="" data-hero-bg="jour" width="1728" height="1117" sizes="100vw"
+           data-srcset="Sources/fond/jour-960.webp 960w, Sources/fond/jour-1728.webp 1728w">
+      <img alt="" data-hero-bg="nuit" width="1728" height="1117" sizes="100vw"
+           data-srcset="Sources/fond/nuit-960.webp 960w, Sources/fond/nuit-1728.webp 1728w">
+      <script>
+        (function () {
+          var actif = document.documentElement.getAttribute('data-theme') === 'light' ? 'jour' : 'nuit';
+          document.querySelectorAll('[data-hero-bg]').forEach(function (img) {
+            var charger = function () { img.srcset = img.getAttribute('data-srcset'); };
+            if (img.getAttribute('data-hero-bg') === actif) { img.fetchPriority = 'high'; charger(); }
+            else window.addEventListener('load', charger);
+          });
+        })();
+      </script>
     </div>
     <div class="v2-hero-grid">
       <div class="v2-hero-text">
@@ -1167,6 +1325,14 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
     </div>
   </section>
 
+  <!-- ═══ Bandeau clients ═════════════════════════════════ -->
+  <section class="v2-clients" aria-labelledby="clients-label" hidden>
+    <div class="v2-clients-inner">
+      <p class="v2-clients-label" id="clients-label" data-en="Some of the companies I've worked with" data-fr="Ils m'ont fait confiance">Ils m'ont fait confiance</p>
+      <ul class="v2-clients-list" id="clients-list"></ul>
+    </div>
+  </section>
+
   <!-- ═══ Section 2 — Projets ══════════════════════════════ -->
   <section id="projets" class="v2-section v2-section--tint">
     <div class="v2-section-inner">
@@ -1175,7 +1341,7 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
         <h2 class="v2-section-title" data-en="My latest projects" data-fr="Mes derniers projets">Mes derniers projets</h2>
       </div>
 
-      <div class="v2-projects-grid" id="projets-grid"></div>
+      <div class="v2-projects" id="projets-grid"></div>
 
       <p class="v2-projects-note"
          data-en="I have also worked on mobile application and B2B website projects, CRM design, and have extensive experience designing data-driven dashboards with customization. I have also worked on several Design System projects for various clients."
@@ -1212,7 +1378,7 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
       <div class="v2-about-row">
 
         <div class="v2-about-photo">
-          <img src="Sources/photo-profil.png" alt="Charlotte Froidefond">
+          <img src="Sources/photo-profil.png" alt="Charlotte Froidefond" width="261" height="261" loading="lazy" decoding="async">
         </div>
 
         <div class="v2-timeline-card">
@@ -1284,21 +1450,21 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
 
         <ul class="v2-tools-list">
           <li class="v2-tool-row">
-            <div class="v2-tool-icon"><img src="Sources/logo-outils/logo-figma.png" alt="Figma"></div>
+            <div class="v2-tool-icon"><img src="Sources/logo-outils/logo-figma.png" alt="Figma" loading="lazy" decoding="async"></div>
             <div class="v2-tool-text">
               <p class="v2-tool-name" data-en="Figma — expert level" data-fr="Figma : niveau expert">Figma : niveau expert</p>
               <p class="v2-tool-usage" data-en="Daily use." data-fr="Usage quotidien.">Usage quotidien.</p>
             </div>
           </li>
           <li class="v2-tool-row">
-            <div class="v2-tool-icon"><img src="Sources/logo-outils/logo-mural.png" alt="Mural"></div>
+            <div class="v2-tool-icon"><img src="Sources/logo-outils/logo-mural.png" alt="Mural" loading="lazy" decoding="async"></div>
             <div class="v2-tool-text">
               <p class="v2-tool-name" data-en="Mural — advanced level" data-fr="Mural : niveau avancé">Mural : niveau avancé</p>
               <p class="v2-tool-usage" data-en="Daily use." data-fr="Usage quotidien.">Usage quotidien.</p>
             </div>
           </li>
           <li class="v2-tool-row">
-            <div class="v2-tool-icon"><img src="Sources/logo-outils/logo-claude.png" alt="Claude"></div>
+            <div class="v2-tool-icon"><img src="Sources/logo-outils/logo-claude.png" alt="Claude" loading="lazy" decoding="async"></div>
             <div class="v2-tool-text">
               <p class="v2-tool-name" data-en="Claude — advanced level" data-fr="Claude : niveau avancé">Claude : niveau avancé</p>
               <p class="v2-tool-usage"
@@ -1307,7 +1473,7 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
             </div>
           </li>
           <li class="v2-tool-row">
-            <div class="v2-tool-icon"><img src="Sources/logo-outils/logo-azure.png" alt="Azure DevOps"></div>
+            <div class="v2-tool-icon"><img src="Sources/logo-outils/logo-azure.png" alt="Azure DevOps" loading="lazy" decoding="async"></div>
             <div class="v2-tool-text">
               <p class="v2-tool-name" data-en="Azure DevOps — advanced level" data-fr="Azure DevOps : niveau avancé">Azure DevOps : niveau avancé</p>
               <p class="v2-tool-usage"
@@ -1316,7 +1482,7 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
             </div>
           </li>
           <li class="v2-tool-row">
-            <div class="v2-tool-icon"><img src="Sources/logo-outils/cosmos.png" alt="Cosmos"></div>
+            <div class="v2-tool-icon"><img src="Sources/logo-outils/cosmos.png" alt="Cosmos" loading="lazy" decoding="async"></div>
             <div class="v2-tool-text">
               <p class="v2-tool-name" data-en="Cosmos — advanced level" data-fr="Cosmos : niveau avancé">Cosmos : niveau avancé</p>
               <p class="v2-tool-usage"
@@ -1325,7 +1491,7 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
             </div>
           </li>
           <li class="v2-tool-row">
-            <div class="v2-tool-icon"><img src="Sources/logo-outils/logo-claudecode.png" alt="Claude Code"></div>
+            <div class="v2-tool-icon"><img src="Sources/logo-outils/logo-claudecode.png" alt="Claude Code" loading="lazy" decoding="async"></div>
             <div class="v2-tool-text">
               <p class="v2-tool-name" data-en="Claude Code — intermediate level" data-fr="Claude Code : niveau intermédiaire">Claude Code : niveau intermédiaire</p>
               <p class="v2-tool-usage"
@@ -1355,10 +1521,10 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
         </p>
 
         <div class="v2-polaroids">
-          <div class="v2-polaroid"><img src="Sources/about/image 2.png" alt="Cascade en Norvège"></div>
-          <div class="v2-polaroid"><img src="Sources/about/image 3.png" alt="Lac glaciaire en Norvège"></div>
-          <div class="v2-polaroid"><img src="Sources/about/image 1.png" alt="Randonnée en montagne"></div>
-          <div class="v2-polaroid"><img src="Sources/about/image 4.png" alt="Mon chat"></div>
+          <div class="v2-polaroid"><img src="Sources/about/image-2.webp" alt="Cascade en Norvège" width="400" height="663" loading="lazy" decoding="async"></div>
+          <div class="v2-polaroid"><img src="Sources/about/image-3.webp" alt="Lac glaciaire en Norvège" width="400" height="662" loading="lazy" decoding="async"></div>
+          <div class="v2-polaroid"><img src="Sources/about/image-1.webp" alt="Randonnée en montagne" width="400" height="663" loading="lazy" decoding="async"></div>
+          <div class="v2-polaroid"><img src="Sources/about/image-4.webp" alt="Mon chat" width="400" height="664" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </div>
@@ -1425,7 +1591,7 @@ html[data-theme="dark"] .form-feedback--error { color: #FF8F8F; }
 
 </div>
 
-<script src="projets-data.js"></script>
+<script src="projets-data.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -1437,21 +1603,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const bi = (fr, en) => `data-fr="${esc(fr)}" data-en="${esc(en || fr)}"`;
 
-  function renderProjets() {
-    const grid = document.getElementById('projets-grid');
-    if (!grid || typeof PROJETS === 'undefined') return;
-    grid.innerHTML = PROJETS.map(p => {
-      const en = p.en || {};
-      return `<a href="projet-detail-v2.html?id=${p.id}" class="v2-project-card">
-        <div class="v2-project-thumb-wrap">
-          <img class="v2-project-thumb" src="${esc(p.thumb)}" alt="" loading="lazy">
-          <span class="v2-project-num">${esc(p.num)}</span>
-        </div>
+  // Les projets sont rangés en trois familles. L'ordre des clés fixe l'ordre
+  // d'affichage ; un projet sans catégorie retomberait dans « Autres ».
+  const CATEGORIES = [
+    ['metier',     'Outils métier & back-office',      'Business tools & back-office'],
+    ['clients',    'Applications & espaces clients',   'Apps & customer portals'],
+    ['fondations', 'Fondations : design system & IA',  'Foundations: design system & AI'],
+  ];
+
+  // `order` rétablit la suite 01→09 sur desktop, où les familles sont effacées
+  // et où toutes les cartes retombent dans une même grille.
+  function carteProjet(p, rang) {
+    const en = p.en || {};
+    return `<a href="projet-detail.html?id=${p.id}" class="v2-project-card" style="order:${rang}">
+      <div class="v2-project-thumb-wrap">
+        <img class="v2-project-thumb" src="${esc(p.thumb)}" alt="" loading="lazy">
+      </div>
+      <div class="v2-project-texte">
         <p class="v2-project-client" ${bi(p.clientCourt, en.clientCourt)}>${esc(p.clientCourt)}</p>
         <h3 class="v2-project-title" ${bi(p.titreCourt, en.titreCourt)}>${esc(p.titreCourt)}</h3>
         <p class="v2-project-desc" ${bi(p.sousTitreCourt, en.sousTitreCourt)}>${esc(p.sousTitreCourt)}</p>
-      </a>`;
-    }).join('');
+      </div>
+    </a>`;
+  }
+
+  function renderProjets() {
+    const conteneur = document.getElementById('projets-grid');
+    if (!conteneur || typeof PROJETS === 'undefined') return;
+
+    const restants = new Set(PROJETS);
+    const familles = CATEGORIES.map(([cle, fr, en]) => {
+      const projets = PROJETS.filter(p => p.categorie === cle);
+      projets.forEach(p => restants.delete(p));
+      return { fr, en, projets };
+    });
+    if (restants.size) familles.push({ fr: 'Autres', en: 'Other', projets: [...restants] });
+
+    const rang = new Map(PROJETS.map((p, i) => [p, i]));
+    conteneur.innerHTML = familles.filter(f => f.projets.length).map(f =>
+      `<section class="v2-cat">
+        <h3 class="v2-cat-titre" ${bi(f.fr, f.en)}>${esc(f.fr)}</h3>
+        <div class="v2-projects-grid">${f.projets.map(p => carteProjet(p, rang.get(p))).join('')}</div>
+      </section>`
+    ).join('');
   }
 
   function renderAutres() {
@@ -1487,8 +1681,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
   }
 
+  // ── Bandeau clients ─────────────────────────────────────
+  // Même surface perçue pour chaque logo : un wordmark long est plus bas
+  // qu'un logo compact. La hauteur est plafonnée pour les logos hauts (Saur).
+  function renderClients() {
+    const liste = document.getElementById('clients-list');
+    if (!liste || typeof CLIENTS === 'undefined') return;
+    const SURFACE = 2500, H_MAX = 42;
+    // Saut de ligne après la moitié (arrondie au-dessus) : 4 + 3 sur écran moyen.
+    const moitie = Math.ceil(CLIENTS.length / 2);
+    liste.innerHTML = CLIENTS.map((c, i) => {
+      const h = Math.min(H_MAX, Math.sqrt(SURFACE / c.ratio));
+      const w = h * c.ratio;
+      return `<li><img class="v2-client-logo" src="${esc(c.logo)}" alt="${esc(c.nom)}"
+        loading="lazy" style="--w:${w.toFixed(1)};--h:${h.toFixed(1)}"></li>`
+        + (i === moitie - 1 ? '<li class="v2-clients-saut" aria-hidden="true"></li>' : '');
+    }).join('');
+  }
+
   renderProjets();
   renderAutres();
+  renderClients();
 
   // ── Langue ──────────────────────────────────────────────
   function applyLang(lang) {
@@ -1536,7 +1749,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const systemPrefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
   applyTheme(savedTheme || (systemPrefersLight ? 'light' : 'dark'));
   document.querySelectorAll('.v2-theme-btn').forEach(btn =>
-    btn.addEventListener('click', () => applyTheme(btn.dataset.themeBtn))
+    btn.addEventListener('click', () => window.v4Theme ? window.v4Theme(btn, () => applyTheme(btn.dataset.themeBtn)) : applyTheme(btn.dataset.themeBtn))
   );
 
   // ── Nav active au scroll ──────────────────────────────────
@@ -1628,6 +1841,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 </script>
+
+<script src="v4/v4.js" defer></script>
 
 <!-- Vercel Analytics -->
 <script>
